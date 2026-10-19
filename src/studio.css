@@ -1,0 +1,473 @@
+:root {
+  font-size: 13px;
+  --left-width: 248px;
+  --right-width: 300px;
+}
+[hidden] {
+  display: none !important;
+}
+header {
+  padding-inline: 18px;
+  gap: 14px;
+}
+.brand {
+  flex-shrink: 0;
+}
+.brand small {
+  display: none;
+}
+.alpha {
+  font-size: 11px;
+  color: #c4e79f;
+}
+.workspace-guide {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0 0;
+  color: #9badb8;
+  font-size: 12px;
+}
+.workspace-guide span {
+  flex: 1;
+}
+.workspace-guide button {
+  background: transparent;
+  border: 0;
+  color: #c5e6a6;
+}
+.workspace-navigation {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  background: #172129;
+  border-bottom: 1px solid #ffffff1a;
+  border-radius: 7px 7px 0 0;
+}
+.workflow-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 9px 10px 0;
+}
+.workflow-nav button {
+  background: transparent;
+  border-color: transparent;
+  padding: 9px 13px;
+  font-size: 13px;
+}
+.workflow-nav button span {
+  color: #7e939f;
+  font-size: 10px;
+}
+.workflow-nav button.active {
+  color: #d6efa9;
+  background: #b6dc9110;
+  border-color: #b6dc9138;
+}
+.workflow-nav .context-help {
+  margin-left: auto;
+  font-size: 11px;
+  padding-inline: 7px;
+}
+.workflow-subnav {
+  padding: 8px 12px 10px;
+}
+.workflow-subnav nav {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.workflow-subnav button {
+  padding: 7px 10px;
+  border: 0;
+  background: transparent;
+}
+.workflow-subnav button.selected {
+  background: #c4e79f;
+  color: #20301c;
+  font-weight: 600;
+}
+.workflow-subnav > span {
+  display: block;
+  font-size: 11px;
+  color: #97a9b5;
+  padding: 8px 3px 0;
+}
+#analysis-workbench {
+  scroll-margin-top: 135px;
+}
+.inspector-links button {
+  font-size: 12px;
+  padding: 8px;
+}
+.inspector-links button.active {
+  background: #c4e79f16;
+  color: #c4e79f;
+}
+.inspector-head .mode button {
+  font-size: 12px;
+}
+.tree b {
+  font-size: 12px;
+}
+.tree small {
+  font-size: 10px;
+  color: #8a9ba6;
+}
+.structure-section-title {
+  font-size: 12px;
+}
+.structure-section-title > span {
+  font-size: 10px;
+}
+.structure-search input,
+.structure-actions .lens-add select,
+.structure-actions .lens-add button,
+.structure-secondary-actions button {
+  font-size: 11px;
+}
+.number label,
+.text-label,
+.hint {
+  font-size: 12px;
+}
+.section-label {
+  font-size: 12px;
+  color: #b7c7d0;
+  padding-left: 0;
+  letter-spacing: 0;
+}
+.optimization-workbench .number {
+  max-width: 520px;
+}
+.optimization-workbench .section-label {
+  border: 0;
+  padding-top: 0;
+  font-size: 18px;
+}
+.settings-context-help {
+  background: transparent;
+  border: 0;
+  color: #b8d99d;
+  padding-left: 0;
+}
+.analysis > .spot-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr));
+}
+.legend button {
+  font-size: 11px;
+  padding: 2px 5px;
+  background: transparent;
+  border: 0;
+  margin-left: auto;
+}
+.file-menu {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.file-menu summary {
+  list-style: none;
+  padding: 8px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.file-menu summary::-webkit-details-marker {
+  display: none;
+}
+.file-menu[open] summary {
+  background: #2d393f;
+}
+.file-menu > div {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  z-index: 20;
+  min-width: 210px;
+  padding: 7px;
+  border: 1px solid #536570;
+  border-radius: 7px;
+  background: #1b262f;
+  box-shadow: 0 12px 40px #0008;
+}
+.file-menu > div button {
+  width: 100%;
+  justify-content: flex-start;
+  padding: 10px;
+}
+.wide-dialog:has(.help-layout) {
+  width: min(1100px, 94vw);
+  height: min(800px, 92vh);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 22px;
+}
+.help-toolbar {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+  border: 1px solid #536570;
+  border-radius: 6px;
+  padding: 0 10px;
+  background: #101820;
+}
+.search-box input {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  padding: 12px 0;
+  outline-offset: 0;
+}
+.search-box button {
+  padding: 2px;
+  background: transparent;
+  border: 0;
+}
+.help-layout {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr);
+  flex: 1;
+  min-height: 0;
+  margin-top: 20px;
+  border-top: 1px solid #ffffff1a;
+}
+.help-layout > nav {
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 15px 15px 15px 0;
+  border-right: 1px solid #ffffff1a;
+}
+.help-layout > nav button {
+  width: 100%;
+  justify-content: flex-start;
+  border: 0;
+  text-align: left;
+  background: transparent;
+  padding: 11px 8px;
+}
+.help-layout > nav button.active {
+  background: #c4e79f18;
+  color: #c4e79f;
+}
+.help-layout > nav button {
+  flex-direction: column;
+  align-items: flex-start;
+}
+.help-layout > nav button > span {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+.help-layout > nav button svg {
+  flex-shrink: 0;
+}
+.help-layout > nav small {
+  color: #91a7b4;
+  font-size: 11px;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.manual-content mark {
+  background: #e5cf83;
+  color: #1b2428;
+  border-radius: 2px;
+  padding-inline: 2px;
+}
+.help-layout > nav p {
+  color: #9cabb8;
+  font-size: 12px;
+}
+.manual-content {
+  min-width: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 20px 24px 40px;
+  line-height: 1.9;
+  font-size: 14px;
+}
+.manual-content h1 {
+  font-size: 23px;
+  color: #e7efd9;
+  margin-bottom: 20px;
+}
+.manual-content h2 {
+  font-size: 17px;
+  margin: 26px 0 10px;
+  color: #d2e6bc;
+}
+.manual-content h3 {
+  font-size: 14px;
+  margin: 22px 0 8px;
+}
+.manual-content p {
+  margin: 10px 0;
+  color: #bfccd5;
+  font-size: 14px;
+}
+.manual-content .help-bullet {
+  padding-left: 15px;
+}
+.manual-content code {
+  background: #0b1219;
+  color: #dfcba2;
+  padding: 2px 5px;
+  border-radius: 3px;
+  overflow-wrap: anywhere;
+}
+.manual-content pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 12px;
+  background: #0b1219;
+  margin: 0;
+  padding-inline: 10px;
+}
+.help-link {
+  display: inline;
+  color: #c4e79f;
+  background: transparent;
+  padding: 0 3px;
+  border: 0;
+  text-decoration: underline;
+}
+.manual-content a {
+  color: #b8d7fc;
+}
+.manual-content > .primary {
+  margin-top: 20px;
+}
+.command-results {
+  max-height: 52vh;
+  overflow: auto;
+  margin-top: 15px;
+}
+.command-results h3 {
+  font-size: 12px;
+  color: #92a5b3;
+  margin: 14px 0 7px;
+}
+.command-results button {
+  display: flex;
+  justify-content: space-between;
+  background: transparent;
+  border: 0;
+  width: 100%;
+  padding: 10px;
+}
+.command-results small {
+  color: #8da0ad;
+}
+.drawing-options {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin: 18px 0;
+}
+.drawing-options label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.drawing-options input[type="checkbox"] {
+  width: auto;
+}
+.drawing-preview {
+  background: #f8fafb;
+  color: #26363b;
+  border-radius: 6px;
+  padding: 20px;
+  margin: 18px 0;
+}
+.drawing-preview h3 {
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+.drawing-preview p {
+  color: #53616a;
+}
+.drawing-preview svg {
+  width: 100%;
+  height: 240px;
+}
+.drawing-checklist {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 20px;
+  margin: 18px 0;
+  color: #b9c9d2;
+}
+.drawing-status {
+  white-space: pre-line;
+  line-height: 1.8;
+  margin: 16px 0;
+}
+@media (max-width: 1150px) {
+  :root {
+    --left-width: 212px;
+    --right-width: 280px;
+  }
+  .optional-label {
+    display: none;
+  }
+  .toolbar {
+    gap: 2px;
+  }
+  .projectbar {
+    padding-inline: 12px;
+  }
+  .local-dot {
+    max-width: 130px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .brand {
+    font-size: 15px;
+    gap: 7px;
+  }
+  main {
+    padding-inline: 12px;
+  }
+  .workflow-nav button {
+    padding-inline: 9px;
+  }
+  .workflow-nav .context-help {
+    font-size: 0;
+  }
+  .workflow-nav .context-help svg {
+    width: 17px;
+  }
+  .workspace-guide span {
+    display: none;
+  }
+  .workspace-guide {
+    justify-content: flex-end;
+    padding-top: 4px;
+  }
+}
+@media (max-width: 750px) {
+  .help-layout {
+    grid-template-columns: 160px minmax(0, 1fr);
+  }
+  .manual-content {
+    padding: 15px;
+  }
+  .help-layout > nav {
+    padding-right: 6px;
+  }
+  .help-toolbar input {
+    font-size: 12px;
+  }
+}

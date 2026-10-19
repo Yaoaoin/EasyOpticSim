@@ -1,0 +1,15 @@
+[
+  {
+    "source": "docs/fixtures/workspace-ui-saved-1.0.oos.json",
+    "pdf": "output\\pdf\\400mm-production-UI-1.0.pdf",
+    "bytes": 318377,
+    "sourceHash": "19435960d3849dc03b604c3c251b5e5ffa796b186c017bacf424746fa7ceb13b",
+    "productionCSP": true,
+    "pages": 26,
+    "sourceAttachmentExact": true,
+    "textSearchable": true,
+    "textOriginBoundsPassed": true,
+    "allPagesRendered": true,
+    "contactSheet": "tmp\\pdfs\\400mm-production-UI-1.0-contact.jpg"
+  }
+]

@@ -1,0 +1,226 @@
+{
+  "reference": {
+    "rayoptics": "0.9.10",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1"
+  },
+  "scope": "Uniform projected-reference-sphere scalar diffraction. All exported ray origins independently retraced with RayOptics; shared pupil mask. Direct spherical comparison uses same amplitude measure, omits radiometry/vector optics.",
+  "thresholds": {
+    "opd_mm": 1e-07,
+    "mapping_mm": 1e-07,
+    "psf_l1": 1e-05,
+    "mtf_absolute": 1e-05,
+    "spherical_intensity_relative_peak": 0.01
+  },
+  "airy": {
+    "mtf_max_absolute_error": 0.00031340413559191593,
+    "airy_peak_normalized_intensity_max_error": 0.00025796424072066504
+  },
+  "lens_cases": [
+    {
+      "name": "singlet_axis_stopped",
+      "rays": 12629,
+      "spectrum": [
+        {
+          "blocked_samples": 0,
+          "chief_image_mm": [
+            0.0,
+            0.0
+          ],
+          "max_phase_step_waves": 0.006035260219544612,
+          "pupil_samples": 12629,
+          "rms_waves": 0.07657717528350094,
+          "wavelength_nm": 587.5618,
+          "weight": 1.0
+        }
+      ],
+      "quality": {
+        "converged": true,
+        "edge_energy": 0.00189960107803363,
+        "local_expansion_error_waves": 0.0014881217831197767,
+        "mtf_max_change": 0.0010293768311028138,
+        "previous_sampling": 64,
+        "psf_l1_change": 0.0228399417186473,
+        "pupil_sampling": 128
+      },
+      "pixel_um": 1.777955130694226,
+      "max_reference_error_mm": 1.7763568394002505e-15,
+      "max_opd_error_mm": 5.164668692714258e-11,
+      "max_inverse_mapping_error_mm": 9.944800538619347e-10,
+      "psf_l1_error": 8.396285535263112e-08,
+      "mtf_max_absolute_error": 2.1904023039809317e-08,
+      "direct_spherical_intensity_error_relative_to_peak": 7.338093250240498e-07,
+      "elapsed_seconds": 1.109
+    },
+    {
+      "name": "doublet_offaxis_polychromatic",
+      "rays": 27855,
+      "spectrum": [
+        {
+          "blocked_samples": 0,
+          "chief_image_mm": [
+            0.0,
+            3.292794176557185
+          ],
+          "max_phase_step_waves": 0.07122157522325878,
+          "pupil_samples": 12476,
+          "rms_waves": 0.46870188899680887,
+          "wavelength_nm": 486.1327,
+          "weight": 0.3333333333333333
+        },
+        {
+          "blocked_samples": 0,
+          "chief_image_mm": [
+            0.0,
+            3.293335714071594
+          ],
+          "max_phase_step_waves": 0.03570713424897509,
+          "pupil_samples": 8540,
+          "rms_waves": 0.1762488088906935,
+          "wavelength_nm": 587.5618,
+          "weight": 0.3333333333333333
+        },
+        {
+          "blocked_samples": 0,
+          "chief_image_mm": [
+            0.0,
+            3.2936769457952266
+          ],
+          "max_phase_step_waves": 0.01688402759867169,
+          "pupil_samples": 6839,
+          "rms_waves": 0.1519408411806222,
+          "wavelength_nm": 656.2725,
+          "weight": 0.3333333333333333
+        }
+      ],
+      "quality": {
+        "converged": true,
+        "edge_energy": 0.0023038661516630514,
+        "local_expansion_error_waves": 0.0014662984080172795,
+        "mtf_max_change": 0.0009528066788644027,
+        "previous_sampling": 64,
+        "psf_l1_change": 0.022149960506289684,
+        "pupil_sampling": 128
+      },
+      "pixel_um": 0.7891008307059317,
+      "max_reference_error_mm": 1.6768808563938364e-12,
+      "max_opd_error_mm": 6.5983662977942e-11,
+      "max_inverse_mapping_error_mm": 9.859595362371465e-10,
+      "psf_l1_error": 2.3699811962689625e-08,
+      "mtf_max_absolute_error": 7.638641275065083e-09,
+      "direct_spherical_intensity_error_relative_to_peak": 2.7996967806060244e-06,
+      "elapsed_seconds": 2.82
+    },
+    {
+      "name": "finite_asphere_offaxis",
+      "rays": 12482,
+      "spectrum": [
+        {
+          "blocked_samples": 0,
+          "chief_image_mm": [
+            0.0,
+            3.513259515617644
+          ],
+          "max_phase_step_waves": 0.040193781115552385,
+          "pupil_samples": 12482,
+          "rms_waves": 0.19286587374113123,
+          "wavelength_nm": 587.5618,
+          "weight": 1.0
+        }
+      ],
+      "quality": {
+        "converged": true,
+        "edge_energy": 0.0019132050817274107,
+        "local_expansion_error_waves": 0.0012455359493564677,
+        "mtf_max_change": 0.0009617256835435803,
+        "previous_sampling": 64,
+        "psf_l1_change": 0.02204444731911788,
+        "pupil_sampling": 128
+      },
+      "pixel_um": 1.017445976745747,
+      "max_reference_error_mm": 1.5774048733874224e-12,
+      "max_opd_error_mm": 6.45012931954625e-11,
+      "max_inverse_mapping_error_mm": 9.892892061102998e-10,
+      "psf_l1_error": 4.309621859734717e-08,
+      "mtf_max_absolute_error": 1.3950078703306446e-08,
+      "direct_spherical_intensity_error_relative_to_peak": 4.180616749419939e-06,
+      "elapsed_seconds": 1.639
+    },
+    {
+      "name": "distant_finite_object",
+      "rays": 12476,
+      "spectrum": [
+        {
+          "blocked_samples": 0,
+          "chief_image_mm": [
+            0.0,
+            3.293335714071596
+          ],
+          "max_phase_step_waves": 0.02986119094404871,
+          "pupil_samples": 12476,
+          "rms_waves": 0.17634206627231358,
+          "wavelength_nm": 587.5618,
+          "weight": 1.0
+        }
+      ],
+      "quality": {
+        "converged": true,
+        "edge_energy": 0.001912808626605451,
+        "local_expansion_error_waves": 0.0012548000072723866,
+        "mtf_max_change": 0.0008760285767759127,
+        "previous_sampling": 64,
+        "psf_l1_change": 0.022204586837661338,
+        "pupil_sampling": 128
+      },
+      "pixel_um": 0.9539557073961038,
+      "max_reference_error_mm": 1.5587531265737198e-12,
+      "max_opd_error_mm": 6.474287772562093e-11,
+      "max_inverse_mapping_error_mm": 9.984431059706367e-10,
+      "psf_l1_error": 4.229148386867163e-08,
+      "mtf_max_absolute_error": 1.5175213932683285e-08,
+      "direct_spherical_intensity_error_relative_to_peak": 5.0858613891420825e-06,
+      "elapsed_seconds": 1.639
+    },
+    {
+      "name": "clipped_singlet_axis",
+      "rays": 4537,
+      "spectrum": [
+        {
+          "blocked_samples": 8092,
+          "chief_image_mm": [
+            0.0,
+            0.0
+          ],
+          "max_phase_step_waves": 0.00543452532585155,
+          "pupil_samples": 4537,
+          "rms_waves": 0.03338581325465815,
+          "wavelength_nm": 587.5618,
+          "weight": 1.0
+        }
+      ],
+      "quality": {
+        "converged": true,
+        "edge_energy": 0.0031434279510248373,
+        "local_expansion_error_waves": 0.0049495442019232535,
+        "mtf_max_change": 0.003298980932447947,
+        "previous_sampling": 64,
+        "psf_l1_change": 0.039760824950335505,
+        "pupil_sampling": 128
+      },
+      "pixel_um": 1.777955130694226,
+      "max_reference_error_mm": 1.7763568394002505e-15,
+      "max_opd_error_mm": 5.164668692714258e-11,
+      "max_inverse_mapping_error_mm": 1.14006803997313e-10,
+      "psf_l1_error": 6.531956834071633e-08,
+      "mtf_max_absolute_error": 2.825833400610378e-08,
+      "direct_spherical_intensity_error_relative_to_peak": 3.560427160829887e-07,
+      "elapsed_seconds": 0.68
+    }
+  ],
+  "image": {
+    "display_pixels": 65536,
+    "source_max_error_8bit": 0,
+    "image_max_error_8bit": 0,
+    "mean_energy_error": 2.9976021664879227e-15
+  }
+}

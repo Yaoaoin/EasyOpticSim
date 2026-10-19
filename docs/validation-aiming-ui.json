@@ -1,0 +1,50 @@
+{
+  "version": "0.7.0",
+  "date": "2026-10-19",
+  "surface_count": 34,
+  "versions_after_reopen": 2,
+  "real_download_and_reopen": true,
+  "saved_file": "docs/fixtures/repaired-400mm-ui-saved.oos.json",
+  "original": {
+    "aiming_failures": 3298,
+    "physical_failures": 52,
+    "drawn_rays": 17,
+    "suppressed_aiming_samples": 64,
+    "virtual_image_message": true,
+    "autofocus_error_explained": true,
+    "physical_surface_located": "S29"
+  },
+  "recoverable_clipping_test": {
+    "s1_clear_diameter_mm": 1,
+    "aiming_failures": 0,
+    "physical_failures": 3960,
+    "drawn_with_failed": 81,
+    "drawn_without_failed": 6,
+    "restored_afterwards": true
+  },
+  "repaired": {
+    "efl_display_mm": "400.00",
+    "f_number_display": "16.00",
+    "bfl_display_mm": "389.34",
+    "edge_wave": {
+      "field_deg": 3.1,
+      "pupil_sampling": [
+        64,
+        128
+      ],
+      "mtf_change": 0.0012,
+      "psf_l1": 0.0197,
+      "edge_energy_percent": 0.23
+    },
+    "imaging_frames": 3,
+    "imaging_bands_per_frame": 3,
+    "imaging_failures": 0
+  },
+  "console_errors": [],
+  "screenshots": [
+    "screenshots/repaired-400mm-0.7.jpg",
+    "screenshots/failure-diagnosis-0.7.jpg",
+    "screenshots/psf-mtf-400mm-0.7.jpg",
+    "screenshots/imaging-400mm-0.7.jpg"
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "version": "1.0.0",
+  "surface": "production dist served locally with restrictive CSP",
+  "navigation": [
+    {
+      "tab": "15",
+      "tool": "设计目标",
+      "selected": true
+    },
+    {
+      "tab": "15",
+      "tool": "镜头处方",
+      "selected": true
+    },
+    {
+      "tab": "15",
+      "tool": "镜组管理",
+      "selected": true
+    },
+    {
+      "tab": "15",
+      "tool": "几何检查",
+      "selected": true
+    },
+    {
+      "tab": "15",
+      "tool": "点列图",
+      "selected": true
+    },
+    {
+      "tab": "15",
+      "tool": "瞳面图",
+      "selected": true
+    },
+    {
+      "tab": "15",
+      "tool": "像差与通光",
+      "selected": true
+    },
+    {
+      "tab": "15",
+      "tool": "PSF / MTF",
+      "selected": true
+    },
+    {
+      "tab": "15",
+      "tool": "测试图成像",
+      "selected": true
+    },
+    {
+      "tab": "15",
+      "tool": "对焦扫描",
+      "selected": true
+    },
+    {
+      "tab": "15",
+      "tool": "光圈扫描",
+      "selected": true
+    },
+    {
+      "tab": "15",
+      "tool": "约束优化",
+      "selected": true
+    },
+    {
+      "tab": "15",
+      "tool": "版本对比",
+      "selected": true
+    },
+    {
+      "tab": "15",
+      "tool": "技术图纸 PDF",
+      "selected": true
+    }
+  ],
+  "context_help": true,
+  "full_text_AND_search": {
+    "query": "角落 MTF",
+    "matching_articles": 5,
+    "highlights_and_snippets": true
+  },
+  "production_pdf": {
+    "file": "output/pdf/400mm-production-UI-1.0.pdf",
+    "fields": 4,
+    "method": "fast",
+    "downloaded": true
+  },
+  "development_cancel_test": true,
+  "save_reopen_fixture": "docs/fixtures/workspace-ui-saved-1.0.oos.json",
+  "comparison_fixture": "docs/fixtures/version-comparison-ui-1.0.json",
+  "console_errors_and_warnings": [],
+  "keyboard_shortcuts_native_end_to_end_tested": false
+}

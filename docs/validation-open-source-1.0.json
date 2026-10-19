@@ -1,0 +1,78 @@
+{
+  "version": "1.0.0",
+  "date": "2026-10-19",
+  "status": "local_preparation_not_published",
+  "git_commit_created": false,
+  "git_tag_created": false,
+  "git_remote_configured": false,
+  "github_upload_performed": false,
+  "frontend_tests": 54,
+  "rust_core_tests": 72,
+  "rust_desktop_tests": 4,
+  "typescript_vite_build": "passed",
+  "clippy_warnings_as_errors": "passed",
+  "locked_offline_install": "passed",
+  "python_pip_check": "passed",
+  "independent_and_integration_scripts_passed": [
+    "validate_rayoptics.py",
+    "validate_mechanics.py",
+    "validate_workflows.py",
+    "validate_optimization.py",
+    "validate_aiming.py",
+    "validate_design.py",
+    "validate_saved_design.py",
+    "validate_coverage.py",
+    "validate_diffraction.py"
+  ],
+  "saved_400mm_samples_exactly_match_0_9": 38508,
+  "dependency_records": 380,
+  "license_provenance_exceptions": [
+    "@pdf-lib/fontkit@1.1.1 standalone upstream LICENSE absent; explicit MIT metadata supplement",
+    "stackback@0.0.2 development-only standalone LICENSE absent; explicit MIT metadata supplement"
+  ],
+  "screenshot_and_icon_metadata_files": 27,
+  "image_exif_or_png_text_fields_found": 0,
+  "windows_clean_offline_install_tested": false,
+  "native_pdf_dialog_end_to_end_tested": false,
+  "signed": false,
+  "remote_ci_executed": false,
+  "binary_path_privacy_rebuild": "passed",
+  "rust_release_tests_with_path_remapping": 76,
+  "remapped_cli_saved_400mm_recheck": "passed",
+  "desktop_embedded_personal_home_path_matches": 0,
+  "cli_embedded_personal_home_path_matches": 0,
+  "ignore_rule_cases": 12,
+  "public_asset_preservation_cases": 7,
+  "markdown_file_links_checked": 241,
+  "markdown_missing_file_links": 0,
+  "nsis_build": "passed",
+  "source_publication_candidate_files": 282,
+  "source_text_files_scanned": 254,
+  "source_secret_or_personal_path_pattern_findings": 0,
+  "binary_files_separately_reviewed": 28,
+  "nsis_startup": "passed",
+  "release_asset_files": 9,
+  "sha256_asset_checks_passed": 8,
+  "zip_entries_crc_checked": 145,
+  "bundled_resources_verified": 32,
+  "installer": {
+    "name": "OpenOpticSim_1.0.0_x64-setup.exe",
+    "bytes": 225298660,
+    "sha256": "43f38cc70dbbb0c8deca624f3d88516f77211ba7782c212ff624323221e22589"
+  },
+  "binary_privacy_checks": [
+    {
+      "name": "openopticsim-desktop.exe",
+      "personal_path_ascii_matches": 0,
+      "personal_path_utf16_matches": 0,
+      "sha256": "b9e4a575484099f24a9967aeb02acd5fe9c299711369f4c84505824a0d3526d3"
+    },
+    {
+      "name": "oos-cli.exe",
+      "personal_path_ascii_matches": 0,
+      "personal_path_utf16_matches": 0,
+      "sha256": "c29a34cea2ce2cdaff79db7f52b092050903ee43417f0b489cc6fb4894adcd02"
+    }
+  ],
+  "final_local_verification": "passed_with_documented_unperformed_platform_checks"
+}

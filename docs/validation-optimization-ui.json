@@ -1,0 +1,100 @@
+{
+  "version": "0.6.0",
+  "checks": [
+    {
+      "name": "long_prescription_blockers",
+      "passed": true,
+      "checks": 48,
+      "failures": 16,
+      "defaultFailureRows": 16
+    },
+    {
+      "name": "live_progress_and_cancel",
+      "passed": true,
+      "observedIteration": 4,
+      "maxIterations": 25
+    },
+    {
+      "name": "single_blocker_visible",
+      "passed": true,
+      "passedChecks": 47,
+      "totalChecks": 48,
+      "blocker": "焦距绝对误差",
+      "adoptEnabled": false
+    },
+    {
+      "name": "all_checks_pass_adopt_enabled",
+      "passed": true,
+      "adoptEnabled": true
+    },
+    {
+      "name": "catalog_name_nd_vd_search_and_apply",
+      "passed": true,
+      "matchingGlasses": 1,
+      "target": "S2–S3",
+      "glass": "SCHOTT N-BK7"
+    },
+    {
+      "name": "multi_surface_bounds_validation_and_locks",
+      "passed": true,
+      "variables": 3,
+      "locked": 2,
+      "preset": "edge",
+      "iterations": 30
+    },
+    {
+      "name": "optimization_report_export",
+      "passed": true,
+      "checks": 48,
+      "history": 16
+    },
+    {
+      "name": "actual_save_reopen",
+      "passed": true,
+      "variables": [
+        {
+          "variable": {
+            "kind": "curvature",
+            "surface": 1
+          },
+          "min": 0.01,
+          "max": 0.03,
+          "locked": true
+        },
+        {
+          "variable": {
+            "kind": "thickness",
+            "surface": 26
+          },
+          "min": 22.5,
+          "max": 67.5,
+          "locked": false
+        },
+        {
+          "variable": {
+            "kind": "thickness",
+            "surface": 3
+          },
+          "min": 0.4,
+          "max": 1.2,
+          "locked": true
+        }
+      ],
+      "versionPreset": "edge",
+      "material": "SCHOTT N-BK7"
+    },
+    {
+      "name": "version_restores_preset_and_common_scale_compare",
+      "passed": true,
+      "preset": "edge",
+      "comparisonText": "共同点列图半宽 0.048592 mm · 各自多色共同质心对齐，保留横向色差"
+    },
+    {
+      "name": "material_changes_only_selected_body",
+      "passed": true,
+      "oldMaterials": 3,
+      "newMaterials": 4
+    }
+  ],
+  "consoleErrors": []
+}

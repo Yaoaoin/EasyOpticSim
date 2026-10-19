@@ -1,0 +1,9 @@
+{
+  "exited": false,
+  "responding": true,
+  "title": "OpenOpticSim · 光学工作室",
+  "version": "1.0.0",
+  "executable_sha256": "b9e4a575484099f24a9967aeb02acd5fe9c299711369f4c84505824a0d3526d3",
+  "signature_status": "NotSigned",
+  "installer_signature_status": "NotSigned"
+}

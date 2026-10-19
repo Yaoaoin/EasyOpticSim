@@ -1,0 +1,18 @@
+{
+  "version": "0.6.0",
+  "installer": "target/release/bundle/nsis/OpenOpticSim_0.6.0_x64-setup.exe",
+  "bytes": 219398436,
+  "sha256": "61BFFFC22CE39DEF6105F4BCD11859D7C9816D78E8994A79E02EB3BE6EC35D47",
+  "executable_sha256": "1DC1DE5E4FDA9348EAC9EFA991FDABABF7BFC4112848FEF531C0026901534527",
+  "startup": {
+    "exited": false,
+    "responding": true,
+    "title": "OpenOpticSim · 光学工作室",
+    "version": "0.6.0"
+  },
+  "webview": "offlineInstaller",
+  "clean_windows_install_tested": false,
+  "ui_checks": 10,
+  "rust_tests": 52,
+  "frontend_tests": 28
+}

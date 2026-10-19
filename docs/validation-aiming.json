@@ -1,0 +1,30 @@
+{
+  "version": "0.7.0",
+  "scope": "CLI integration regression, not independent optical reference",
+  "original_failure_phases": {
+    "aiming:aiming_failed": 3298,
+    "trace:blocked": 52
+  },
+  "suppressed_display_aiming_paths": 64,
+  "repaired_paraxial": {
+    "bfl": 389.33820684137095,
+    "efl": 399.99764035180965,
+    "entrance_pupil_radius": 12.5,
+    "entrance_pupil_z": 95.56177724333577,
+    "exit_pupil_radius": 13.757174031068791,
+    "exit_pupil_z": 113.01123481443415,
+    "f_number": 15.999905614072386
+  },
+  "repaired_sampled": 28881,
+  "repaired_failed": 0,
+  "json_disk_roundtrip": true,
+  "metadata_invariance": {
+    "analyze": true,
+    "wave": true,
+    "preview": true
+  },
+  "constraint_checks": 57,
+  "candidate_adoptable": true,
+  "optimized_image_distance_mm": 388.77215619660996,
+  "optimized_dense_failed": 0
+}

@@ -1,0 +1,44 @@
+{
+  "clean_windows_install_tested": false,
+  "bytes": 219479624,
+  "independent_validation": "docs/validation-coverage-0.9.json",
+  "startup": {
+    "exited": false,
+    "title": "OpenOpticSim · 光学工作室",
+    "version": "0.9.0",
+    "responding": true
+  },
+  "signed": false,
+  "executable_sha256": "4E17C9D1B9339E952520A2127A36109E0DA96DF4B87449E289F9FCDC6E404D8B",
+  "original_user_sha256": "84627E7A4C374417169E2C1FCAF6FD88A951C7AB4ED5EF034A32E01B5E67B561",
+  "ui_report": "docs/validation-coverage-ui-0.9.json",
+  "webview": "offlineInstaller",
+  "sha256": "3F8222E6E6013EBDBEDE56AFF03F35A052705D786269E3D86E344FC9978AFDFB",
+  "frontend_tests": 48,
+  "installer": "target/release/bundle/nsis/OpenOpticSim_0.9.0_x64-setup.exe",
+  "date": "2026-10-19",
+  "resources": [
+    {
+      "sha256": "5B8A5B5B949F5A0490B7A3DD469D25C13758D8FD63303AC0033ACA524FFBC667",
+      "bundled_matches": true,
+      "name": "35mm-coverage.oos.json"
+    },
+    {
+      "sha256": "487FB7E5D3B3D428EC222A31E4631C02AC32B224E29DCDF3DE17B5BC76905306",
+      "bundled_matches": true,
+      "name": "400mm-coverage-0.9.oos.json"
+    },
+    {
+      "sha256": "7F5310B18D175A8329236DB5FB8C2B055563733B65D81D82B034B62F97E0F51B",
+      "bundled_matches": true,
+      "name": "400mm-repaired.oos.json"
+    },
+    {
+      "sha256": "CDF4BA6AEE4DFC9DC72387F6D2EE13B1727D8CF7DC94A9A6906865DF4CC5E938",
+      "bundled_matches": true,
+      "name": "400mm-workflow-0.8.oos.json"
+    }
+  ],
+  "version": "0.9.0",
+  "rust_tests": 75
+}

@@ -1,0 +1,17 @@
+[package]
+name = "openopticsim-desktop"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+openoptics = { path = "../crates/optics" }
+serde.workspace = true
+serde_json.workspace = true
+rfd = "0.17"
+tempfile = "3"
+

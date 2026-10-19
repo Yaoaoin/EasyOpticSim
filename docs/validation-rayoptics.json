@@ -1,0 +1,48 @@
+{
+  "reference": "RayOptics 0.9.10",
+  "scope": "Sequential geometric intersections, directions and optical path; not diffraction or pupil aiming",
+  "results": [
+    {
+      "name": "01 · 单透镜",
+      "rays": 63,
+      "max_intersection_error_mm": 2.1880275369312585e-11,
+      "max_optical_path_error_mm": 1.2171597063570516e-11,
+      "max_direction_error": 2.282896094385478e-14
+    },
+    {
+      "name": "02 · 双胶合探索",
+      "rays": 63,
+      "max_intersection_error_mm": 8.032507992083993e-11,
+      "max_optical_path_error_mm": 6.681943887087982e-11,
+      "max_direction_error": 1.3752887717544127e-14
+    },
+    {
+      "name": "03 · 三片式探索",
+      "rays": 63,
+      "max_intersection_error_mm": 9.974066017548466e-11,
+      "max_optical_path_error_mm": 4.169464773440268e-11,
+      "max_direction_error": 8.114342531229113e-14
+    },
+    {
+      "name": "04 · 双高斯结构探索",
+      "rays": 63,
+      "max_intersection_error_mm": 9.266543088415347e-11,
+      "max_optical_path_error_mm": 9.120526556216646e-11,
+      "max_direction_error": 2.481348460037225e-14
+    },
+    {
+      "name": "05 · 机械环带探索",
+      "rays": 63,
+      "max_intersection_error_mm": 4.092326477689312e-11,
+      "max_optical_path_error_mm": 2.0598633909685304e-11,
+      "max_direction_error": 6.072919944699606e-14
+    },
+    {
+      "name": "Aspheric + finite object",
+      "rays": 63,
+      "max_intersection_error_mm": 6.484057735178794e-11,
+      "max_optical_path_error_mm": 3.3857361358968774e-11,
+      "max_direction_error": 2.2870594307278225e-14
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "family": "Noto Sans SC",
+  "source": "https://github.com/google/fonts/tree/main/ofl/notosanssc",
+  "upstream_file": "NotoSansSC[wght].ttf",
+  "upstream_sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+  "transformation": "fontTools instantiateVariableFont wght=400; no glyphs removed",
+  "sha256": "f47c332ffd5b1ff5273d7eff433b9020438f48a453704b8e5b882f49f2738563",
+  "license": "SIL OFL 1.1; OFL.txt in this directory"
+}

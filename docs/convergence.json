@@ -1,0 +1,48 @@
+{
+  "scope": "Focused synthetic singlet; geometric RMS only",
+  "samples": [
+    {
+      "grid": 9,
+      "per_field_polychromatic_rms_um": [
+        43.687003442318336,
+        43.68902472019609,
+        56.86883468448359
+      ],
+      "rays": 441
+    },
+    {
+      "grid": 17,
+      "per_field_polychromatic_rms_um": [
+        43.41386671885675,
+        43.162835719495874,
+        56.26324766763395
+      ],
+      "rays": 1773
+    },
+    {
+      "grid": 33,
+      "per_field_polychromatic_rms_um": [
+        43.33665850489593,
+        43.44621909060953,
+        56.899747582503664
+      ],
+      "rays": 7173
+    },
+    {
+      "grid": 65,
+      "per_field_polychromatic_rms_um": [
+        43.32710542294043,
+        43.728576016054454,
+        57.434076677577096
+      ],
+      "rays": 28881
+    }
+  ],
+  "relative_change_33_to_65": [
+    0.00022048742611003577,
+    0.006457034533693902,
+    0.009303346131479458
+  ],
+  "acceptance_limit": 0.03,
+  "passed": true
+}

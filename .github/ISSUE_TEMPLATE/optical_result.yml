@@ -1,0 +1,36 @@
+name: 光学计算问题 / Optical result
+description: 追迹、视场覆盖、PSF / MTF、扫描或优化结果疑问
+title: "[Optics] "
+body:
+  - type: input
+    id: version
+    attributes:
+      label: 软件版本、系统与构建来源
+    validations:
+      required: true
+  - type: textarea
+    id: prescription
+    attributes:
+      label: 最小处方与复现步骤
+      description: 使用内置示例并列出改动，或附有权公开的脱敏 .oos.json（可压缩）。不要上传客户设计。
+    validations:
+      required: true
+  - type: textarea
+    id: settings
+    attributes:
+      label: 分析条件
+      description: 单位、材料、物距、波长及权重、物方角度 / 目标像高、光圈、像面、采样、衍射方法；对比或扫描请注明共用像面还是各自重新对焦。
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: 实际结果与预期依据
+      description: 附错误提示、失败光线 / 覆盖信息。若有独立参考，请给出来源、相同条件和误差单位，不需要先证明一定是软件错误。
+    validations:
+      required: true
+  - type: textarea
+    id: convergence
+    attributes:
+      label: 采样收敛与附件（如有）
+      description: 增加采样后结果如何变化？附分析报告或截图。

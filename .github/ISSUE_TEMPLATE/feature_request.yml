@@ -1,0 +1,21 @@
+name: 功能建议 / Feature request
+description: 描述使用场景、当前困难与期望能力
+title: "[Feature] "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 想完成什么任务？目前遇到什么困难？
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 期望行为与完成标准
+      description: 给出具体操作或例子；光学能力请说明模型和验证需求。
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: 已尝试的方法、参考与其他补充

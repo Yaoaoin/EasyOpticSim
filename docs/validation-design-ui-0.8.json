@@ -1,0 +1,105 @@
+{
+  "version": "0.8.0",
+  "date": "2026-10-19",
+  "fixture": "docs/fixtures/design-ui-saved-0.8.oos.json",
+  "loaded_example_surfaces": 34,
+  "initial_fixed_sweep_points": 5,
+  "cancel_preserved_complete_points": 5,
+  "completed_live_scan": {
+    "f_numbers": [
+      16
+    ],
+    "sampling": 9,
+    "refocus": false,
+    "mtf": true,
+    "mtf_fields": 3,
+    "converged_pupil_sampling": [
+      64,
+      128
+    ],
+    "failed": 0,
+    "sampled": 441
+  },
+  "candidate": {
+    "sampling": 33,
+    "passed_checks": 58,
+    "total_checks": 58,
+    "adoption_enabled": true
+  },
+  "reopened": {
+    "real_download_and_filechooser": true,
+    "surfaces": 34,
+    "groups": 2,
+    "versions": 3,
+    "variables": [
+      "thickness",
+      "aperture"
+    ],
+    "scan_points": 1,
+    "mtf_fields": 3
+  },
+  "refocused_live_scan": {
+    "f_number": 16,
+    "sampling": 9,
+    "image_distance_display_mm": 388.7891,
+    "failed": 0
+  },
+  "goals": {
+    "f_2_8_required_pupil_mm": 142.86,
+    "front_diameter_mm": 70,
+    "unreachable_message": true,
+    "revision_bound_pending_state": true,
+    "current_design_checks": 58,
+    "current_passed": 58
+  },
+  "pupil": {
+    "edge_samples": 113,
+    "edge_complete": 113,
+    "highlighted_physical_ray": "complete",
+    "original_axis": {
+      "complete": 57,
+      "blocked": 4,
+      "aiming_unresolved": 52
+    },
+    "unresolved_has_no_drawable_path": true,
+    "target_stop_located": "S15"
+  },
+  "groups": {
+    "rejected_delta_mm": 1,
+    "accepted_delta_mm": 0.01,
+    "boundary_gaps_mm": [
+      60.01,
+      0.09
+    ],
+    "applied_scan_became_stale": true,
+    "undo_restored_scan": true,
+    "created_range": "S7-S10",
+    "named_version_restored_two_groups": true
+  },
+  "console_errors": [],
+  "screenshots": [
+    "screenshots/aperture-scan-0.8.jpg",
+    "screenshots/pupil-map-0.8.jpg",
+    "screenshots/pupil-failures-0.8.jpg",
+    "screenshots/group-move-0.8.jpg",
+    "screenshots/goals-0.8.jpg"
+  ],
+  "async_guards": {
+    "optimizer_cancelled_on_target_change": true,
+    "scan_candidate_cancelled_on_constraint_change": true,
+    "no_late_candidate_after_wait": true
+  },
+  "hot_reload_warnings": [
+    {
+      "timestamp": "2026-10-19T06:01:38.130Z",
+      "summary": "The final argument passed to %s changed size between renders. The order and size of this array must remain constant.",
+      "context": "Development Fast Refresh while changing the effect dependency array from two entries to three; not reproduced after full reload."
+    }
+  ],
+  "cold_start": {
+    "fresh_tab": true,
+    "complete_scan_points": 5,
+    "loaded_groups": 1,
+    "console_errors": []
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "version": "0.7.0",
+  "source_sha256": "84627e7a4c374417169e2c1fcaf6fd88a951c7ab4ed5ef034a32e01b5e67b561",
+  "source_unchanged": true,
+  "project": "examples/400mm-repaired.oos.json",
+  "preserved": {
+    "surfaces": 34,
+    "materials": true,
+    "internal_spacings": true
+  },
+  "paraxial": {
+    "bfl": 389.33820684137095,
+    "efl": 399.99764035180965,
+    "entrance_pupil_radius": 12.5,
+    "entrance_pupil_z": 95.56177724333577,
+    "exit_pupil_radius": 13.757174031068791,
+    "exit_pupil_z": 113.01123481443415,
+    "f_number": 15.999905614072386
+  },
+  "image_distance_mm": 388.7863114888424,
+  "total_length_mm": 552.6863114888424,
+  "dense_grid": 65,
+  "sampled_rays": 28881,
+  "failed_rays": 0,
+  "fields": [
+    {
+      "angle_deg": 0.0,
+      "rms_um": 9.231080642746496,
+      "centroid_mm": [
+        0.0,
+        -2.767773199439468e-19
+      ]
+    },
+    {
+      "angle_deg": 2.1670089562298025,
+      "rms_um": 7.554831312663348,
+      "centroid_mm": [
+        0.0,
+        15.118385294603783
+      ]
+    },
+    {
+      "angle_deg": 3.09572708032829,
+      "rms_um": 14.105219341657396,
+      "centroid_mm": [
+        0.0,
+        21.604344588858634
+      ]
+    }
+  ],
+  "radial_sweep": {
+    "fields": 7,
+    "rays": 67389,
+    "failed": 0
+  },
+  "wave": [
+    {
+      "quality": {
+        "converged": true,
+        "edge_energy": 0.00226310002955751,
+        "local_expansion_error_waves": 0.00010905291095045594,
+        "mtf_max_change": 0.0011889411440925979,
+        "previous_sampling": 64,
+        "psf_l1_change": 0.02214846267244698,
+        "pupil_sampling": 128
+      },
+      "psf_sum": 0.9999999999999968,
+      "pixel_um": 1.926482934004824
+    },
+    {
+      "quality": {
+        "converged": true,
+        "edge_energy": 0.002270889299268219,
+        "local_expansion_error_waves": 0.0004203477598571251,
+        "mtf_max_change": 0.000995001046148275,
+        "previous_sampling": 64,
+        "psf_l1_change": 0.020460257110838792,
+        "pupil_sampling": 128
+      },
+      "psf_sum": 1.0000000000000024,
+      "pixel_um": 1.9274979455898864
+    },
+    {
+      "quality": {
+        "converged": true,
+        "edge_energy": 0.002280733943731579,
+        "local_expansion_error_waves": 0.0006560684164264354,
+        "mtf_max_change": 0.0011767725573762489,
+        "previous_sampling": 64,
+        "psf_l1_change": 0.019736920494357393,
+        "pupil_sampling": 128
+      },
+      "psf_sum": 1.0000000000000009,
+      "pixel_um": 1.9285549027595967
+    }
+  ],
+  "image_frames": 3,
+  "focus_adjustment_mm": 0.08432002269189319,
+  "geometry_minimum_mm": 0.04930317845396964,
+  "version_count": 2
+}

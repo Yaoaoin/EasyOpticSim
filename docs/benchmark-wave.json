@@ -1,0 +1,141 @@
+{
+  "version": "0.2.0",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "processor": "AMD64 Family 26 Model 68 Stepping 0, AuthenticAMD",
+  "logical_cpus": 32,
+  "includes": "CLI startup, adaptive tracing, FFTs, all bands and full JSON output; three runs per measurement",
+  "waves": [
+    {
+      "model": "01 · 单透镜",
+      "field_rad": 0.0,
+      "median_ms": 959.2423000140116,
+      "accepted": true,
+      "quality": {
+        "converged": true,
+        "edge_energy": 0.0011908237619110793,
+        "local_expansion_error_waves": 0.0020843249635394134,
+        "mtf_max_change": 0.0009320087382742454,
+        "previous_sampling": 128,
+        "psf_l1_change": 0.023344026684147506,
+        "pupil_sampling": 256
+      },
+      "fft_size": 1024,
+      "bands": 3
+    },
+    {
+      "model": "01 · 单透镜",
+      "field_rad": 0.1,
+      "median_ms": 935.133799968753,
+      "accepted": false,
+      "diagnostic": "Wave did not converge: pupil 256, MTF Δ=0.0021, PSF L1=0.1930, phase step=0.564 waves, edge=0.0151, local error=0.051 waves. Focus first, reduce aperture/field, or use 256 samples."
+    },
+    {
+      "model": "02 · 双胶合探索",
+      "field_rad": 0.0,
+      "median_ms": 208.7044999934733,
+      "accepted": true,
+      "quality": {
+        "converged": true,
+        "edge_energy": 0.0023852211247795906,
+        "local_expansion_error_waves": 0.0007825400185443714,
+        "mtf_max_change": 0.0024223268375146738,
+        "previous_sampling": 64,
+        "psf_l1_change": 0.0331763975415946,
+        "pupil_sampling": 128
+      },
+      "fft_size": 512,
+      "bands": 3
+    },
+    {
+      "model": "02 · 双胶合探索",
+      "field_rad": 0.1,
+      "median_ms": 287.45669999625534,
+      "accepted": true,
+      "quality": {
+        "converged": true,
+        "edge_energy": 0.0025114293957017382,
+        "local_expansion_error_waves": 0.004106155801883978,
+        "mtf_max_change": 0.0013583270070783387,
+        "previous_sampling": 64,
+        "psf_l1_change": 0.03293999983838308,
+        "pupil_sampling": 128
+      },
+      "fft_size": 512,
+      "bands": 3
+    },
+    {
+      "model": "03 · 三片式探索",
+      "field_rad": 0.0,
+      "median_ms": 380.81880001118407,
+      "accepted": true,
+      "quality": {
+        "converged": true,
+        "edge_energy": 0.0023517882246884593,
+        "local_expansion_error_waves": 0.0007084672735732339,
+        "mtf_max_change": 0.001060569656791653,
+        "previous_sampling": 64,
+        "psf_l1_change": 0.027462803954857347,
+        "pupil_sampling": 128
+      },
+      "fft_size": 512,
+      "bands": 3
+    },
+    {
+      "model": "03 · 三片式探索",
+      "field_rad": 0.1,
+      "median_ms": 462.72290003253147,
+      "accepted": true,
+      "quality": {
+        "converged": true,
+        "edge_energy": 0.0023278141715907114,
+        "local_expansion_error_waves": 0.005579372606225872,
+        "mtf_max_change": 0.001495194443708714,
+        "previous_sampling": 64,
+        "psf_l1_change": 0.027431257220056886,
+        "pupil_sampling": 128
+      },
+      "fft_size": 512,
+      "bands": 3
+    },
+    {
+      "model": "04 · 双高斯结构探索",
+      "field_rad": 0.0,
+      "median_ms": 509.49349999427795,
+      "accepted": true,
+      "quality": {
+        "converged": true,
+        "edge_energy": 0.0023122174936777823,
+        "local_expansion_error_waves": 0.0006219046338779766,
+        "mtf_max_change": 0.0025158774819821345,
+        "previous_sampling": 64,
+        "psf_l1_change": 0.027269864299763174,
+        "pupil_sampling": 128
+      },
+      "fft_size": 512,
+      "bands": 3
+    },
+    {
+      "model": "04 · 双高斯结构探索",
+      "field_rad": 0.1,
+      "median_ms": 647.3215000005439,
+      "accepted": true,
+      "quality": {
+        "converged": true,
+        "edge_energy": 0.002410408434907651,
+        "local_expansion_error_waves": 0.004217040055639275,
+        "mtf_max_change": 0.0011769367026689959,
+        "previous_sampling": 64,
+        "psf_l1_change": 0.025996506118559103,
+        "pupil_sampling": 128
+      },
+      "fft_size": 512,
+      "bands": 3
+    }
+  ],
+  "preview": {
+    "model": "02 · 双胶合探索",
+    "fields": 3,
+    "bands": 3,
+    "median_ms": 760.4785999865271
+  }
+}

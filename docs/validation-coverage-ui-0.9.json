@@ -1,0 +1,61 @@
+{
+  "version": "0.9.0",
+  "date": "2026-10-19",
+  "browser": "local in-app browser",
+  "backend": "Rust CLI, optimized development core",
+  "sensor_resize_36x24_to_24x24_and_undo": true,
+  "fast_mtf_rejects_corner": true,
+  "direct_corner_mtf_converged": {
+    "field_deg": 34.0633,
+    "pupil_sampling": [
+      128,
+      256
+    ],
+    "mtf_change_approx": 0.0019,
+    "edge_energy_approx": 0.0013
+  },
+  "common_sensor_plane_report": "docs/fixtures/coverage-comparison-0.9.json",
+  "source_b_image_gap_offset_mm": 1,
+  "common_image_z_mm": [
+    37.074152111565255,
+    37.074152111565255
+  ],
+  "separate_refocus_observed_image_z_mm": [
+    32.9598,
+    32.9606
+  ],
+  "saved_reopened_file": "docs/fixtures/coverage-ui-saved-0.9.oos.json",
+  "saved_fields_mode": "sensor",
+  "saved_version_count": 1,
+  "saved_quality": {
+    "max_rms_um": [
+      20,
+      null,
+      null,
+      null
+    ],
+    "max_worst_rms_um": 250,
+    "max_degradation_percent": 0
+  },
+  "saved_staged": true,
+  "reopen_completed": true,
+  "reopen_error": null,
+  "original_example_restored": true,
+  "console_errors": [],
+  "screenshot": "docs/screenshots/coverage-0.9.jpg",
+  "angle_mode_preserves_solved_angles_deg": [
+    0,
+    19.806824046569815,
+    28.894677605216916,
+    34.063299223388746
+  ],
+  "custom_angle_list": [
+    0,
+    10,
+    20,
+    32
+  ],
+  "custom_32deg_max_traced_height_mm": 20.162,
+  "custom_angle_corner_marked_unverified": true,
+  "sensor_mode_restored_after_angle_test": true
+}

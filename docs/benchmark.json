@@ -1,0 +1,21 @@
+{
+  "platform": "Windows-11-10.0.26200-SP0",
+  "processor": "AMD64 Family 26 Model 68 Stepping 0, AuthenticAMD",
+  "logical_cpus": 32,
+  "surface_count": 20,
+  "includes": "process startup, ray aiming, analysis and JSON output",
+  "measurements": [
+    {
+      "grid": 7,
+      "ray_count": 261,
+      "median_ms": 12.0320999994874,
+      "max_ms": 14.142100000753999
+    },
+    {
+      "grid": 37,
+      "ray_count": 9081,
+      "median_ms": 33.50989997852594,
+      "max_ms": 33.7629999849014
+    }
+  ]
+}

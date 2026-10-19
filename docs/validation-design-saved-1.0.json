@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "fixture": "docs/fixtures/design-ui-saved-0.8.oos.json",
+  "sha256": "398fdcb19ed209246d5a8b0a89615099932b37941d0ceda1dabe716ee902b62c",
+  "surfaces": 34,
+  "groups": 2,
+  "versions": 3,
+  "optimization_variables": 2,
+  "saved_scan_all_legacy_fields_reproduced_exactly": true,
+  "new_coverage_metadata_excluded_from_legacy_shape_comparison": true,
+  "optical_metadata_invariance": {
+    "analyze": true,
+    "wave": true,
+    "preview": true
+  },
+  "coverage_400mm_exactly_matches_0_9": true,
+  "coverage_sampled": 38508
+}

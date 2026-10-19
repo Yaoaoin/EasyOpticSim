@@ -1,0 +1,713 @@
+{
+  "version": "0.9.0",
+  "date": "2026-10-19",
+  "references": {
+    "rayoptics": "0.9.10",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1"
+  },
+  "scope": "0.9 independent wide-field geometry, height inversion and scalar propagation.\n\nRayOptics supplies intersections/Snell; SciPy independently shoots the stop and\ninverts real image height. NumPy integrates Kirchhoff on the flat sensor.\nThe full pupil check shares OSS sampling origins/mask; amplitude is independently\nchecked at stratified samples. This is not validation of all pupil topologies,\nFresnel transmission, polarization or a commercial photographic prescription.\n",
+  "geometry": [
+    {
+      "name": "35 mm · 全画幅覆盖验证",
+      "fields_rad": [
+        0.0,
+        0.34569429397582996,
+        0.5043072605133054,
+        0.5945167255401611
+      ],
+      "rays": 36,
+      "max_intersection_error_mm": 3.525180147789797e-12,
+      "max_opl_error_mm": 1.8189894035458565e-12,
+      "max_independent_stop_residual_mm": 0.0,
+      "max_independent_field_angle_error_rad": 1.4557721694785641e-09,
+      "coverage": {
+        "checkpoints": [
+          {
+            "height_mm": 12.0,
+            "ideal_angle_rad": 0.33029735482925365,
+            "label": "短边中点",
+            "status": "sampled_clear",
+            "tested_field_index": 1
+          },
+          {
+            "height_mm": 18.0,
+            "ideal_angle_rad": 0.4750107562650968,
+            "label": "长边中点",
+            "status": "sampled_clear",
+            "tested_field_index": 2
+          },
+          {
+            "height_mm": 21.633307652783937,
+            "ideal_angle_rad": 0.5536181472226009,
+            "label": "画面角落",
+            "status": "sampled_clear",
+            "tested_field_index": 3
+          }
+        ],
+        "fields": [
+          {
+            "angle_rad": 0.0,
+            "blocked": 0,
+            "chief_height_mm": 0.0,
+            "fast_mtf": "not_calculated",
+            "geometric_fraction": 1.0,
+            "other_failed": 0,
+            "sampled": 197,
+            "unresolved": 0,
+            "wide_mtf": "not_calculated"
+          },
+          {
+            "angle_rad": 0.34569429397582996,
+            "blocked": 0,
+            "chief_height_mm": 11.99999994691271,
+            "fast_mtf": "outside_model",
+            "geometric_fraction": 1.0,
+            "other_failed": 0,
+            "sampled": 197,
+            "unresolved": 0,
+            "wide_mtf": "not_calculated"
+          },
+          {
+            "angle_rad": 0.5043072605133054,
+            "blocked": 0,
+            "chief_height_mm": 18.000000021914932,
+            "fast_mtf": "outside_model",
+            "geometric_fraction": 1.0,
+            "other_failed": 0,
+            "sampled": 197,
+            "unresolved": 0,
+            "wide_mtf": "not_calculated"
+          },
+          {
+            "angle_rad": 0.5945167255401611,
+            "blocked": 0,
+            "chief_height_mm": 21.633307643064278,
+            "fast_mtf": "outside_model",
+            "geometric_fraction": 1.0,
+            "other_failed": 0,
+            "sampled": 197,
+            "unresolved": 0,
+            "wide_mtf": "not_calculated"
+          }
+        ],
+        "focus_condition": "common_flat_sensor",
+        "half_diagonal_mm": 21.633307652783937,
+        "image_z_mm": 37.074152111565255,
+        "max_tested_height_mm": 21.633307643064278,
+        "reference_wavelength_nm": 587.5618,
+        "sampling": 17,
+        "sensor_mm": [
+          36.0,
+          24.0
+        ],
+        "warnings": [
+          "覆盖结论仅针对列出的视场与瞳采样，不证明整个像圈连续通光；几何采样比例不是精确相对照度。MTF 必须单独计算并通过适用性与收敛检查。",
+          "部分外场超出快速 MTF 模型 ±8.59°；请单独运行离轴平面像面模型，未计算或未收敛时仍为未验证。"
+        ]
+      }
+    },
+    {
+      "name": "Legacy narrow-field report",
+      "fields_rad": [
+        0.0,
+        0.07,
+        0.1
+      ],
+      "rays": 27,
+      "max_intersection_error_mm": 8.062528422669857e-11,
+      "max_opl_error_mm": 5.950795411990839e-11,
+      "max_independent_stop_residual_mm": 2.738401496066241e-18,
+      "max_independent_field_angle_error_rad": 0.0,
+      "coverage": {
+        "checkpoints": [
+          {
+            "height_mm": 12.0,
+            "ideal_angle_rad": 0.33029735482925365,
+            "label": "短边中点",
+            "status": "untested",
+            "tested_field_index": null
+          },
+          {
+            "height_mm": 18.0,
+            "ideal_angle_rad": 0.4750107562650968,
+            "label": "长边中点",
+            "status": "untested",
+            "tested_field_index": null
+          },
+          {
+            "height_mm": 21.633307652783937,
+            "ideal_angle_rad": 0.5536181472226009,
+            "label": "画面角落",
+            "status": "untested",
+            "tested_field_index": null
+          }
+        ],
+        "fields": [
+          {
+            "angle_rad": 0.0,
+            "blocked": 0,
+            "chief_height_mm": 0.0,
+            "fast_mtf": "not_calculated",
+            "geometric_fraction": 1.0,
+            "other_failed": 0,
+            "sampled": 197,
+            "unresolved": 0,
+            "wide_mtf": "not_calculated"
+          },
+          {
+            "angle_rad": 0.07,
+            "blocked": 0,
+            "chief_height_mm": 2.3709483625700414,
+            "fast_mtf": "not_calculated",
+            "geometric_fraction": 1.0,
+            "other_failed": 0,
+            "sampled": 197,
+            "unresolved": 0,
+            "wide_mtf": "not_calculated"
+          },
+          {
+            "angle_rad": 0.1,
+            "blocked": 0,
+            "chief_height_mm": 3.39081139709092,
+            "fast_mtf": "not_calculated",
+            "geometric_fraction": 1.0,
+            "other_failed": 0,
+            "sampled": 197,
+            "unresolved": 0,
+            "wide_mtf": "not_calculated"
+          }
+        ],
+        "focus_condition": "common_flat_sensor",
+        "half_diagonal_mm": 21.633307652783937,
+        "image_z_mm": 37.074152111565255,
+        "max_tested_height_mm": 3.39081139709092,
+        "reference_wavelength_nm": 587.5618,
+        "sampling": 17,
+        "sensor_mm": [
+          36.0,
+          24.0
+        ],
+        "warnings": [
+          "覆盖结论仅针对列出的视场与瞳采样，不证明整个像圈连续通光；几何采样比例不是精确相对照度。MTF 必须单独计算并通过适用性与收敛检查。",
+          "短边中点 12.000 mm：未验证（邻近或更大的视场不能代替该检查点）",
+          "长边中点 18.000 mm：未验证（邻近或更大的视场不能代替该检查点）",
+          "画面角落 21.633 mm：未验证（邻近或更大的视场不能代替该检查点）"
+        ]
+      }
+    },
+    {
+      "name": "Wide-angle ±40 degree singlet",
+      "fields_rad": [
+        0.0,
+        0.5585053606381855,
+        0.6981317007977318,
+        -0.6981317007977318
+      ],
+      "rays": 36,
+      "max_intersection_error_mm": 4.000355602329364e-12,
+      "max_opl_error_mm": 4.497735517361434e-12,
+      "max_independent_stop_residual_mm": 5.551115123125783e-17,
+      "max_independent_field_angle_error_rad": 0.0,
+      "coverage": {
+        "checkpoints": [
+          {
+            "height_mm": 12.0,
+            "ideal_angle_rad": 0.33029735482925365,
+            "label": "短边中点",
+            "status": "untested",
+            "tested_field_index": null
+          },
+          {
+            "height_mm": 18.0,
+            "ideal_angle_rad": 0.4750107562650968,
+            "label": "长边中点",
+            "status": "untested",
+            "tested_field_index": null
+          },
+          {
+            "height_mm": 21.633307652783937,
+            "ideal_angle_rad": 0.5536181472226009,
+            "label": "画面角落",
+            "status": "untested",
+            "tested_field_index": null
+          }
+        ],
+        "fields": [
+          {
+            "angle_rad": 0.0,
+            "blocked": 0,
+            "chief_height_mm": 0.0,
+            "fast_mtf": "not_calculated",
+            "geometric_fraction": 1.0,
+            "other_failed": 0,
+            "sampled": 197,
+            "unresolved": 0,
+            "wide_mtf": "not_calculated"
+          },
+          {
+            "angle_rad": 0.5585053606381855,
+            "blocked": 0,
+            "chief_height_mm": 20.162308252557494,
+            "fast_mtf": "outside_model",
+            "geometric_fraction": 1.0,
+            "other_failed": 0,
+            "sampled": 197,
+            "unresolved": 0,
+            "wide_mtf": "not_calculated"
+          },
+          {
+            "angle_rad": 0.6981317007977318,
+            "blocked": 0,
+            "chief_height_mm": 26.012844553541093,
+            "fast_mtf": "outside_model",
+            "geometric_fraction": 1.0,
+            "other_failed": 0,
+            "sampled": 197,
+            "unresolved": 0,
+            "wide_mtf": "not_calculated"
+          },
+          {
+            "angle_rad": -0.6981317007977318,
+            "blocked": 0,
+            "chief_height_mm": 26.012844553541093,
+            "fast_mtf": "outside_model",
+            "geometric_fraction": 1.0,
+            "other_failed": 0,
+            "sampled": 197,
+            "unresolved": 0,
+            "wide_mtf": "not_calculated"
+          }
+        ],
+        "focus_condition": "common_flat_sensor",
+        "half_diagonal_mm": 21.633307652783937,
+        "image_z_mm": 37.074152111565255,
+        "max_tested_height_mm": 26.012844553541093,
+        "reference_wavelength_nm": 587.5618,
+        "sampling": 17,
+        "sensor_mm": [
+          36.0,
+          24.0
+        ],
+        "warnings": [
+          "覆盖结论仅针对列出的视场与瞳采样，不证明整个像圈连续通光；几何采样比例不是精确相对照度。MTF 必须单独计算并通过适用性与收敛检查。",
+          "短边中点 12.000 mm：未验证（邻近或更大的视场不能代替该检查点）",
+          "长边中点 18.000 mm：未验证（邻近或更大的视场不能代替该检查点）",
+          "画面角落 21.633 mm：未验证（邻近或更大的视场不能代替该检查点）",
+          "部分外场超出快速 MTF 模型 ±8.59°；请单独运行离轴平面像面模型，未计算或未收敛时仍为未验证。"
+        ]
+      }
+    }
+  ],
+  "diffraction": [
+    {
+      "angle_deg": 32.0,
+      "reference": "RayOptics geometry + NumPy direct scalar Kirchhoff / complex OTF",
+      "pupil_samples": 40242,
+      "max_opd_error_mm": 1.6830981053317373e-13,
+      "max_sphere_intersection_error_mm": 5.81756864903582e-14,
+      "max_stratified_amplitude_error": 1.227447873342058e-07,
+      "amplitude_reference_samples": 258,
+      "psf_l1_error": 1.5592552467993559e-10,
+      "mtf_max_absolute_error": 4.040112688841191e-11,
+      "image_pixel_um": 8.853210339009317,
+      "convergence": {
+        "converged": true,
+        "edge_energy": 0.0012089955154765159,
+        "image_nyquist_ratio": 0.8350636281074183,
+        "local_expansion_error_waves": 0.0,
+        "mtf_max_change": 0.001718228762771612,
+        "previous_sampling": 128,
+        "psf_l1_change": 0.013489005071575324,
+        "pupil_sampling": 256
+      },
+      "elapsed_seconds": 128.3665645000292
+    },
+    {
+      "angle_deg": 40.0,
+      "reference": "RayOptics geometry + NumPy direct scalar Kirchhoff / complex OTF",
+      "pupil_samples": 36043,
+      "max_opd_error_mm": 3.61843888185831e-12,
+      "max_sphere_intersection_error_mm": 1.8047785488306545e-12,
+      "max_stratified_amplitude_error": 1.5498543282088661e-07,
+      "amplitude_reference_samples": 258,
+      "psf_l1_error": 2.8904815749274424e-09,
+      "mtf_max_absolute_error": 5.713243350635722e-10,
+      "image_pixel_um": 9.417166016744293,
+      "convergence": {
+        "converged": true,
+        "edge_energy": 0.001692603614382724,
+        "image_nyquist_ratio": 0.8337989452044434,
+        "local_expansion_error_waves": 0.0,
+        "mtf_max_change": 0.001933911457406623,
+        "previous_sampling": 128,
+        "psf_l1_change": 0.01777772982896637,
+        "pupil_sampling": 256
+      },
+      "elapsed_seconds": 115.5822394998977
+    }
+  ],
+  "height_mode_fixed_scan": {
+    "best_index": 1,
+    "options": {
+      "f_numbers": [
+        35.0,
+        50.0
+      ],
+      "mtf": false,
+      "refocus": false,
+      "sampling": 17,
+      "wave_method": "fast"
+    },
+    "points": [
+      {
+        "actual_f_number": 35.0,
+        "aiming_failed": 0,
+        "blocked": 0,
+        "coverage": {
+          "checkpoints": [
+            {
+              "height_mm": 12.0,
+              "ideal_angle_rad": 0.33029735482925365,
+              "label": "短边中点",
+              "status": "sampled_clear",
+              "tested_field_index": 1
+            },
+            {
+              "height_mm": 18.0,
+              "ideal_angle_rad": 0.4750107562650968,
+              "label": "长边中点",
+              "status": "sampled_clear",
+              "tested_field_index": 2
+            },
+            {
+              "height_mm": 21.633307652783937,
+              "ideal_angle_rad": 0.5536181472226009,
+              "label": "画面角落",
+              "status": "sampled_clear",
+              "tested_field_index": 3
+            }
+          ],
+          "fields": [
+            {
+              "angle_rad": 0.0,
+              "blocked": 0,
+              "chief_height_mm": 0.0,
+              "fast_mtf": "not_calculated",
+              "geometric_fraction": 1.0,
+              "other_failed": 0,
+              "sampled": 197,
+              "unresolved": 0,
+              "wide_mtf": "not_calculated"
+            },
+            {
+              "angle_rad": 0.34569429397582996,
+              "blocked": 0,
+              "chief_height_mm": 11.99999994691271,
+              "fast_mtf": "outside_model",
+              "geometric_fraction": 1.0,
+              "other_failed": 0,
+              "sampled": 197,
+              "unresolved": 0,
+              "wide_mtf": "not_calculated"
+            },
+            {
+              "angle_rad": 0.5043072605133054,
+              "blocked": 0,
+              "chief_height_mm": 18.000000021914932,
+              "fast_mtf": "outside_model",
+              "geometric_fraction": 1.0,
+              "other_failed": 0,
+              "sampled": 197,
+              "unresolved": 0,
+              "wide_mtf": "not_calculated"
+            },
+            {
+              "angle_rad": 0.5945167255401611,
+              "blocked": 0,
+              "chief_height_mm": 21.633307643064278,
+              "fast_mtf": "outside_model",
+              "geometric_fraction": 1.0,
+              "other_failed": 0,
+              "sampled": 197,
+              "unresolved": 0,
+              "wide_mtf": "not_calculated"
+            }
+          ],
+          "focus_condition": "common_flat_sensor",
+          "half_diagonal_mm": 21.633307652783937,
+          "image_z_mm": 37.074152111565255,
+          "max_tested_height_mm": 21.633307643064278,
+          "reference_wavelength_nm": 587.5618,
+          "sampling": 17,
+          "sensor_mm": [
+            36.0,
+            24.0
+          ],
+          "warnings": [
+            "覆盖结论仅针对列出的视场与瞳采样，不证明整个像圈连续通光；几何采样比例不是精确相对照度。MTF 必须单独计算并通过适用性与收敛检查。",
+            "部分外场超出快速 MTF 模型 ±8.59°；请单独运行离轴平面像面模型，未计算或未收敛时仍为未验证。"
+          ]
+        },
+        "diagnostic": null,
+        "failed": 0,
+        "fields_rad": [
+          0.0,
+          0.34569429397582996,
+          0.5043072605133054,
+          0.5945167255401611
+        ],
+        "fields_rms_um": [
+          12.438201602351835,
+          40.07217535240484,
+          109.10545816152911,
+          168.30827436242663
+        ],
+        "image_distance_mm": 32.79636532946157,
+        "mtf": [],
+        "requested_f_number": 35.0,
+        "sampled": 788,
+        "score_um": 102.45994865808504,
+        "stop_radius_mm": 0.5
+      },
+      {
+        "actual_f_number": 50.0,
+        "aiming_failed": 0,
+        "blocked": 0,
+        "coverage": {
+          "checkpoints": [
+            {
+              "height_mm": 12.0,
+              "ideal_angle_rad": 0.33029735482925365,
+              "label": "短边中点",
+              "status": "sampled_clear",
+              "tested_field_index": 1
+            },
+            {
+              "height_mm": 18.0,
+              "ideal_angle_rad": 0.4750107562650968,
+              "label": "长边中点",
+              "status": "sampled_clear",
+              "tested_field_index": 2
+            },
+            {
+              "height_mm": 21.633307652783937,
+              "ideal_angle_rad": 0.5536181472226009,
+              "label": "画面角落",
+              "status": "sampled_clear",
+              "tested_field_index": 3
+            }
+          ],
+          "fields": [
+            {
+              "angle_rad": 0.0,
+              "blocked": 0,
+              "chief_height_mm": 0.0,
+              "fast_mtf": "not_calculated",
+              "geometric_fraction": 1.0,
+              "other_failed": 0,
+              "sampled": 197,
+              "unresolved": 0,
+              "wide_mtf": "not_calculated"
+            },
+            {
+              "angle_rad": 0.34569429397582996,
+              "blocked": 0,
+              "chief_height_mm": 11.99999994691271,
+              "fast_mtf": "outside_model",
+              "geometric_fraction": 1.0,
+              "other_failed": 0,
+              "sampled": 197,
+              "unresolved": 0,
+              "wide_mtf": "not_calculated"
+            },
+            {
+              "angle_rad": 0.5043072605133054,
+              "blocked": 0,
+              "chief_height_mm": 18.000000021914932,
+              "fast_mtf": "outside_model",
+              "geometric_fraction": 1.0,
+              "other_failed": 0,
+              "sampled": 197,
+              "unresolved": 0,
+              "wide_mtf": "not_calculated"
+            },
+            {
+              "angle_rad": 0.5945167255401611,
+              "blocked": 0,
+              "chief_height_mm": 21.633307643064278,
+              "fast_mtf": "outside_model",
+              "geometric_fraction": 1.0,
+              "other_failed": 0,
+              "sampled": 197,
+              "unresolved": 0,
+              "wide_mtf": "not_calculated"
+            }
+          ],
+          "focus_condition": "common_flat_sensor",
+          "half_diagonal_mm": 21.633307652783937,
+          "image_z_mm": 37.074152111565255,
+          "max_tested_height_mm": 21.633307643064278,
+          "reference_wavelength_nm": 587.5618,
+          "sampling": 17,
+          "sensor_mm": [
+            36.0,
+            24.0
+          ],
+          "warnings": [
+            "覆盖结论仅针对列出的视场与瞳采样，不证明整个像圈连续通光；几何采样比例不是精确相对照度。MTF 必须单独计算并通过适用性与收敛检查。",
+            "部分外场超出快速 MTF 模型 ±8.59°；请单独运行离轴平面像面模型，未计算或未收敛时仍为未验证。"
+          ]
+        },
+        "diagnostic": null,
+        "failed": 0,
+        "fields_rad": [
+          0.0,
+          0.34569429397582996,
+          0.5043072605133054,
+          0.5945167255401611
+        ],
+        "fields_rms_um": [
+          8.731872528835417,
+          28.010627158144537,
+          76.31338033454121,
+          117.73382517992711
+        ],
+        "image_distance_mm": 32.79636532946157,
+        "mtf": [],
+        "requested_f_number": 50.0,
+        "sampled": 788,
+        "score_um": 71.6690770856483,
+        "stop_radius_mm": 0.35
+      }
+    ],
+    "source": {
+      "description": "Original OSS synthetic singlet, EFL 35 mm, f/35, monochromatic d line. Not a corrected photographic lens. Actual chief-ray image-height targeting demonstrates distortion and sensor coverage. Apache-2.0.",
+      "field_spec": {
+        "mode": "sensor"
+      },
+      "fields": [
+        0.0,
+        0.33029735482925365,
+        0.4750107562650968,
+        0.5536181472226009
+      ],
+      "materials": [
+        {
+          "n": 1.0,
+          "name": "Air",
+          "range_nm": [
+            380.0,
+            780.0
+          ],
+          "sellmeier": null,
+          "source": "Ideal vacuum approximation n=1"
+        },
+        {
+          "n": 1.52,
+          "name": "Teaching crown",
+          "range_nm": [
+            380.0,
+            780.0
+          ],
+          "sellmeier": [
+            [
+              1.04,
+              0.23,
+              1.01
+            ],
+            [
+              0.006,
+              0.02,
+              103.0
+            ]
+          ],
+          "source": "OSS synthetic teaching material; not a commercial glass"
+        },
+        {
+          "n": 1.62,
+          "name": "Teaching flint",
+          "range_nm": [
+            380.0,
+            780.0
+          ],
+          "sellmeier": [
+            [
+              1.3,
+              0.3,
+              1.1
+            ],
+            [
+              0.009,
+              0.04,
+              110.0
+            ]
+          ],
+          "source": "OSS synthetic teaching material; not a commercial glass"
+        }
+      ],
+      "name": "35 mm · 全画幅覆盖验证",
+      "object_distance": null,
+      "schema_version": 3,
+      "sensor": [
+        36.0,
+        24.0
+      ],
+      "stop": 0,
+      "surfaces": [
+        {
+          "asphere": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "conic": 0.0,
+          "curvature": 0.0,
+          "material": 0,
+          "name": "光阑",
+          "semi_aperture": 0.5,
+          "thickness": 1.4259289273678943
+        },
+        {
+          "asphere": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "conic": 0.0,
+          "curvature": 0.028051889005320577,
+          "material": 1,
+          "name": "前表面",
+          "semi_aperture": 8.555573564207366,
+          "thickness": 2.8518578547357887
+        },
+        {
+          "asphere": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "conic": 0.0,
+          "curvature": -0.028051889005320577,
+          "material": 0,
+          "name": "后表面",
+          "semi_aperture": 8.555573564207366,
+          "thickness": 32.79636532946157
+        }
+      ],
+      "wavelengths": [
+        {
+          "nm": 587.5618,
+          "weight": 1.0
+        }
+      ]
+    }
+  },
+  "legacy_400mm_dense_rays": 28881,
+  "legacy_400mm_rms_unchanged": true,
+  "ui_saved_0_8_scan_all_legacy_fields_identical": true,
+  "original_user_sha256": null
+}

@@ -1,0 +1,211 @@
+{
+  "version": "1.0.0",
+  "date": "2026-10-19",
+  "installer": "target/release/bundle/nsis/OpenOpticSim_1.0.0_x64-setup.exe",
+  "bytes": 225298660,
+  "sha256": "43f38cc70dbbb0c8deca624f3d88516f77211ba7782c212ff624323221e22589",
+  "executable_sha256": "b9e4a575484099f24a9967aeb02acd5fe9c299711369f4c84505824a0d3526d3",
+  "signed": false,
+  "webview": "offlineInstaller",
+  "clean_windows_install_tested": false,
+  "native_pdf_dialog_end_to_end_tested": false,
+  "startup": {
+    "exited": false,
+    "responding": true,
+    "title": "OpenOpticSim · 光学工作室",
+    "version": "1.0.0",
+    "executable_sha256": "b9e4a575484099f24a9967aeb02acd5fe9c299711369f4c84505824a0d3526d3",
+    "signature_status": "NotSigned",
+    "installer_signature_status": "NotSigned"
+  },
+  "frontend_tests": 54,
+  "rust_tests": 76,
+  "offline_manual_chapters": 20,
+  "resources": [
+    {
+      "name": "LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bundled_matches": true
+    },
+    {
+      "name": "NOTICE",
+      "sha256": "ccf9b03a17699c362406cf44c8cb5cba6609653b51c478fc4afc5657076c65bf",
+      "bundled_matches": true
+    },
+    {
+      "name": "THIRD_PARTY_NOTICES.txt",
+      "sha256": "428f64a7f17de04a1ccfbcc58fe240940aa2dab010f9ba5a203e8338835093b6",
+      "bundled_matches": true
+    },
+    {
+      "name": "glass-catalog-CC0-1.0.txt",
+      "sha256": "36ffd9dc085d529a7e60e1276d73ae5a030b020313e6c5408593a6ae2af39673",
+      "bundled_matches": true
+    },
+    {
+      "name": "examples/400mm-repaired.oos.json",
+      "sha256": "7f5310b18d175a8329236db5fb8c2b055563733b65d81d82b034b62f97e0f51b",
+      "bundled_matches": true
+    },
+    {
+      "name": "examples/400mm-workflow-0.8.oos.json",
+      "sha256": "af4f00ee09b79fef411a35277188d3d1b3e9f8f54176722acbcd55236a74812f",
+      "bundled_matches": true
+    },
+    {
+      "name": "examples/400mm-coverage-0.9.oos.json",
+      "sha256": "487fb7e5d3b3d428ec222a31e4631c02ac32b224e29dcdf3de17b5bc76905306",
+      "bundled_matches": true
+    },
+    {
+      "name": "examples/35mm-coverage.oos.json",
+      "sha256": "5b8a5b5b949f5a0490b7a3dd469d25c13758d8fd63303ac0033aca524ffbc667",
+      "bundled_matches": true
+    },
+    {
+      "name": "manual/analysis.md",
+      "sha256": "2f6bcec7f6fcb111a5f78a146fd72a99fbbbbd58ed8e13830aea11037e39e1da",
+      "bundled_matches": true
+    },
+    {
+      "name": "manual/aperture.md",
+      "sha256": "6da67c797641ac66d880e08caac24cf0bcdfe232efc3f3f99169607728ab39a1",
+      "bundled_matches": true
+    },
+    {
+      "name": "manual/diffraction.md",
+      "sha256": "486df6f3bcbf53333194d366a6484b1bbdfda13e997cf438b67ef757a8ec4365",
+      "bundled_matches": true
+    },
+    {
+      "name": "manual/drawing.md",
+      "sha256": "de8dce5881d8a61479298b671491ad84499e91f27d4b8811e46d0c9c3a3cf400",
+      "bundled_matches": true
+    },
+    {
+      "name": "manual/editing.md",
+      "sha256": "402cc45c99545ab14a8118b78572ee4061933c866420f4debb0adac1f174b4dc",
+      "bundled_matches": true
+    },
+    {
+      "name": "manual/fields.md",
+      "sha256": "5a33d41a5d7611098672d666382e6622f79ae8915fe1902ca6b0f96217a4c6de",
+      "bundled_matches": true
+    },
+    {
+      "name": "manual/files.md",
+      "sha256": "dfcbfb0a45f892d88eb64680a308191347b460c1b11dfdcb454261cb700531d0",
+      "bundled_matches": true
+    },
+    {
+      "name": "manual/focus.md",
+      "sha256": "3f0b03c3f2bdbf01c40518ab8f90cc46efcc735934f6e336085c702705b12308",
+      "bundled_matches": true
+    },
+    {
+      "name": "manual/glossary.md",
+      "sha256": "ac6a82ede0c24c2c300da46f61ca60d42c97b300ee0e5c35c7f31dff7fc3121a",
+      "bundled_matches": true
+    },
+    {
+      "name": "manual/groups.md",
+      "sha256": "d8918d0d84fa1b23de664ce17655f3b60b6c5700a280570b60fc3afef9ebe5c7",
+      "bundled_matches": true
+    },
+    {
+      "name": "manual/imaging.md",
+      "sha256": "b024a9064a0f0f2009dbabda26974536d19d33e3447e890a945fc7cfb49cc338",
+      "bundled_matches": true
+    },
+    {
+      "name": "manual/materials.md",
+      "sha256": "11c9d047abf8b1478fa0b2eb48b83f2a1918063a045fab79a65869e8718fb28c",
+      "bundled_matches": true
+    },
+    {
+      "name": "manual/mechanics.md",
+      "sha256": "21a9238240fd4bf72517a4ab901409bc6d408b59a7e5fd64541ef366050f5fe7",
+      "bundled_matches": true
+    },
+    {
+      "name": "manual/optimization.md",
+      "sha256": "dba3cea0a5520f02e42f6c5e2e8b707f9b90a7baa2be0bbf3a890b1e9bd96fe4",
+      "bundled_matches": true
+    },
+    {
+      "name": "manual/pupil.md",
+      "sha256": "21629e3b1fc6f6a6e3665ecd3bf87ff51b89aad6bc564545673325c887952a84",
+      "bundled_matches": true
+    },
+    {
+      "name": "manual/start.md",
+      "sha256": "9a660c8b706e45487bb979a702e27beb7c1e3df6b5f11367573ef89b146d1b24",
+      "bundled_matches": true
+    },
+    {
+      "name": "manual/technical.md",
+      "sha256": "e35daf73b1ab955b3a41d5b1e770ca54134502270a4c66e36195596ccdeda64c",
+      "bundled_matches": true
+    },
+    {
+      "name": "manual/troubleshooting.md",
+      "sha256": "51bc0e40df9481b3f762ab7f104241e9f25fc55519503b2dc4a570030d745b27",
+      "bundled_matches": true
+    },
+    {
+      "name": "manual/versions.md",
+      "sha256": "fd540f46f4f5b48d73d9566f289eb06ad2214c8d61c729e6b0bf8f3e4df5f271",
+      "bundled_matches": true
+    },
+    {
+      "name": "manual/workspace.md",
+      "sha256": "12ca0511a8ef09016e9821d4e55974ffcff9cdbb229fde24c59fe633637ee62e",
+      "bundled_matches": true
+    },
+    {
+      "name": "OOS-1.0-使用手册.html",
+      "sha256": "b79265c5f2fd3e43840af279980070d69be41534c51dfff2ac736e475e163428",
+      "bundled_matches": true
+    },
+    {
+      "name": "OOS-1.0-使用手册.md",
+      "sha256": "75de5ed31851219ad12d8e8227951c3ce9186956b9e58bcb438d149285d2983c",
+      "bundled_matches": true
+    },
+    {
+      "name": "fonts/OFL.txt",
+      "sha256": "1c05c68c34f9708415aada51f17e1b0092d2cea709bf4a94cd38114f9e73d7d9",
+      "bundled_matches": true
+    },
+    {
+      "name": "fonts/source.json",
+      "sha256": "977002d54ae68e351563bd34864e54f90b5a3dcfe0a69a1df54db86500f723fe",
+      "bundled_matches": true
+    }
+  ],
+  "pdf_validation": "docs/validation-pdf-1.0.json",
+  "production_ui": "docs/validation-ui-1.0.json",
+  "numeric_compatibility": "docs/validation-design-saved-1.0.json",
+  "original_user_sha256": "84627E7A4C374417169E2C1FCAF6FD88A951C7AB4ED5EF034A32E01B5E67B561",
+  "production_pdf_validation": "docs/validation-pdf-production-1.0.json",
+  "font_asset_sha256": "f47c332ffd5b1ff5273d7eff433b9020438f48a453704b8e5b882f49f2738563",
+  "status": "local_candidate_not_published",
+  "dependency_records": 380,
+  "binary_privacy_checks": [
+    {
+      "name": "openopticsim-desktop.exe",
+      "personal_path_ascii_matches": 0,
+      "personal_path_utf16_matches": 0,
+      "sha256": "b9e4a575484099f24a9967aeb02acd5fe9c299711369f4c84505824a0d3526d3"
+    },
+    {
+      "name": "oos-cli.exe",
+      "personal_path_ascii_matches": 0,
+      "personal_path_utf16_matches": 0,
+      "sha256": "c29a34cea2ce2cdaff79db7f52b092050903ee43417f0b489cc6fb4894adcd02"
+    }
+  ],
+  "source_commit": null,
+  "source_worktree_dirty": true,
+  "remote_ci_run": false
+}

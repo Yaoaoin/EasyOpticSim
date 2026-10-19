@@ -1,0 +1,43 @@
+[
+  {
+    "source": "examples/400mm-coverage-0.9.oos.json",
+    "pdf": "output/pdf/400mm-OOS-1.0-technical.pdf",
+    "bytes": 312658,
+    "sourceHash": "c201f1faebf63b4fd6f58b26240349ce830d0f209c75982dc22b18770c3136fa",
+    "analysisFailed": 0,
+    "waveSuccess": 4,
+    "waveFailures": 0,
+    "pages": 25,
+    "sourceAttachmentExact": true,
+    "textSearchable": true,
+    "textOriginBoundsPassed": true,
+    "allPagesRendered": true,
+    "contactSheet": "tmp\\pdfs\\400mm-OOS-1.0-technical-contact.jpg"
+  },
+  {
+    "source": "examples/35mm-coverage.oos.json",
+    "pdf": "output/pdf/35mm-OOS-1.0-technical.pdf",
+    "bytes": 166221,
+    "sourceHash": "fd0b27fda3a2aad82a8eef22142374337f282049dd9c489166dca268826976cd",
+    "analysisFailed": 0,
+    "waveSuccess": 1,
+    "waveFailures": 0,
+    "pages": 12,
+    "sourceAttachmentExact": true,
+    "textSearchable": true,
+    "textOriginBoundsPassed": true,
+    "allPagesRendered": true,
+    "contactSheet": "tmp\\pdfs\\35mm-OOS-1.0-technical-contact.jpg"
+  },
+  {
+    "pdf": "output/pdf/draft-OOS-1.0-technical.pdf",
+    "bytes": 179682,
+    "draft": true,
+    "pages": 20,
+    "sourceAttachmentExact": true,
+    "textSearchable": true,
+    "textOriginBoundsPassed": true,
+    "allPagesRendered": true,
+    "contactSheet": "tmp\\pdfs\\draft-OOS-1.0-technical-contact.jpg"
+  }
+]

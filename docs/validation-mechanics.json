@@ -1,0 +1,47 @@
+{
+  "version": "1.0.0",
+  "scope": "Mechanical-only edit invariance and serialization, same optical engine before/after",
+  "projects": [
+    {
+      "name": "01 · 单透镜",
+      "geometry_equal": true,
+      "json_roundtrip_equal": true,
+      "ray_paths_equal": true
+    },
+    {
+      "name": "02 · 双胶合探索",
+      "geometry_equal": true,
+      "json_roundtrip_equal": true,
+      "ray_paths_equal": true
+    },
+    {
+      "name": "03 · 三片式探索",
+      "geometry_equal": true,
+      "json_roundtrip_equal": true,
+      "ray_paths_equal": true
+    },
+    {
+      "name": "04 · 双高斯结构探索",
+      "geometry_equal": true,
+      "json_roundtrip_equal": true,
+      "ray_paths_equal": true
+    },
+    {
+      "name": "05 · 机械环带探索",
+      "geometry_equal": true,
+      "json_roundtrip_equal": true,
+      "ray_paths_equal": true
+    }
+  ],
+  "wave": {
+    "field_rad": 0.05,
+    "bands": 3,
+    "psf_pixels": 262144,
+    "exact_json_equality": true
+  },
+  "imaging": {
+    "fields": 2,
+    "exact_json_equality": true
+  },
+  "empty_project_valid": true
+}

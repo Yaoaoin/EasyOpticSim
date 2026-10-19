@@ -1,0 +1,50 @@
+# Reproducible build outputs and local QA / release staging.
+/target/
+/node_modules/
+/dist/
+/src-tauri/gen/
+/artifacts/
+/output/
+/tmp/
+/.tools/
+/coverage/
+/.vite/
+*.log
+*.tsbuildinfo
+*.exe
+*.msi
+*.msix
+*.pdb
+
+# Python environments and caches (validation tools are development-only).
+/.venv/
+/venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local configuration, credentials and signing material. Never commit secrets.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+*.p12
+*.keystore
+*.jks
+id_rsa*
+id_ed25519*
+.npmrc
+.pypirc
+/.cargo/credentials*
+
+# Personal editor / operating-system state. Source fonts and icons stay public.
+/.idea/
+/.vscode/
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+

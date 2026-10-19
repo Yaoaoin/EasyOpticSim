@@ -1,0 +1,56 @@
+OpenOpticSim
+Copyright 2026 OpenOpticSim contributors
+
+Original synthetic teaching prescriptions, glass coefficients, and aperture
+icon are distributed under Apache-2.0 with this project. They do not represent
+commercial glass products or production lens designs.
+
+RayOptics is used solely as a development-time independent reference and is
+not bundled as the optical engine. See docs/validation-rayoptics.json for the
+scope of comparison. Third-party software retains its original license.
+
+The additional real SCHOTT glass catalog is a subset of the CC0-1.0
+refractiveindex.info database by Mikhail Polyanskiy, with original data
+references to the SCHOTT catalog 2017-01-20b. This subset is not original OSS
+teaching data. Pinned provenance and checksums: src/data/glass-catalog.json.
+License: glass-catalog-CC0-1.0.txt (docs/catalog/CC0-1.0.txt in source).
+M. N. Polyanskiy, Scientific Data 11, 94 (2024),
+https://doi.org/10.1038/s41597-023-02898-2
+
+PDF export uses PDF-LIB and @pdf-lib/fontkit (MIT). The fontkit fork lists
+Andrew Dillon and original contributor Devon Govett in its package metadata.
+Their license declarations and attribution are retained in THIRD_PARTY_NOTICES.
+Noto Sans SC is distributed under SIL OFL 1.1; a regular-weight static instance
+is bundled for offline Chinese PDF export. Source checksums and the applied
+weight conversion are recorded in src/assets/fonts/source.json and fonts/
+in the installation resources. Its OFL text is distributed alongside it.
+
+The unmodified MPL-2.0 selectors component is available in source form at
+https://crates.io/crates/selectors/0.38.0 and
+https://github.com/servo/stylo/tree/572ecba2d1600e7c3d490586692a209faf703baa/selectors
+Supplemental upstream license texts are in docs/licenses/ (source) and are
+incorporated into THIRD_PARTY_NOTICES.txt in the installation resources.
+
+Other unmodified MPL-2.0 components are cssparser 0.37.0,
+cssparser-macros 0.7.1, dtoa-short 0.3.5, and option-ext 0.2.0.
+Their unmodified source is available at:
+https://crates.io/crates/cssparser/0.37.0
+https://crates.io/crates/cssparser-macros/0.7.1
+https://crates.io/crates/dtoa-short/0.3.5
+https://crates.io/crates/option-ext/0.2.0
+License texts are also retained in THIRD_PARTY_NOTICES.txt.
+These source-availability notices apply to those components, not the
+independent OpenOpticSim source as a whole.
+
+caniuse-lite browser compatibility data (CC-BY-4.0) is used by development
+tooling. The locked package's source URL and license are retained in
+THIRD_PARTY_NOTICES.txt. stackback is also development-only; its MIT
+metadata-based attribution supplement is identified in docs/licenses/.
+The browser compatibility data source is https://caniuse.com/,
+created and maintained by Alexis Deveria. The caniuse-lite package lists
+Ben Briggs as author. OOS does not modify this upstream dataset.
+
+The NSIS installation includes Microsoft's unmodified Evergreen WebView2
+Standalone Installer. It is a Microsoft runtime redistributable under its
+own terms, not Apache-2.0 software. Distribution documentation:
+https://learn.microsoft.com/en-us/microsoft-edge/webview2/concepts/distribution

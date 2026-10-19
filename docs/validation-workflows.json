@@ -1,0 +1,137 @@
+{
+  "version": "0.4.0",
+  "scope": "Workflow regression, metadata invariance and independent quadratic minimum fit; same underlying optical engine",
+  "focus": {
+    "sampling": 17,
+    "points": 41,
+    "quadratic_reference_mm": 46.61977038531163,
+    "scan_best_mm": 46.5,
+    "error_mm": 0.11977038531163231
+  },
+  "optimization": {
+    "before_rms_um": 72.40428901252085,
+    "after_rms_um": 48.55268675563175,
+    "sampling": 33,
+    "checks": [
+      {
+        "actual": 0.0,
+        "limit": 0.1,
+        "name": "efl_error_mm",
+        "passed": true,
+        "relation": "max",
+        "surface": null
+      },
+      {
+        "actual": 52.55837896720092,
+        "limit": 80.0,
+        "name": "total_length_mm",
+        "passed": true,
+        "relation": "max",
+        "surface": null
+      },
+      {
+        "actual": 2.0,
+        "limit": 0.0,
+        "name": "air_min_mm",
+        "passed": true,
+        "reason": "S1–S2：显示值为离散采样估计；判定使用完整半径上的连续区间检查。最小间距已确认。",
+        "relation": "min",
+        "surface": 0
+      },
+      {
+        "actual": 4.0,
+        "limit": 1.0,
+        "name": "center_mm",
+        "passed": true,
+        "relation": "min",
+        "surface": 1
+      },
+      {
+        "actual": 1.077288796092776,
+        "limit": 0.2,
+        "name": "body_min_mm",
+        "passed": true,
+        "reason": "S2–S3：显示值为离散采样估计；判定使用完整半径上的连续区间检查。最小间距已确认。",
+        "relation": "min",
+        "surface": 1
+      },
+      {
+        "actual": 46.55837896720092,
+        "limit": 0.0,
+        "name": "image_gap_mm",
+        "passed": true,
+        "relation": "min",
+        "surface": 2
+      },
+      {
+        "actual": 0.0,
+        "limit": 0.0,
+        "name": "failed_rays",
+        "passed": true,
+        "reason": "全部配置视场与波长，33×33 瞳采样；失败光线包括遮挡、未命中、全反射与数值失败。",
+        "relation": "max",
+        "surface": null
+      }
+    ],
+    "impossible_candidate_adoptable": false
+  },
+  "persistence": {
+    "version_count": 2,
+    "full_document_equal": true,
+    "geometry_exact_json_equal": true,
+    "psf_mtf_exact_json_equal": true,
+    "imaging_exact_json_equal": true
+  },
+  "comparison": {
+    "common_fields": [
+      0.0,
+      0.035,
+      0.05
+    ],
+    "common_wavelengths": [
+      {
+        "nm": 486.1327,
+        "weight": 1.0
+      },
+      {
+        "nm": 587.5618,
+        "weight": 1.0
+      },
+      {
+        "nm": 656.2725,
+        "weight": 1.0
+      }
+    ],
+    "common_geometric_sampling": 33,
+    "psf_pixel_um": [
+      1.981792937805661,
+      1.9832272936662838
+    ],
+    "mtf_frequency_step_lp_mm": [
+      0.9855343425345923,
+      0.9848215614204082
+    ],
+    "quality": [
+      {
+        "converged": true,
+        "edge_energy": 0.0022758693075787457,
+        "image_nyquist_ratio": null,
+        "local_expansion_error_waves": 0.0019261311472298513,
+        "mtf_max_change": 0.0007878830979323181,
+        "previous_sampling": 64,
+        "psf_l1_change": 0.0214588103105954,
+        "pupil_sampling": 128
+      },
+      {
+        "converged": true,
+        "edge_energy": 0.002275733565135635,
+        "image_nyquist_ratio": null,
+        "local_expansion_error_waves": 0.0019268199674022256,
+        "mtf_max_change": 0.0007229907800017088,
+        "previous_sampling": 64,
+        "psf_l1_change": 0.02162152397341428,
+        "pupil_sampling": 128
+      }
+    ]
+  }
+}

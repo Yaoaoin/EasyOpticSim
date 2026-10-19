@@ -1,0 +1,1569 @@
+{
+  "version": "0.5.0",
+  "fixture": "12 lens groups, 27 surfaces",
+  "checks": [
+    {
+      "name": "right_independent",
+      "before": {
+        "body": {
+          "height": 720,
+          "top": 0
+        },
+        "footer": {
+          "bottom": 720,
+          "height": 32,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 687
+        },
+        "header": {
+          "bottom": 65,
+          "height": 64,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 0
+        },
+        "lens": {
+          "bottom": 367.390625,
+          "height": 134,
+          "max": 536,
+          "top": 0,
+          "width": 239,
+          "x": 0,
+          "y": 233
+        },
+        "main": {
+          "bottom": 687,
+          "height": 573,
+          "max": 1245,
+          "top": 0,
+          "width": 740,
+          "x": 240,
+          "y": 114
+        },
+        "right": {
+          "bottom": 687,
+          "height": 466,
+          "max": 999,
+          "top": 0,
+          "width": 299,
+          "x": 981,
+          "y": 221
+        },
+        "saved": "已保存 · 自动恢复",
+        "selection": [
+          "双凸透镜 011 片 · S2–S31",
+          "◖◗双凸透镜 01 · 前面Teaching crownS2"
+        ],
+        "surface": {
+          "bottom": 580,
+          "height": 172,
+          "max": 1323,
+          "top": 0,
+          "width": 239,
+          "x": 0,
+          "y": 408.390625
+        },
+        "viewport": {
+          "height": 720,
+          "width": 1280
+        }
+      },
+      "after": {
+        "body": {
+          "height": 720,
+          "top": 0
+        },
+        "footer": {
+          "bottom": 720,
+          "height": 32,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 687
+        },
+        "header": {
+          "bottom": 65,
+          "height": 64,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 0
+        },
+        "lens": {
+          "bottom": 367.390625,
+          "height": 134,
+          "max": 536,
+          "top": 0,
+          "width": 239,
+          "x": 0,
+          "y": 233
+        },
+        "main": {
+          "bottom": 687,
+          "height": 573,
+          "max": 1245,
+          "top": 0,
+          "width": 740,
+          "x": 240,
+          "y": 114
+        },
+        "right": {
+          "bottom": 687,
+          "height": 466,
+          "max": 999,
+          "top": 373,
+          "width": 299,
+          "x": 981,
+          "y": 221
+        },
+        "saved": "已保存 · 自动恢复",
+        "selection": [
+          "双凸透镜 011 片 · S2–S31",
+          "◖◗双凸透镜 01 · 前面Teaching crownS2"
+        ],
+        "surface": {
+          "bottom": 580,
+          "height": 172,
+          "max": 1323,
+          "top": 0,
+          "width": 239,
+          "x": 0,
+          "y": 408.390625
+        },
+        "viewport": {
+          "height": 720,
+          "width": 1280
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "lens_independent",
+      "before": {
+        "body": {
+          "height": 720,
+          "top": 0
+        },
+        "footer": {
+          "bottom": 720,
+          "height": 32,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 687
+        },
+        "header": {
+          "bottom": 65,
+          "height": 64,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 0
+        },
+        "lens": {
+          "bottom": 367.390625,
+          "height": 134,
+          "max": 536,
+          "top": 0,
+          "width": 239,
+          "x": 0,
+          "y": 233
+        },
+        "main": {
+          "bottom": 687,
+          "height": 573,
+          "max": 1245,
+          "top": 0,
+          "width": 740,
+          "x": 240,
+          "y": 114
+        },
+        "right": {
+          "bottom": 687,
+          "height": 466,
+          "max": 999,
+          "top": 373,
+          "width": 299,
+          "x": 981,
+          "y": 221
+        },
+        "saved": "已保存 · 自动恢复",
+        "selection": [
+          "双凸透镜 011 片 · S2–S31",
+          "◖◗双凸透镜 01 · 前面Teaching crownS2"
+        ],
+        "surface": {
+          "bottom": 580,
+          "height": 172,
+          "max": 1323,
+          "top": 0,
+          "width": 239,
+          "x": 0,
+          "y": 408.390625
+        },
+        "viewport": {
+          "height": 720,
+          "width": 1280
+        }
+      },
+      "after": {
+        "body": {
+          "height": 720,
+          "top": 0
+        },
+        "footer": {
+          "bottom": 720,
+          "height": 32,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 687
+        },
+        "header": {
+          "bottom": 65,
+          "height": 64,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 0
+        },
+        "lens": {
+          "bottom": 367.390625,
+          "height": 134,
+          "max": 536,
+          "top": 536,
+          "width": 239,
+          "x": 0,
+          "y": 233
+        },
+        "main": {
+          "bottom": 687,
+          "height": 573,
+          "max": 1245,
+          "top": 0,
+          "width": 740,
+          "x": 240,
+          "y": 114
+        },
+        "right": {
+          "bottom": 687,
+          "height": 466,
+          "max": 999,
+          "top": 373,
+          "width": 299,
+          "x": 981,
+          "y": 221
+        },
+        "saved": "已保存 · 自动恢复",
+        "selection": [
+          "双凸透镜 011 片 · S2–S31",
+          "◖◗双凸透镜 01 · 前面Teaching crownS2"
+        ],
+        "surface": {
+          "bottom": 580,
+          "height": 172,
+          "max": 1323,
+          "top": 0,
+          "width": 239,
+          "x": 0,
+          "y": 408.390625
+        },
+        "viewport": {
+          "height": 720,
+          "width": 1280
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "surface_independent",
+      "before": {
+        "body": {
+          "height": 720,
+          "top": 0
+        },
+        "footer": {
+          "bottom": 720,
+          "height": 32,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 687
+        },
+        "header": {
+          "bottom": 65,
+          "height": 64,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 0
+        },
+        "lens": {
+          "bottom": 367.390625,
+          "height": 134,
+          "max": 536,
+          "top": 536,
+          "width": 239,
+          "x": 0,
+          "y": 233
+        },
+        "main": {
+          "bottom": 687,
+          "height": 573,
+          "max": 1245,
+          "top": 0,
+          "width": 740,
+          "x": 240,
+          "y": 114
+        },
+        "right": {
+          "bottom": 687,
+          "height": 466,
+          "max": 999,
+          "top": 373,
+          "width": 299,
+          "x": 981,
+          "y": 221
+        },
+        "saved": "已保存 · 自动恢复",
+        "selection": [
+          "双凸透镜 011 片 · S2–S31",
+          "◖◗双凸透镜 01 · 前面Teaching crownS2"
+        ],
+        "surface": {
+          "bottom": 580,
+          "height": 172,
+          "max": 1323,
+          "top": 0,
+          "width": 239,
+          "x": 0,
+          "y": 408.390625
+        },
+        "viewport": {
+          "height": 720,
+          "width": 1280
+        }
+      },
+      "after": {
+        "body": {
+          "height": 720,
+          "top": 0
+        },
+        "footer": {
+          "bottom": 720,
+          "height": 32,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 687
+        },
+        "header": {
+          "bottom": 65,
+          "height": 64,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 0
+        },
+        "lens": {
+          "bottom": 367.390625,
+          "height": 134,
+          "max": 536,
+          "top": 536,
+          "width": 239,
+          "x": 0,
+          "y": 233
+        },
+        "main": {
+          "bottom": 687,
+          "height": 573,
+          "max": 1245,
+          "top": 0,
+          "width": 740,
+          "x": 240,
+          "y": 114
+        },
+        "right": {
+          "bottom": 687,
+          "height": 466,
+          "max": 999,
+          "top": 373,
+          "width": 299,
+          "x": 981,
+          "y": 221
+        },
+        "saved": "已保存 · 自动恢复",
+        "selection": [
+          "双凸透镜 011 片 · S2–S31",
+          "◖◗双凸透镜 01 · 前面Teaching crownS2"
+        ],
+        "surface": {
+          "bottom": 580,
+          "height": 172,
+          "max": 1323,
+          "top": 1323,
+          "width": 239,
+          "x": 0,
+          "y": 408.390625
+        },
+        "viewport": {
+          "height": 720,
+          "width": 1280
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "main_independent_and_shell_fixed",
+      "before": {
+        "body": {
+          "height": 720,
+          "top": 0
+        },
+        "footer": {
+          "bottom": 720,
+          "height": 32,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 687
+        },
+        "header": {
+          "bottom": 65,
+          "height": 64,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 0
+        },
+        "lens": {
+          "bottom": 367.390625,
+          "height": 134,
+          "max": 536,
+          "top": 536,
+          "width": 239,
+          "x": 0,
+          "y": 233
+        },
+        "main": {
+          "bottom": 687,
+          "height": 573,
+          "max": 1245,
+          "top": 0,
+          "width": 740,
+          "x": 240,
+          "y": 114
+        },
+        "right": {
+          "bottom": 687,
+          "height": 466,
+          "max": 999,
+          "top": 373,
+          "width": 299,
+          "x": 981,
+          "y": 221
+        },
+        "saved": "已保存 · 自动恢复",
+        "selection": [
+          "双凸透镜 011 片 · S2–S31",
+          "◖◗双凸透镜 01 · 前面Teaching crownS2"
+        ],
+        "surface": {
+          "bottom": 580,
+          "height": 172,
+          "max": 1323,
+          "top": 1323,
+          "width": 239,
+          "x": 0,
+          "y": 408.390625
+        },
+        "viewport": {
+          "height": 720,
+          "width": 1280
+        }
+      },
+      "after": {
+        "body": {
+          "height": 720,
+          "top": 0
+        },
+        "footer": {
+          "bottom": 720,
+          "height": 32,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 687
+        },
+        "header": {
+          "bottom": 65,
+          "height": 64,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 0
+        },
+        "lens": {
+          "bottom": 367.390625,
+          "height": 134,
+          "max": 536,
+          "top": 536,
+          "width": 239,
+          "x": 0,
+          "y": 233
+        },
+        "main": {
+          "bottom": 687,
+          "height": 573,
+          "max": 1245,
+          "top": 720,
+          "width": 740,
+          "x": 240,
+          "y": 114
+        },
+        "right": {
+          "bottom": 687,
+          "height": 466,
+          "max": 999,
+          "top": 373,
+          "width": 299,
+          "x": 981,
+          "y": 221
+        },
+        "saved": "已保存 · 自动恢复",
+        "selection": [
+          "双凸透镜 011 片 · S2–S31",
+          "◖◗双凸透镜 01 · 前面Teaching crownS2"
+        ],
+        "surface": {
+          "bottom": 580,
+          "height": 172,
+          "max": 1323,
+          "top": 1323,
+          "width": 239,
+          "x": 0,
+          "y": 408.390625
+        },
+        "viewport": {
+          "height": 720,
+          "width": 1280
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "boundary_does_not_chain",
+      "before": {
+        "body": {
+          "height": 720,
+          "top": 0
+        },
+        "footer": {
+          "bottom": 720,
+          "height": 32,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 687
+        },
+        "header": {
+          "bottom": 65,
+          "height": 64,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 0
+        },
+        "lens": {
+          "bottom": 367.390625,
+          "height": 134,
+          "max": 536,
+          "top": 536,
+          "width": 239,
+          "x": 0,
+          "y": 233
+        },
+        "main": {
+          "bottom": 687,
+          "height": 573,
+          "max": 1245,
+          "top": 720,
+          "width": 740,
+          "x": 240,
+          "y": 114
+        },
+        "right": {
+          "bottom": 687,
+          "height": 466,
+          "max": 999,
+          "top": 373,
+          "width": 299,
+          "x": 981,
+          "y": 221
+        },
+        "saved": "已保存 · 自动恢复",
+        "selection": [
+          "双凸透镜 011 片 · S2–S31",
+          "◖◗双凸透镜 01 · 前面Teaching crownS2"
+        ],
+        "surface": {
+          "bottom": 580,
+          "height": 172,
+          "max": 1323,
+          "top": 1323,
+          "width": 239,
+          "x": 0,
+          "y": 408.390625
+        },
+        "viewport": {
+          "height": 720,
+          "width": 1280
+        }
+      },
+      "after": {
+        "body": {
+          "height": 720,
+          "top": 0
+        },
+        "footer": {
+          "bottom": 720,
+          "height": 32,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 687
+        },
+        "header": {
+          "bottom": 65,
+          "height": 64,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 0
+        },
+        "lens": {
+          "bottom": 367.390625,
+          "height": 134,
+          "max": 536,
+          "top": 536,
+          "width": 239,
+          "x": 0,
+          "y": 233
+        },
+        "main": {
+          "bottom": 687,
+          "height": 573,
+          "max": 1245,
+          "top": 720,
+          "width": 740,
+          "x": 240,
+          "y": 114
+        },
+        "right": {
+          "bottom": 687,
+          "height": 466,
+          "max": 999,
+          "top": 373,
+          "width": 299,
+          "x": 981,
+          "y": 221
+        },
+        "saved": "已保存 · 自动恢复",
+        "selection": [
+          "双凸透镜 011 片 · S2–S31",
+          "◖◗双凸透镜 01 · 前面Teaching crownS2"
+        ],
+        "surface": {
+          "bottom": 580,
+          "height": 172,
+          "max": 1323,
+          "top": 1323,
+          "width": 239,
+          "x": 0,
+          "y": 408.390625
+        },
+        "viewport": {
+          "height": 720,
+          "width": 1280
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "selection_reveals_only_own_lists_and_inspector",
+      "before": {
+        "body": {
+          "height": 720,
+          "top": 0
+        },
+        "footer": {
+          "bottom": 720,
+          "height": 32,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 687
+        },
+        "header": {
+          "bottom": 65,
+          "height": 64,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 0
+        },
+        "lens": {
+          "bottom": 367.390625,
+          "height": 134,
+          "max": 536,
+          "top": 143,
+          "width": 239,
+          "x": 0,
+          "y": 233
+        },
+        "main": {
+          "bottom": 687,
+          "height": 573,
+          "max": 1245,
+          "top": 850,
+          "width": 740,
+          "x": 240,
+          "y": 114
+        },
+        "right": {
+          "bottom": 687,
+          "height": 466,
+          "max": 1360,
+          "top": 0,
+          "width": 299,
+          "x": 981,
+          "y": 221
+        },
+        "saved": "已保存 · 自动恢复",
+        "selection": [
+          "胶合双片 052 片 · S10–S125",
+          "◖◗胶合双片 05 · 后面AirS12"
+        ],
+        "surface": {
+          "bottom": 580,
+          "height": 172,
+          "max": 1323,
+          "top": 490,
+          "width": 239,
+          "x": 0,
+          "y": 408.390625
+        },
+        "viewport": {
+          "height": 720,
+          "width": 1280
+        }
+      },
+      "after": {
+        "body": {
+          "height": 720,
+          "top": 0
+        },
+        "footer": {
+          "bottom": 720,
+          "height": 32,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 687
+        },
+        "header": {
+          "bottom": 65,
+          "height": 64,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 0
+        },
+        "lens": {
+          "bottom": 367.390625,
+          "height": 134,
+          "max": 536,
+          "top": 198,
+          "width": 239,
+          "x": 0,
+          "y": 233
+        },
+        "main": {
+          "bottom": 687,
+          "height": 573,
+          "max": 1245,
+          "top": 850,
+          "width": 740,
+          "x": 240,
+          "y": 114
+        },
+        "right": {
+          "bottom": 687,
+          "height": 466,
+          "max": 999,
+          "top": 0,
+          "width": 299,
+          "x": 981,
+          "y": 221
+        },
+        "saved": "已保存 · 自动恢复",
+        "selection": [
+          "平行平板 061 片 · S13–S146",
+          "◖◗平行平板 06 · 后面AirS14"
+        ],
+        "surface": {
+          "bottom": 580,
+          "height": 172,
+          "max": 1323,
+          "top": 600,
+          "width": 239,
+          "x": 0,
+          "y": 408.390625
+        },
+        "viewport": {
+          "height": 720,
+          "width": 1280
+        }
+      },
+      "items": [
+        {
+          "label": "平行平板 061 片 · S13–S146",
+          "visible": true
+        },
+        {
+          "label": "◖◗平行平板 06 · 后面AirS14",
+          "visible": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "inspector_section_navigation",
+      "before": {
+        "body": {
+          "height": 720,
+          "top": 0
+        },
+        "footer": {
+          "bottom": 720,
+          "height": 32,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 687
+        },
+        "header": {
+          "bottom": 65,
+          "height": 64,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 0
+        },
+        "lens": {
+          "bottom": 367.390625,
+          "height": 134,
+          "max": 536,
+          "top": 198,
+          "width": 239,
+          "x": 0,
+          "y": 233
+        },
+        "main": {
+          "bottom": 687,
+          "height": 573,
+          "max": 1245,
+          "top": 850,
+          "width": 740,
+          "x": 240,
+          "y": 114
+        },
+        "right": {
+          "bottom": 687,
+          "height": 466,
+          "max": 999,
+          "top": 0,
+          "width": 299,
+          "x": 981,
+          "y": 221
+        },
+        "saved": "已保存 · 自动恢复",
+        "selection": [
+          "平行平板 061 片 · S13–S146",
+          "◖◗平行平板 06 · 后面AirS14"
+        ],
+        "surface": {
+          "bottom": 580,
+          "height": 172,
+          "max": 1323,
+          "top": 600,
+          "width": 239,
+          "x": 0,
+          "y": 408.390625
+        },
+        "viewport": {
+          "height": 720,
+          "width": 1280
+        }
+      },
+      "after": {
+        "body": {
+          "height": 720,
+          "top": 0
+        },
+        "footer": {
+          "bottom": 720,
+          "height": 32,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 687
+        },
+        "header": {
+          "bottom": 65,
+          "height": 64,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 0
+        },
+        "lens": {
+          "bottom": 367.390625,
+          "height": 134,
+          "max": 536,
+          "top": 198,
+          "width": 239,
+          "x": 0,
+          "y": 233
+        },
+        "main": {
+          "bottom": 687,
+          "height": 573,
+          "max": 1245,
+          "top": 850,
+          "width": 740,
+          "x": 240,
+          "y": 114
+        },
+        "right": {
+          "bottom": 687,
+          "height": 466,
+          "max": 999,
+          "top": 985,
+          "width": 299,
+          "x": 981,
+          "y": 221
+        },
+        "saved": "已保存 · 自动恢复",
+        "selection": [
+          "平行平板 061 片 · S13–S146",
+          "◖◗平行平板 06 · 后面AirS14"
+        ],
+        "surface": {
+          "bottom": 580,
+          "height": 172,
+          "max": 1323,
+          "top": 600,
+          "width": 239,
+          "x": 0,
+          "y": 408.390625
+        },
+        "viewport": {
+          "height": 720,
+          "width": 1280
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "search_by_surface_and_locate",
+      "selection": [
+        "胶合双片 102 片 · S21–S2310",
+        "◖◗胶合双片 10 · 胶合面Teaching flintS22"
+      ],
+      "after": {
+        "body": {
+          "height": 720,
+          "top": 0
+        },
+        "footer": {
+          "bottom": 720,
+          "height": 32,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 687
+        },
+        "header": {
+          "bottom": 65,
+          "height": 64,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 0
+        },
+        "lens": {
+          "bottom": 367.390625,
+          "height": 134,
+          "max": 536,
+          "top": 418,
+          "width": 239,
+          "x": 0,
+          "y": 233
+        },
+        "main": {
+          "bottom": 687,
+          "height": 573,
+          "max": 1245,
+          "top": 850,
+          "width": 740,
+          "x": 240,
+          "y": 114
+        },
+        "right": {
+          "bottom": 687,
+          "height": 466,
+          "max": 1360,
+          "top": 0,
+          "width": 299,
+          "x": 981,
+          "y": 221
+        },
+        "saved": "已保存 · 自动恢复",
+        "selection": [
+          "胶合双片 102 片 · S21–S2310",
+          "◖◗胶合双片 10 · 胶合面Teaching flintS22"
+        ],
+        "surface": {
+          "bottom": 580,
+          "height": 172,
+          "max": 1323,
+          "top": 1040,
+          "width": 239,
+          "x": 0,
+          "y": 408.390625
+        },
+        "viewport": {
+          "height": 720,
+          "width": 1280
+        }
+      },
+      "state": {
+        "items": [
+          {
+            "text": "胶合双片 102 片 · S21–S2310",
+            "visible": true
+          },
+          {
+            "text": "◖◗胶合双片 10 · 胶合面Teaching flintS22",
+            "visible": true
+          }
+        ],
+        "lenses": 12,
+        "query": "",
+        "surfaces": 27
+      },
+      "passed": true
+    },
+    {
+      "name": "splitter_and_sidebars_do_not_edit_project",
+      "ratio": 61,
+      "before": {
+        "body": {
+          "height": 720,
+          "top": 0
+        },
+        "footer": {
+          "bottom": 720,
+          "height": 32,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 687
+        },
+        "header": {
+          "bottom": 65,
+          "height": 64,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 0
+        },
+        "lens": {
+          "bottom": 426.125,
+          "height": 193,
+          "max": 477,
+          "top": 418,
+          "width": 239,
+          "x": 0,
+          "y": 233
+        },
+        "main": {
+          "bottom": 687,
+          "height": 573,
+          "max": 1245,
+          "top": 850,
+          "width": 740,
+          "x": 240,
+          "y": 114
+        },
+        "right": {
+          "bottom": 687,
+          "height": 466,
+          "max": 1360,
+          "top": 0,
+          "width": 299,
+          "x": 981,
+          "y": 221
+        },
+        "saved": "已保存 · 自动恢复",
+        "selection": [
+          "胶合双片 102 片 · S21–S2310",
+          "◖◗胶合双片 10 · 胶合面Teaching flintS22"
+        ],
+        "surface": {
+          "bottom": 580,
+          "height": 113,
+          "max": 1382,
+          "top": 1099,
+          "width": 239,
+          "x": 0,
+          "y": 467.125
+        },
+        "viewport": {
+          "height": 720,
+          "width": 1280
+        }
+      },
+      "leftCollapsed": {
+        "body": {
+          "height": 720,
+          "top": 0
+        },
+        "footer": {
+          "bottom": 720,
+          "height": 32,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 687
+        },
+        "header": {
+          "bottom": 65,
+          "height": 64,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 0
+        },
+        "lens": {
+          "bottom": 0,
+          "height": 0,
+          "max": 0,
+          "top": 0,
+          "width": 0,
+          "x": 0,
+          "y": 0
+        },
+        "main": {
+          "bottom": 687,
+          "height": 573,
+          "max": 1331,
+          "top": 936,
+          "width": 980,
+          "x": 0,
+          "y": 114
+        },
+        "right": {
+          "bottom": 687,
+          "height": 466,
+          "max": 1360,
+          "top": 0,
+          "width": 299,
+          "x": 981,
+          "y": 221
+        },
+        "saved": "已保存 · 自动恢复",
+        "selection": [
+          "胶合双片 102 片 · S21–S2310",
+          "◖◗胶合双片 10 · 胶合面Teaching flintS22"
+        ],
+        "surface": {
+          "bottom": 0,
+          "height": 0,
+          "max": 0,
+          "top": 0,
+          "width": 0,
+          "x": 0,
+          "y": 0
+        },
+        "viewport": {
+          "height": 720,
+          "width": 1280
+        }
+      },
+      "bothCollapsed": {
+        "body": {
+          "height": 720,
+          "top": 0
+        },
+        "footer": {
+          "bottom": 720,
+          "height": 32,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 687
+        },
+        "header": {
+          "bottom": 65,
+          "height": 64,
+          "max": 0,
+          "top": 0,
+          "width": 1280,
+          "x": 0,
+          "y": 0
+        },
+        "lens": {
+          "bottom": 0,
+          "height": 0,
+          "max": 0,
+          "top": 0,
+          "width": 0,
+          "x": 0,
+          "y": 0
+        },
+        "main": {
+          "bottom": 687,
+          "height": 573,
+          "max": 1439,
+          "top": 1044,
+          "width": 1280,
+          "x": 0,
+          "y": 114
+        },
+        "right": {
+          "bottom": 0,
+          "height": 0,
+          "max": 0,
+          "top": 0,
+          "width": 0,
+          "x": 0,
+          "y": 0
+        },
+        "saved": "已保存 · 自动恢复",
+        "selection": [
+          "胶合双片 102 片 · S21–S2310",
+          "◖◗胶合双片 10 · 胶合面Teaching flintS22"
+        ],
+        "surface": {
+          "bottom": 0,
+          "height": 0,
+          "max": 0,
+          "top": 0,
+          "width": 0,
+          "x": 0,
+          "y": 0
+        },
+        "viewport": {
+          "height": 720,
+          "width": 1280
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "layout_persistence_across_reload",
+      "panels": {
+        "left": true,
+        "right": true
+      },
+      "ratio": 61,
+      "passed": true
+    },
+    {
+      "name": "restore_layout",
+      "ratio": 45,
+      "passed": true
+    },
+    {
+      "name": "minimum_window_1000x720",
+      "panes": {
+        "body": {
+          "height": 720,
+          "top": 0
+        },
+        "footer": {
+          "bottom": 720,
+          "height": 32,
+          "max": 0,
+          "top": 0,
+          "width": 1000,
+          "x": 0,
+          "y": 687
+        },
+        "header": {
+          "bottom": 65,
+          "height": 64,
+          "max": 0,
+          "top": 0,
+          "width": 1000,
+          "x": 0,
+          "y": 0
+        },
+        "lens": {
+          "bottom": 367.390625,
+          "height": 134,
+          "max": 536,
+          "top": 0,
+          "width": 209,
+          "x": 0,
+          "y": 233
+        },
+        "main": {
+          "bottom": 687,
+          "height": 573,
+          "max": 241,
+          "top": 0,
+          "width": 526,
+          "x": 210,
+          "y": 114
+        },
+        "right": {
+          "bottom": 687,
+          "height": 466,
+          "max": 1017,
+          "top": 0,
+          "width": 263,
+          "x": 737,
+          "y": 221
+        },
+        "saved": "未保存修改 · 自动恢复",
+        "selection": [
+          "双凸透镜 011 片 · S2–S31",
+          "◖◗双凸透镜 01 · 前面Teaching crownS2"
+        ],
+        "surface": {
+          "bottom": 580,
+          "height": 172,
+          "max": 1323,
+          "top": 0,
+          "width": 209,
+          "x": 0,
+          "y": 408.390625
+        },
+        "viewport": {
+          "height": 720,
+          "width": 1000
+        }
+      },
+      "bounds": {
+        "bodyWidth": 1000,
+        "footerBottom": 720,
+        "headerWidth": 1000,
+        "inspectorWidth": 263,
+        "projectbarWidth": 1000
+      },
+      "passed": true
+    },
+    {
+      "name": "keyboard_end_selects_final_surface",
+      "after": {
+        "body": {
+          "height": 720,
+          "top": 0
+        },
+        "footer": {
+          "bottom": 720,
+          "height": 32,
+          "max": 0,
+          "top": 0,
+          "width": 1000,
+          "x": 0,
+          "y": 687
+        },
+        "header": {
+          "bottom": 65,
+          "height": 64,
+          "max": 0,
+          "top": 0,
+          "width": 1000,
+          "x": 0,
+          "y": 0
+        },
+        "lens": {
+          "bottom": 367.390625,
+          "height": 134,
+          "max": 536,
+          "top": 528,
+          "width": 209,
+          "x": 0,
+          "y": 233
+        },
+        "main": {
+          "bottom": 687,
+          "height": 573,
+          "max": 241,
+          "top": 0,
+          "width": 526,
+          "x": 210,
+          "y": 114
+        },
+        "right": {
+          "bottom": 687,
+          "height": 466,
+          "max": 1298,
+          "top": 0,
+          "width": 263,
+          "x": 737,
+          "y": 221
+        },
+        "saved": "未保存修改 · 自动恢复",
+        "selection": [
+          "平行平板 121 片 · S26–S2712",
+          "◖◗平行平板 12 · 后面AirS27"
+        ],
+        "surface": {
+          "bottom": 580,
+          "height": 172,
+          "max": 1323,
+          "top": 1315,
+          "width": 209,
+          "x": 0,
+          "y": 408.390625
+        },
+        "viewport": {
+          "height": 720,
+          "width": 1000
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "default_window_1440x940",
+      "panes": {
+        "body": {
+          "height": 940,
+          "top": 0
+        },
+        "footer": {
+          "bottom": 940,
+          "height": 32,
+          "max": 0,
+          "top": 0,
+          "width": 1440,
+          "x": 0,
+          "y": 907
+        },
+        "header": {
+          "bottom": 65,
+          "height": 64,
+          "max": 0,
+          "top": 0,
+          "width": 1440,
+          "x": 0,
+          "y": 0
+        },
+        "lens": {
+          "bottom": 466.390625,
+          "height": 233,
+          "max": 437,
+          "top": 437,
+          "width": 239,
+          "x": 0,
+          "y": 233
+        },
+        "main": {
+          "bottom": 907,
+          "height": 793,
+          "max": 147,
+          "top": 0,
+          "width": 900,
+          "x": 240,
+          "y": 114
+        },
+        "right": {
+          "bottom": 907,
+          "height": 686,
+          "max": 1078,
+          "top": 0,
+          "width": 299,
+          "x": 1141,
+          "y": 221
+        },
+        "saved": "未保存修改 · 自动恢复",
+        "selection": [
+          "平行平板 121 片 · S26–S2712",
+          "◖◗平行平板 12 · 后面AirS27"
+        ],
+        "surface": {
+          "bottom": 800,
+          "height": 293,
+          "max": 1202,
+          "top": 1202,
+          "width": 239,
+          "x": 0,
+          "y": 507.390625
+        },
+        "viewport": {
+          "height": 940,
+          "width": 1440
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "external_selection_clears_hiding_filter",
+      "passed": true,
+      "state": {
+        "query": "",
+        "selected": "独立光阑APERTURE STOPS1",
+        "surfaces": 27
+      }
+    },
+    {
+      "name": "examples_dialog_open_close",
+      "passed": true
+    }
+  ],
+  "fixture_path": "fixtures/navigation-stress.oos.json",
+  "scope": "Browser UI measurements with the real Rust CLI, not native-window automation"
+}

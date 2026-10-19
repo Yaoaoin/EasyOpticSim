@@ -1,0 +1,24 @@
+{
+  "version": "0.8.0",
+  "date": "2026-10-19",
+  "installer": "target/release/bundle/nsis/OpenOpticSim_0.8.0_x64-setup.exe",
+  "bytes": 219436840,
+  "sha256": "1F61E09FC61A7074784B211B6B1F237397F42CE77D16B1485D549EC37279D117",
+  "executable_sha256": "8EB5FB71C14205059F83962F75E0F2326E3969D40B6175E8BF1C02BC85FD6C6D",
+  "startup": {
+    "exited": false,
+    "responding": true,
+    "title": "OpenOpticSim · 光学工作室",
+    "version": "0.8.0"
+  },
+  "webview": "offlineInstaller",
+  "clean_windows_install_tested": false,
+  "signed": false,
+  "rust_tests": 66,
+  "frontend_tests": 42,
+  "project": "examples/400mm-workflow-0.8.oos.json",
+  "project_sha256": "CDF4BA6AEE4DFC9DC72387F6D2EE13B1727D8CF7DC94A9A6906865DF4CC5E938",
+  "bundled_project_matches": true,
+  "ui_report": "docs/validation-design-ui-0.8.json",
+  "saved_scan_reproduced_exactly": true
+}

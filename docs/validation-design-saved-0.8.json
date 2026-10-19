@@ -1,0 +1,15 @@
+{
+  "version": "0.8.0",
+  "fixture": "docs/fixtures/design-ui-saved-0.8.oos.json",
+  "sha256": "398fdcb19ed209246d5a8b0a89615099932b37941d0ceda1dabe716ee902b62c",
+  "surfaces": 34,
+  "groups": 2,
+  "versions": 3,
+  "optimization_variables": 2,
+  "saved_scan_reproduced_exactly": true,
+  "optical_metadata_invariance": {
+    "analyze": true,
+    "wave": true,
+    "preview": true
+  }
+}

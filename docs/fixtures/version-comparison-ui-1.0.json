@@ -1,0 +1,2137 @@
+{
+  "format": "OSS comparison 2",
+  "focus_condition": "common",
+  "labels": [
+    "当前设计",
+    "1.0 传感器联动基准"
+  ],
+  "projects": [
+    {
+      "schema_version": 3,
+      "name": "400 mm · OOS 1.0 重开验收",
+      "description": "0.8 教学验证工作区：保留 0.7 修正版光学处方，附固定像面光圈扫描、设计目标和可移动中组。不是佳能 f/2.8 复刻。",
+      "materials": [
+        {
+          "name": "Air",
+          "n": 1,
+          "sellmeier": null,
+          "range_nm": [
+            380,
+            780
+          ],
+          "source": "Ideal vacuum approximation n=1"
+        },
+        {
+          "name": "Teaching crown",
+          "n": 1.52,
+          "sellmeier": [
+            [
+              1.04,
+              0.23,
+              1.01
+            ],
+            [
+              0.006,
+              0.02,
+              103
+            ]
+          ],
+          "range_nm": [
+            380,
+            780
+          ],
+          "source": "OSS synthetic teaching material; not a commercial glass"
+        },
+        {
+          "name": "Teaching flint",
+          "n": 1.62,
+          "sellmeier": [
+            [
+              1.3,
+              0.3,
+              1.1
+            ],
+            [
+              0.009,
+              0.04,
+              110
+            ]
+          ],
+          "range_nm": [
+            380,
+            780
+          ],
+          "source": "OSS synthetic teaching material; not a commercial glass"
+        }
+      ],
+      "surfaces": [
+        {
+          "name": "前镜组 · 前面",
+          "curvature": 0.0005943040373063071,
+          "thickness": 7,
+          "material": 1,
+          "semi_aperture": 35,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 35,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "前镜组· 后面",
+          "curvature": 0.0016483345427980743,
+          "thickness": 60,
+          "material": 0,
+          "semi_aperture": 35,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 35,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "双凸透镜 · 前面",
+          "curvature": 0.0008486319997615321,
+          "thickness": 7,
+          "material": 2,
+          "semi_aperture": 20,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 20,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "双凸透镜 · 后面",
+          "curvature": -0.0007840588903977271,
+          "thickness": 0.1,
+          "material": 0,
+          "semi_aperture": 20,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 20,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "双凹透镜 · 前面",
+          "curvature": -0.001037479509367551,
+          "thickness": 2,
+          "material": 1,
+          "semi_aperture": 20,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 22.5,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "双凹透镜 · 后面",
+          "curvature": 0.0022187912515047215,
+          "thickness": 0.1,
+          "material": 0,
+          "semi_aperture": 18.5,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 22.5,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "平凸透镜 · 前面",
+          "curvature": 0.0019242247846174754,
+          "thickness": 6,
+          "material": 2,
+          "semi_aperture": 18.5,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 18.5,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "平凸透镜 · 后面",
+          "curvature": 0,
+          "thickness": 12,
+          "material": 0,
+          "semi_aperture": 18.5,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 18.5,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "弯月透镜 · 前面",
+          "curvature": 0.0024297849942807666,
+          "thickness": 3,
+          "material": 1,
+          "semi_aperture": 17.5,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 17.5,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "弯月透镜 · 后面",
+          "curvature": 0.0020918439864446876,
+          "thickness": 0.1,
+          "material": 0,
+          "semi_aperture": 17.5,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 17.5,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "弯月透镜 · 前面",
+          "curvature": 0.003214383672033722,
+          "thickness": 1,
+          "material": 1,
+          "semi_aperture": 16.5,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 16.5,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "弯月透镜 · 后面",
+          "curvature": 0.004017655294029518,
+          "thickness": 0.1,
+          "material": 0,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 16.5,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "弯月透镜 · 前面",
+          "curvature": 0.008161437671506844,
+          "thickness": 6,
+          "material": 1,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "弯月透镜 · 后面",
+          "curvature": 0.0033529061471674147,
+          "thickness": 6,
+          "material": 0,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "独立光阑",
+          "curvature": 0,
+          "thickness": 2,
+          "material": 0,
+          "semi_aperture": 12.44782123167043,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "双凹透镜 · 前面",
+          "curvature": -0.0015863212543551085,
+          "thickness": 1,
+          "material": 1,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "双凹透镜 · 后面",
+          "curvature": 0.0037874218556329794,
+          "thickness": 18,
+          "material": 0,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "弯月透镜 · 前面",
+          "curvature": 0.002897934378487237,
+          "thickness": 1,
+          "material": 1,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "弯月透镜 · 后面",
+          "curvature": 0.004781032961455678,
+          "thickness": 0.1,
+          "material": 0,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "双凸透镜 · 前面",
+          "curvature": 0.004336990312526639,
+          "thickness": 4,
+          "material": 1,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "双凸透镜 · 后面",
+          "curvature": -0.00276671474275618,
+          "thickness": 0.5,
+          "material": 0,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "胶合双片 · 前面",
+          "curvature": 0.0047921047306888,
+          "thickness": 3,
+          "material": 1,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "胶合双片 · 胶合面",
+          "curvature": -0.006737570605622539,
+          "thickness": 1,
+          "material": 2,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "胶合双片 · 后面",
+          "curvature": 0.0029159707286003336,
+          "thickness": 3,
+          "material": 0,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "双凹透镜 · 前面",
+          "curvature": -0.004217381436693089,
+          "thickness": 1,
+          "material": 1,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "双凹透镜 · 后面",
+          "curvature": 0.0055571467965197605,
+          "thickness": 3,
+          "material": 0,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "平凸透镜 · 前面",
+          "curvature": 0.0022642493869791153,
+          "thickness": 3,
+          "material": 1,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "平凸透镜 · 后面",
+          "curvature": 0,
+          "thickness": 1,
+          "material": 0,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "双凸透镜 · 前面",
+          "curvature": 0.002334583818903134,
+          "thickness": 5.5,
+          "material": 1,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "双凸透镜 · 后面",
+          "curvature": -0.006154987284917934,
+          "thickness": 0.1,
+          "material": 0,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "平凹透镜 · 前面",
+          "curvature": -0.0004790463724761449,
+          "thickness": 1,
+          "material": 1,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "平凹透镜 · 后面",
+          "curvature": 0,
+          "thickness": 5,
+          "material": 0,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "平凸透镜 · 前面",
+          "curvature": 0,
+          "thickness": 0.3,
+          "material": 1,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "平凸透镜 · 后面",
+          "curvature": 0,
+          "thickness": 388.7863114888424,
+          "material": 0,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        }
+      ],
+      "stop": 14,
+      "object_distance": null,
+      "sensor": [
+        36,
+        24
+      ],
+      "fields": [
+        0,
+        0.029991181672401262,
+        0.04496992677783767,
+        0.054030948409989885
+      ],
+      "wavelengths": [
+        {
+          "nm": 486.1327,
+          "weight": 1
+        },
+        {
+          "nm": 587.5618,
+          "weight": 1
+        },
+        {
+          "nm": 656.2725,
+          "weight": 1
+        }
+      ],
+      "field_spec": {
+        "mode": "sensor"
+      }
+    },
+    {
+      "schema_version": 3,
+      "name": "400 mm · OOS 1.0 重开验收",
+      "description": "0.8 教学验证工作区：保留 0.7 修正版光学处方，附固定像面光圈扫描、设计目标和可移动中组。不是佳能 f/2.8 复刻。",
+      "materials": [
+        {
+          "name": "Air",
+          "n": 1,
+          "sellmeier": null,
+          "range_nm": [
+            380,
+            780
+          ],
+          "source": "Ideal vacuum approximation n=1"
+        },
+        {
+          "name": "Teaching crown",
+          "n": 1.52,
+          "sellmeier": [
+            [
+              1.04,
+              0.23,
+              1.01
+            ],
+            [
+              0.006,
+              0.02,
+              103
+            ]
+          ],
+          "range_nm": [
+            380,
+            780
+          ],
+          "source": "OSS synthetic teaching material; not a commercial glass"
+        },
+        {
+          "name": "Teaching flint",
+          "n": 1.62,
+          "sellmeier": [
+            [
+              1.3,
+              0.3,
+              1.1
+            ],
+            [
+              0.009,
+              0.04,
+              110
+            ]
+          ],
+          "range_nm": [
+            380,
+            780
+          ],
+          "source": "OSS synthetic teaching material; not a commercial glass"
+        }
+      ],
+      "surfaces": [
+        {
+          "name": "前镜组 · 前面",
+          "curvature": 0.0005943040373063071,
+          "thickness": 7,
+          "material": 1,
+          "semi_aperture": 35,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 35,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "前镜组· 后面",
+          "curvature": 0.0016483345427980743,
+          "thickness": 60,
+          "material": 0,
+          "semi_aperture": 35,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 35,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "双凸透镜 · 前面",
+          "curvature": 0.0008486319997615321,
+          "thickness": 7,
+          "material": 2,
+          "semi_aperture": 20,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 20,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "双凸透镜 · 后面",
+          "curvature": -0.0007840588903977271,
+          "thickness": 0.1,
+          "material": 0,
+          "semi_aperture": 20,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 20,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "双凹透镜 · 前面",
+          "curvature": -0.001037479509367551,
+          "thickness": 2,
+          "material": 1,
+          "semi_aperture": 20,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 22.5,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "双凹透镜 · 后面",
+          "curvature": 0.0022187912515047215,
+          "thickness": 0.1,
+          "material": 0,
+          "semi_aperture": 18.5,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 22.5,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "平凸透镜 · 前面",
+          "curvature": 0.0019242247846174754,
+          "thickness": 6,
+          "material": 2,
+          "semi_aperture": 18.5,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 18.5,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "平凸透镜 · 后面",
+          "curvature": 0,
+          "thickness": 12,
+          "material": 0,
+          "semi_aperture": 18.5,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 18.5,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "弯月透镜 · 前面",
+          "curvature": 0.0024297849942807666,
+          "thickness": 3,
+          "material": 1,
+          "semi_aperture": 17.5,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 17.5,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "弯月透镜 · 后面",
+          "curvature": 0.0020918439864446876,
+          "thickness": 0.1,
+          "material": 0,
+          "semi_aperture": 17.5,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 17.5,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "弯月透镜 · 前面",
+          "curvature": 0.003214383672033722,
+          "thickness": 1,
+          "material": 1,
+          "semi_aperture": 16.5,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 16.5,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "弯月透镜 · 后面",
+          "curvature": 0.004017655294029518,
+          "thickness": 0.1,
+          "material": 0,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 16.5,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "弯月透镜 · 前面",
+          "curvature": 0.008161437671506844,
+          "thickness": 6,
+          "material": 1,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "弯月透镜 · 后面",
+          "curvature": 0.0033529061471674147,
+          "thickness": 6,
+          "material": 0,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "独立光阑",
+          "curvature": 0,
+          "thickness": 2,
+          "material": 0,
+          "semi_aperture": 12.44782123167043,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "双凹透镜 · 前面",
+          "curvature": -0.0015863212543551085,
+          "thickness": 1,
+          "material": 1,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "双凹透镜 · 后面",
+          "curvature": 0.0037874218556329794,
+          "thickness": 18,
+          "material": 0,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "弯月透镜 · 前面",
+          "curvature": 0.002897934378487237,
+          "thickness": 1,
+          "material": 1,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "弯月透镜 · 后面",
+          "curvature": 0.004781032961455678,
+          "thickness": 0.1,
+          "material": 0,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "双凸透镜 · 前面",
+          "curvature": 0.004336990312526639,
+          "thickness": 4,
+          "material": 1,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "双凸透镜 · 后面",
+          "curvature": -0.00276671474275618,
+          "thickness": 0.5,
+          "material": 0,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "胶合双片 · 前面",
+          "curvature": 0.0047921047306888,
+          "thickness": 3,
+          "material": 1,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "胶合双片 · 胶合面",
+          "curvature": -0.006737570605622539,
+          "thickness": 1,
+          "material": 2,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "胶合双片 · 后面",
+          "curvature": 0.0029159707286003336,
+          "thickness": 3,
+          "material": 0,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "双凹透镜 · 前面",
+          "curvature": -0.004217381436693089,
+          "thickness": 1,
+          "material": 1,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "双凹透镜 · 后面",
+          "curvature": 0.0055571467965197605,
+          "thickness": 3,
+          "material": 0,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "平凸透镜 · 前面",
+          "curvature": 0.0022642493869791153,
+          "thickness": 3,
+          "material": 1,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "平凸透镜 · 后面",
+          "curvature": 0,
+          "thickness": 1,
+          "material": 0,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "双凸透镜 · 前面",
+          "curvature": 0.002334583818903134,
+          "thickness": 5.5,
+          "material": 1,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "双凸透镜 · 后面",
+          "curvature": -0.006154987284917934,
+          "thickness": 0.1,
+          "material": 0,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "平凹透镜 · 前面",
+          "curvature": -0.0004790463724761449,
+          "thickness": 1,
+          "material": 1,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "平凹透镜 · 后面",
+          "curvature": 0,
+          "thickness": 5,
+          "material": 0,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "平凸透镜 · 前面",
+          "curvature": 0,
+          "thickness": 0.3,
+          "material": 1,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        },
+        {
+          "name": "平凸透镜 · 后面",
+          "curvature": 0,
+          "thickness": 388.78631148884244,
+          "material": 0,
+          "semi_aperture": 15,
+          "conic": 0,
+          "asphere": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "mechanical": {
+            "semi_diameter": 15,
+            "shape": "flat"
+          }
+        }
+      ],
+      "stop": 14,
+      "object_distance": null,
+      "sensor": [
+        36,
+        24
+      ],
+      "fields": [
+        0,
+        0.029991181672401262,
+        0.04496992677783767,
+        0.054030948409989885
+      ],
+      "wavelengths": [
+        {
+          "nm": 486.1327,
+          "weight": 1
+        },
+        {
+          "nm": 587.5618,
+          "weight": 1
+        },
+        {
+          "nm": 656.2725,
+          "weight": 1
+        }
+      ],
+      "field_spec": {
+        "mode": "sensor"
+      }
+    }
+  ],
+  "configuration": {
+    "fields": [
+      0,
+      0.029991181672401262,
+      0.04496992677783767,
+      0.054030948409989885
+    ],
+    "field_spec": {
+      "mode": "sensor"
+    },
+    "wavelengths": [
+      {
+        "nm": 486.1327,
+        "weight": 1
+      },
+      {
+        "nm": 587.5618,
+        "weight": 1
+      },
+      {
+        "nm": 656.2725,
+        "weight": 1
+      }
+    ],
+    "object_distance": null,
+    "sensor": [
+      36,
+      24
+    ]
+  },
+  "sampling": 33,
+  "spot_half_width_mm": 0.046313878147829605,
+  "analyses": [
+    {
+      "chromatic_focus": [
+        {
+          "paraxial_focus_offset_mm": 0.027506809292276557,
+          "wavelength_nm": 486.1327
+        },
+        {
+          "paraxial_focus_offset_mm": 0,
+          "wavelength_nm": 587.5618
+        },
+        {
+          "paraxial_focus_offset_mm": 0.24888513178655103,
+          "wavelength_nm": 656.2725
+        }
+      ],
+      "coverage": {
+        "checkpoints": [
+          {
+            "height_mm": 12,
+            "ideal_angle_rad": 0.029991181672401262,
+            "label": "短边中点",
+            "status": "sampled_clear",
+            "tested_field_index": 1
+          },
+          {
+            "height_mm": 18,
+            "ideal_angle_rad": 0.04496992677783767,
+            "label": "长边中点",
+            "status": "sampled_clear",
+            "tested_field_index": 2
+          },
+          {
+            "height_mm": 21.633307652783937,
+            "ideal_angle_rad": 0.054030948409989885,
+            "label": "画面角落",
+            "status": "sampled_clear",
+            "tested_field_index": 3
+          }
+        ],
+        "fields": [
+          {
+            "angle_rad": 0,
+            "blocked": 0,
+            "chief_height_mm": 0,
+            "fast_mtf": "not_calculated",
+            "geometric_fraction": 1,
+            "other_failed": 0,
+            "sampled": 2391,
+            "unresolved": 0,
+            "wide_mtf": "not_calculated"
+          },
+          {
+            "angle_rad": 0.030032264590263362,
+            "blocked": 0,
+            "chief_height_mm": 12.000000049319038,
+            "fast_mtf": "not_calculated",
+            "geometric_fraction": 1,
+            "other_failed": 0,
+            "sampled": 2391,
+            "unresolved": 0,
+            "wide_mtf": "not_calculated"
+          },
+          {
+            "angle_rad": 0.04503796577453613,
+            "blocked": 0,
+            "chief_height_mm": 18.000000072159327,
+            "fast_mtf": "not_calculated",
+            "geometric_fraction": 1,
+            "other_failed": 0,
+            "sampled": 2391,
+            "unresolved": 0,
+            "wide_mtf": "not_calculated"
+          },
+          {
+            "angle_rad": 0.054118880629539484,
+            "blocked": 0,
+            "chief_height_mm": 21.633307700525076,
+            "fast_mtf": "not_calculated",
+            "geometric_fraction": 1,
+            "other_failed": 0,
+            "sampled": 2391,
+            "unresolved": 0,
+            "wide_mtf": "not_calculated"
+          }
+        ],
+        "focus_condition": "common_flat_sensor",
+        "half_diagonal_mm": 21.633307652783937,
+        "image_z_mm": 552.6863114888424,
+        "max_tested_height_mm": 21.633307700525076,
+        "reference_wavelength_nm": 587.5618,
+        "sampling": 33,
+        "sensor_mm": [
+          36,
+          24
+        ],
+        "warnings": [
+          "覆盖结论仅针对列出的视场与瞳采样，不证明整个像圈连续通光；几何采样比例不是精确相对照度。MTF 必须单独计算并通过适用性与收敛检查。"
+        ]
+      },
+      "diagnostics": [],
+      "experimental_wave": null,
+      "fields": [
+        {
+          "centroid": [
+            0,
+            9.286683602050661e-20
+          ],
+          "field": 0,
+          "lateral_color_um": 8.358015241845595e-16,
+          "polychromatic_rms_um": 9.231256434553327,
+          "sagittal_focus_offset_mm": 0.5518949481682534,
+          "tangential_focus_offset_mm": 0.5518949481682534
+        },
+        {
+          "centroid": [
+            0,
+            12.003491830809638
+          ],
+          "field": 0.030032264590263362,
+          "lateral_color_um": 12.121975090854775,
+          "polychromatic_rms_um": 6.980535374090517,
+          "sagittal_focus_offset_mm": 0.36668269599185355,
+          "tangential_focus_offset_mm": 0.24001588166604174
+        },
+        {
+          "centroid": [
+            0,
+            18.00526299229592
+          ],
+          "field": 0.04503796577453613,
+          "lateral_color_um": 18.215410462804726,
+          "polychromatic_rms_um": 9.621525629265664,
+          "sagittal_focus_offset_mm": 0.13563324884018985,
+          "tangential_focus_offset_mm": -0.14871150205206993
+        },
+        {
+          "centroid": [
+            0,
+            21.63965730946225
+          ],
+          "field": 0.054118880629539484,
+          "lateral_color_um": 21.92341968794409,
+          "polychromatic_rms_um": 14.106838479025356,
+          "sagittal_focus_offset_mm": -0.04883429881379951,
+          "tangential_focus_offset_mm": -0.45879808747748657
+        }
+      ],
+      "paraxial": {
+        "bfl": 389.33820684137095,
+        "efl": 399.99764035180965,
+        "entrance_pupil_radius": 12.5,
+        "entrance_pupil_z": 95.56177724333577,
+        "exit_pupil_radius": 13.757174031068791,
+        "exit_pupil_z": 113.01123481443415,
+        "f_number": 15.999905614072386
+      },
+      "sampling": 33,
+      "spots": [
+        {
+          "blocked_fraction": 0,
+          "centroid": [
+            0,
+            5.572010161230396e-19
+          ],
+          "distortion_percent": null,
+          "failed": 0,
+          "failures": [],
+          "field": 0,
+          "rms_um": 8.783279072675827,
+          "sampled": 797,
+          "wavelength_nm": 486.1327,
+          "weight": 1
+        },
+        {
+          "blocked_fraction": 0,
+          "centroid": [
+            0,
+            -2.786005080615198e-19
+          ],
+          "distortion_percent": null,
+          "failed": 0,
+          "failures": [],
+          "field": 0,
+          "rms_um": 6.764189160584436,
+          "sampled": 797,
+          "wavelength_nm": 587.5618,
+          "weight": 1
+        },
+        {
+          "blocked_fraction": 0,
+          "centroid": [
+            0,
+            0
+          ],
+          "distortion_percent": null,
+          "failed": 0,
+          "failures": [],
+          "field": 0,
+          "rms_um": 11.52163355660878,
+          "sampled": 797,
+          "wavelength_nm": 656.2725,
+          "weight": 1
+        },
+        {
+          "blocked_fraction": 0,
+          "centroid": [
+            0,
+            12.010627028715467
+          ],
+          "distortion_percent": -0.05982811984958092,
+          "failed": 0,
+          "failures": [],
+          "field": 0.030032264590263362,
+          "rms_um": 3.943218298993843,
+          "sampled": 797,
+          "wavelength_nm": 486.1327,
+          "weight": 1
+        },
+        {
+          "blocked_fraction": 0,
+          "centroid": [
+            0,
+            12.00134341008884
+          ],
+          "distortion_percent": -0.1368776469311439,
+          "failed": 0,
+          "failures": [],
+          "field": 0.030032264590263362,
+          "rms_um": 2.840421755239917,
+          "sampled": 797,
+          "wavelength_nm": 587.5618,
+          "weight": 1
+        },
+        {
+          "blocked_fraction": 0,
+          "centroid": [
+            0,
+            11.998505053624612
+          ],
+          "distortion_percent": -0.160368980100567,
+          "failed": 0,
+          "failures": [],
+          "field": 0.030032264590263362,
+          "rms_um": 6.493993269458455,
+          "sampled": 797,
+          "wavelength_nm": 656.2725,
+          "weight": 1
+        },
+        {
+          "blocked_fraction": 0,
+          "centroid": [
+            0,
+            18.015984780898517
+          ],
+          "distortion_percent": -0.07410242178692572,
+          "failed": 0,
+          "failures": [],
+          "field": 0.04503796577453613,
+          "rms_um": 5.243553720148029,
+          "sampled": 797,
+          "wavelength_nm": 486.1327,
+          "weight": 1
+        },
+        {
+          "blocked_fraction": 0,
+          "centroid": [
+            0,
+            18.00203482555353
+          ],
+          "distortion_percent": -0.15127393368226105,
+          "failed": 0,
+          "failures": [],
+          "field": 0.04503796577453613,
+          "rms_um": 7.091402445903919,
+          "sampled": 797,
+          "wavelength_nm": 587.5618,
+          "weight": 1
+        },
+        {
+          "blocked_fraction": 0,
+          "centroid": [
+            0,
+            17.997769370435712
+          ],
+          "distortion_percent": -0.17480453649189043,
+          "failed": 0,
+          "failures": [],
+          "field": 0.04503796577453613,
+          "rms_um": 4.290249654661152,
+          "sampled": 797,
+          "wavelength_nm": 656.2725,
+          "weight": 1
+        },
+        {
+          "blocked_fraction": 0,
+          "centroid": [
+            0,
+            21.652561569217198
+          ],
+          "distortion_percent": -0.08552729892957744,
+          "failed": 0,
+          "failures": [],
+          "field": 0.054118880629539484,
+          "rms_um": 10.391807432359917,
+          "sampled": 797,
+          "wavelength_nm": 486.1327,
+          "weight": 1
+        },
+        {
+          "blocked_fraction": 0,
+          "centroid": [
+            0,
+            21.6357722096403
+          ],
+          "distortion_percent": -0.1627964372308499,
+          "failed": 0,
+          "failures": [],
+          "field": 0.054118880629539484,
+          "rms_um": 12.462488822766554,
+          "sampled": 797,
+          "wavelength_nm": 587.5618,
+          "weight": 1
+        },
+        {
+          "blocked_fraction": 0,
+          "centroid": [
+            0,
+            21.630638149529254
+          ],
+          "distortion_percent": -0.18635846838699344,
+          "failed": 0,
+          "failures": [],
+          "field": 0.054118880629539484,
+          "rms_um": 8.411077214283273,
+          "sampled": 797,
+          "wavelength_nm": 656.2725,
+          "weight": 1
+        }
+      ],
+      "units": "length:mm; angle:rad; wavelength:nm; RMS:µm"
+    },
+    {
+      "chromatic_focus": [
+        {
+          "paraxial_focus_offset_mm": 0.027506809292276557,
+          "wavelength_nm": 486.1327
+        },
+        {
+          "paraxial_focus_offset_mm": 0,
+          "wavelength_nm": 587.5618
+        },
+        {
+          "paraxial_focus_offset_mm": 0.24888513178655103,
+          "wavelength_nm": 656.2725
+        }
+      ],
+      "coverage": {
+        "checkpoints": [
+          {
+            "height_mm": 12,
+            "ideal_angle_rad": 0.029991181672401262,
+            "label": "短边中点",
+            "status": "sampled_clear",
+            "tested_field_index": 1
+          },
+          {
+            "height_mm": 18,
+            "ideal_angle_rad": 0.04496992677783767,
+            "label": "长边中点",
+            "status": "sampled_clear",
+            "tested_field_index": 2
+          },
+          {
+            "height_mm": 21.633307652783937,
+            "ideal_angle_rad": 0.054030948409989885,
+            "label": "画面角落",
+            "status": "sampled_clear",
+            "tested_field_index": 3
+          }
+        ],
+        "fields": [
+          {
+            "angle_rad": 0,
+            "blocked": 0,
+            "chief_height_mm": 0,
+            "fast_mtf": "not_calculated",
+            "geometric_fraction": 1,
+            "other_failed": 0,
+            "sampled": 2391,
+            "unresolved": 0,
+            "wide_mtf": "not_calculated"
+          },
+          {
+            "angle_rad": 0.030032264590263362,
+            "blocked": 0,
+            "chief_height_mm": 12.000000049319038,
+            "fast_mtf": "not_calculated",
+            "geometric_fraction": 1,
+            "other_failed": 0,
+            "sampled": 2391,
+            "unresolved": 0,
+            "wide_mtf": "not_calculated"
+          },
+          {
+            "angle_rad": 0.04503796577453613,
+            "blocked": 0,
+            "chief_height_mm": 18.000000072159327,
+            "fast_mtf": "not_calculated",
+            "geometric_fraction": 1,
+            "other_failed": 0,
+            "sampled": 2391,
+            "unresolved": 0,
+            "wide_mtf": "not_calculated"
+          },
+          {
+            "angle_rad": 0.054118880629539484,
+            "blocked": 0,
+            "chief_height_mm": 21.633307700525076,
+            "fast_mtf": "not_calculated",
+            "geometric_fraction": 1,
+            "other_failed": 0,
+            "sampled": 2391,
+            "unresolved": 0,
+            "wide_mtf": "not_calculated"
+          }
+        ],
+        "focus_condition": "common_flat_sensor",
+        "half_diagonal_mm": 21.633307652783937,
+        "image_z_mm": 552.6863114888424,
+        "max_tested_height_mm": 21.633307700525076,
+        "reference_wavelength_nm": 587.5618,
+        "sampling": 33,
+        "sensor_mm": [
+          36,
+          24
+        ],
+        "warnings": [
+          "覆盖结论仅针对列出的视场与瞳采样，不证明整个像圈连续通光；几何采样比例不是精确相对照度。MTF 必须单独计算并通过适用性与收敛检查。"
+        ]
+      },
+      "diagnostics": [],
+      "experimental_wave": null,
+      "fields": [
+        {
+          "centroid": [
+            0,
+            9.286683602050661e-20
+          ],
+          "field": 0,
+          "lateral_color_um": 8.358015241845595e-16,
+          "polychromatic_rms_um": 9.231256434553327,
+          "sagittal_focus_offset_mm": 0.5518949481682534,
+          "tangential_focus_offset_mm": 0.5518949481682534
+        },
+        {
+          "centroid": [
+            0,
+            12.003491830809638
+          ],
+          "field": 0.030032264590263362,
+          "lateral_color_um": 12.121975090854775,
+          "polychromatic_rms_um": 6.980535374090517,
+          "sagittal_focus_offset_mm": 0.36668269599185355,
+          "tangential_focus_offset_mm": 0.24001588166604174
+        },
+        {
+          "centroid": [
+            0,
+            18.00526299229592
+          ],
+          "field": 0.04503796577453613,
+          "lateral_color_um": 18.215410462804726,
+          "polychromatic_rms_um": 9.621525629265664,
+          "sagittal_focus_offset_mm": 0.13563324884018985,
+          "tangential_focus_offset_mm": -0.14871150205206993
+        },
+        {
+          "centroid": [
+            0,
+            21.63965730946225
+          ],
+          "field": 0.054118880629539484,
+          "lateral_color_um": 21.92341968794409,
+          "polychromatic_rms_um": 14.106838479025356,
+          "sagittal_focus_offset_mm": -0.04883429881379951,
+          "tangential_focus_offset_mm": -0.45879808747748657
+        }
+      ],
+      "paraxial": {
+        "bfl": 389.33820684137095,
+        "efl": 399.99764035180965,
+        "entrance_pupil_radius": 12.5,
+        "entrance_pupil_z": 95.56177724333577,
+        "exit_pupil_radius": 13.757174031068791,
+        "exit_pupil_z": 113.01123481443415,
+        "f_number": 15.999905614072386
+      },
+      "sampling": 33,
+      "spots": [
+        {
+          "blocked_fraction": 0,
+          "centroid": [
+            0,
+            5.572010161230396e-19
+          ],
+          "distortion_percent": null,
+          "failed": 0,
+          "failures": [],
+          "field": 0,
+          "rms_um": 8.783279072675827,
+          "sampled": 797,
+          "wavelength_nm": 486.1327,
+          "weight": 1
+        },
+        {
+          "blocked_fraction": 0,
+          "centroid": [
+            0,
+            -2.786005080615198e-19
+          ],
+          "distortion_percent": null,
+          "failed": 0,
+          "failures": [],
+          "field": 0,
+          "rms_um": 6.764189160584436,
+          "sampled": 797,
+          "wavelength_nm": 587.5618,
+          "weight": 1
+        },
+        {
+          "blocked_fraction": 0,
+          "centroid": [
+            0,
+            0
+          ],
+          "distortion_percent": null,
+          "failed": 0,
+          "failures": [],
+          "field": 0,
+          "rms_um": 11.52163355660878,
+          "sampled": 797,
+          "wavelength_nm": 656.2725,
+          "weight": 1
+        },
+        {
+          "blocked_fraction": 0,
+          "centroid": [
+            0,
+            12.010627028715467
+          ],
+          "distortion_percent": -0.05982811984958092,
+          "failed": 0,
+          "failures": [],
+          "field": 0.030032264590263362,
+          "rms_um": 3.943218298993843,
+          "sampled": 797,
+          "wavelength_nm": 486.1327,
+          "weight": 1
+        },
+        {
+          "blocked_fraction": 0,
+          "centroid": [
+            0,
+            12.00134341008884
+          ],
+          "distortion_percent": -0.1368776469311439,
+          "failed": 0,
+          "failures": [],
+          "field": 0.030032264590263362,
+          "rms_um": 2.840421755239917,
+          "sampled": 797,
+          "wavelength_nm": 587.5618,
+          "weight": 1
+        },
+        {
+          "blocked_fraction": 0,
+          "centroid": [
+            0,
+            11.998505053624612
+          ],
+          "distortion_percent": -0.160368980100567,
+          "failed": 0,
+          "failures": [],
+          "field": 0.030032264590263362,
+          "rms_um": 6.493993269458455,
+          "sampled": 797,
+          "wavelength_nm": 656.2725,
+          "weight": 1
+        },
+        {
+          "blocked_fraction": 0,
+          "centroid": [
+            0,
+            18.015984780898517
+          ],
+          "distortion_percent": -0.07410242178692572,
+          "failed": 0,
+          "failures": [],
+          "field": 0.04503796577453613,
+          "rms_um": 5.243553720148029,
+          "sampled": 797,
+          "wavelength_nm": 486.1327,
+          "weight": 1
+        },
+        {
+          "blocked_fraction": 0,
+          "centroid": [
+            0,
+            18.00203482555353
+          ],
+          "distortion_percent": -0.15127393368226105,
+          "failed": 0,
+          "failures": [],
+          "field": 0.04503796577453613,
+          "rms_um": 7.091402445903919,
+          "sampled": 797,
+          "wavelength_nm": 587.5618,
+          "weight": 1
+        },
+        {
+          "blocked_fraction": 0,
+          "centroid": [
+            0,
+            17.997769370435712
+          ],
+          "distortion_percent": -0.17480453649189043,
+          "failed": 0,
+          "failures": [],
+          "field": 0.04503796577453613,
+          "rms_um": 4.290249654661152,
+          "sampled": 797,
+          "wavelength_nm": 656.2725,
+          "weight": 1
+        },
+        {
+          "blocked_fraction": 0,
+          "centroid": [
+            0,
+            21.652561569217198
+          ],
+          "distortion_percent": -0.08552729892957744,
+          "failed": 0,
+          "failures": [],
+          "field": 0.054118880629539484,
+          "rms_um": 10.391807432359917,
+          "sampled": 797,
+          "wavelength_nm": 486.1327,
+          "weight": 1
+        },
+        {
+          "blocked_fraction": 0,
+          "centroid": [
+            0,
+            21.6357722096403
+          ],
+          "distortion_percent": -0.1627964372308499,
+          "failed": 0,
+          "failures": [],
+          "field": 0.054118880629539484,
+          "rms_um": 12.462488822766554,
+          "sampled": 797,
+          "wavelength_nm": 587.5618,
+          "weight": 1
+        },
+        {
+          "blocked_fraction": 0,
+          "centroid": [
+            0,
+            21.630638149529254
+          ],
+          "distortion_percent": -0.18635846838699344,
+          "failed": 0,
+          "failures": [],
+          "field": 0.054118880629539484,
+          "rms_um": 8.411077214283273,
+          "sampled": 797,
+          "wavelength_nm": 656.2725,
+          "weight": 1
+        }
+      ],
+      "units": "length:mm; angle:rad; wavelength:nm; RMS:µm"
+    }
+  ],
+  "wave_options": {
+    "method": "fast",
+    "field_index": 0,
+    "wavelength_nm": null,
+    "max_pupil_samples": 256
+  },
+  "contents": "Prescriptions, configuration, geometric summaries, MTF and convergence diagnostics; raw ray and PSF arrays omitted."
+}

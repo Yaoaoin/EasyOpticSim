@@ -1,0 +1,10 @@
+[package]
+name = "oos-cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+openoptics = { path = "../optics" }
+serde_json.workspace = true
+

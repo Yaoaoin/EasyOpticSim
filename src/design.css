@@ -1,0 +1,118 @@
+.design-inputs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin: 20px 0;
+}
+.design-inputs .number {
+  margin-bottom: 9px;
+}
+.sweep-chart {
+  width: 100%;
+  height: 235px;
+  background: #10191f;
+  border-radius: 6px;
+}
+.sweep-chart text {
+  font-size: 12px;
+}
+.sweep-chart circle,
+.pupil-map circle[role="button"] {
+  cursor: pointer;
+}
+.pupil-grid {
+  display: grid;
+  grid-template-columns: minmax(220px, 400px) minmax(160px, 1fr);
+  gap: 22px;
+  align-items: center;
+}
+.pupil-map {
+  width: 100%;
+  max-height: 400px;
+}
+.pupil-map text {
+  font-size: 12px;
+}
+.group-candidate {
+  padding: 12px;
+  background: #b6dc9110;
+  border: 1px solid #b6dc9144;
+  border-radius: 6px;
+}
+.workflow-panel .error {
+  color: #efb1a8;
+  white-space: pre-line;
+}
+.workflow-panel input[type="radio"] {
+  width: auto;
+}
+.workflow-panel td {
+  vertical-align: top;
+}
+.workflow-panel .workflow-actions label {
+  flex-wrap: wrap;
+}
+.workflow-panel .workflow-actions input:not([type="checkbox"]) {
+  max-width: 240px;
+}
+.pupil-map [role="button"]:focus {
+  outline: none;
+  stroke: white;
+  stroke-width: 3px;
+}
+.coverage-report {
+  border: 1px solid #7f9ba840;
+  border-left: 3px solid #d4ba7b;
+  background: #182329;
+  padding: 12px 16px;
+  margin: 12px 0;
+  border-radius: 5px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.coverage-report p {
+  margin: 6px 0;
+  font-size: 12px;
+  color: #a9b9c5;
+}
+.coverage-checkpoints {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  font-size: 12px;
+}
+.coverage-gap {
+  color: #f1bd88;
+}
+.field-panel {
+  border-top: 1px solid #ffffff18;
+  padding-top: 12px;
+  margin-top: 16px;
+  min-width: 0;
+}
+.field-panel label,
+.quality-editor > label {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 8px 0;
+}
+.field-panel select {
+  max-width: 100%;
+}
+.quality-editor {
+  margin: 14px 0;
+  padding: 10px;
+  border: 1px solid #ffffff18;
+  border-radius: 4px;
+}
+.quality-editor input[type="checkbox"] {
+  width: auto;
+}
+@media (max-width: 1150px) {
+  .design-inputs,
+  .pupil-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

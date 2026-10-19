@@ -1,0 +1,88 @@
+{
+  "version": "0.6.0",
+  "scope": "CLI integration and independently recomputed merit/weights; optical ray tracing is the same engine",
+  "presets": [
+    {
+      "preset": "center",
+      "adoptable": true,
+      "weighted_rms_um": 44.66032527742361,
+      "image_distance_mm": 46.689355253124575,
+      "iterations": 3,
+      "stop_reason": "变量步长收敛或已到达上下限"
+    },
+    {
+      "preset": "balanced",
+      "adoptable": true,
+      "weighted_rms_um": 48.55268675563174,
+      "image_distance_mm": 46.55837896720092,
+      "iterations": 3,
+      "stop_reason": "变量步长收敛或已到达上下限"
+    },
+    {
+      "preset": "edge",
+      "adoptable": true,
+      "weighted_rms_um": 50.33098178651592,
+      "image_distance_mm": 46.44864294463312,
+      "iterations": 3,
+      "stop_reason": "变量步长收敛或已到达上下限"
+    }
+  ],
+  "blockers": [
+    {
+      "actual": 450.909194240689,
+      "limit": 0.5,
+      "name": "efl_error_mm",
+      "passed": false,
+      "relation": "max",
+      "surface": null
+    }
+  ],
+  "progress_events": 4,
+  "glass_models": [
+    {
+      "name": "SCHOTT N-BK7",
+      "efl_mm": 49.04300176814204,
+      "failed_rays": 0
+    },
+    {
+      "name": "SCHOTT N-BAK4",
+      "efl_mm": 44.59685560723951,
+      "failed_rays": 0
+    },
+    {
+      "name": "SCHOTT N-SK16",
+      "efl_mm": 40.92266161900155,
+      "failed_rays": 0
+    },
+    {
+      "name": "SCHOTT N-LAK22",
+      "efl_mm": 39.01011619588564,
+      "failed_rays": 0
+    },
+    {
+      "name": "SCHOTT N-F2",
+      "efl_mm": 40.94598567731385,
+      "failed_rays": 0
+    },
+    {
+      "name": "SCHOTT N-SF5",
+      "efl_mm": 37.770887842274746,
+      "failed_rays": 0
+    },
+    {
+      "name": "SCHOTT N-SF10",
+      "efl_mm": 34.91612570291511,
+      "failed_rays": 0
+    },
+    {
+      "name": "SCHOTT N-SF11",
+      "efl_mm": 32.42884255782006,
+      "failed_rays": 0
+    }
+  ],
+  "metadata_invariance": {
+    "geometry": true,
+    "psf_mtf": true,
+    "imaging": true
+  }
+}

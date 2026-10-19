@@ -1,0 +1,39 @@
+name: 软件问题 / Bug report
+description: 界面、安装、保存或导出出现异常
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: 请先搜索已有问题。不要上传密钥、私人路径、客户处方或无权公开的图片；安全漏洞按 SECURITY.md 私密报告。
+  - type: input
+    id: version
+    attributes:
+      label: OOS 版本与来源
+      placeholder: 例如 1.0.0，Windows 安装包 / 自行构建及提交号
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: 系统环境
+      placeholder: Windows 版本、x64、显示缩放；安装问题请注明 WebView2 情况
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 最小复现步骤
+      placeholder: 从哪个示例开始，依次进行哪些操作？
+    validations:
+      required: true
+  - type: textarea
+    id: expected_actual
+    attributes:
+      label: 预期与实际结果
+    validations:
+      required: true
+  - type: textarea
+    id: attachments
+    attributes:
+      label: 截图、脱敏项目与日志
+      description: 可将 .oos.json 压缩后附上；无法共享时说明使用的内置示例及改动。日志请删除私人路径。
