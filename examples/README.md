@@ -20,3 +20,7 @@
 `docs/fixtures/` 是相应教学 / 用户自建模型的保存、扫描和 UI 回归变体。截图为本项目本地界面与这些模型的输出；保留它们是为了复现实测，不作为商品镜头性能证据。
 
 真实玻璃子集来自 refractiveindex.info 的 CC0 数据快照；项目、材料源 URL 和校验值见 [许可审查](../docs/THIRD_PARTY_AUDIT.md)。新增处方必须说明其原创、授权或可再分发依据，不能把“网上能找到”当作许可。
+
+## v1.1 镜组运动
+
+`24-70mm-zoom.oos.json`：项目自主构建的两正双胶合镜组教学变焦，24/35/50/70 mm 四个配置，4×3 mm 传感器、小光圈；非商业 24–70 mm f/2.8 或全画幅处方。采用已有合成材料快照，按 Apache-2.0 分发。生成器 `scripts/build_zoom_example.py`，独立验证 `scripts/validate_motion.py`，使用方法见 [镜组运动](../docs/manual/motion.md)。

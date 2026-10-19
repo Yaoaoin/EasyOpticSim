@@ -1,3 +1,5 @@
+import MotionPanel from "./MotionPanel";
+import { synchronizeMotion } from "./motion";
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import {
   Aperture,
@@ -213,6 +215,7 @@ export default function App() {
     if (!current) return;
     const p = copy(current);
     fn(p);
+    synchronizeMotion(current, p);
     if (p.workspace?.optimization?.quality) {
       const floors = p.workspace.optimization.quality.max_rms_um;
       if (floors.length && floors.length !== p.fields.length) {
@@ -703,7 +706,7 @@ export default function App() {
           <div>
             OpenOpticSim <small>光学工作室</small>
           </div>
-          <span className="alpha">1.0</span>
+          <span className="alpha">1.1</span>
         </div>
         <div className="toolbar">
           <button
@@ -1064,7 +1067,14 @@ export default function App() {
                 }
                 onClick={() => {
                   if (adoptionBlockers(candidate).length) return;
-                  replace(restoreVersion(project, candidate.project));
+                  const next = restoreVersion(project, candidate.project);
+                  if (project.workspace?.motion) {
+                    ensureWorkspace(next).motion = copy(
+                      project.workspace.motion,
+                    );
+                    synchronizeMotion(project, next);
+                  }
+                  replace(next);
                 }}
               >
                 采纳候选
@@ -1218,6 +1228,7 @@ export default function App() {
                 onSurface={setSelected}
               />
             )}
+            {tab === "motion" && <MotionPanel project={project} edit={edit} />}
             {tab === "groups" && (
               <GroupPanel
                 project={project}
@@ -1229,8 +1240,10 @@ export default function App() {
               <VersionPanel
                 project={project}
                 edit={edit}
-                restore={(p, preset, groups) =>
-                  replace(restoreVersion(project, p, preset, groups ?? []))
+                restore={(p, preset, groups, motion) =>
+                  replace(
+                    restoreVersion(project, p, preset, groups ?? [], motion),
+                  )
                 }
               />
             )}
@@ -1625,6 +1638,7 @@ export default function App() {
                       if (p) {
                         const q = copy(p);
                         q.surfaces[q.stop].semi_aperture = v;
+                        synchronizeMotion(p, q);
                         installProject(q);
                       }
                     }}

@@ -14,6 +14,7 @@ import { prescription } from "./versions";
 import { download, projectFromJson } from "./project";
 import repaired400 from "../examples/400mm-coverage-0.9.oos.json";
 import wide35 from "../examples/35mm-coverage.oos.json";
+import zoom2470 from "../examples/24-70mm-zoom.oos.json";
 export const native = "__TAURI_INTERNALS__" in window;
 export async function exportPdf(
   name: string,
@@ -65,6 +66,7 @@ export async function examples(): Promise<Project[]> {
       ...(await invoke<Project[]>("examples")),
       projectFromJson(JSON.stringify(repaired400)),
       projectFromJson(JSON.stringify(wide35)),
+      projectFromJson(JSON.stringify(zoom2470)),
     ];
   const r = await fetch("/api/examples", {
     method: "POST",
@@ -77,6 +79,7 @@ export async function examples(): Promise<Project[]> {
     ...data,
     projectFromJson(JSON.stringify(repaired400)),
     projectFromJson(JSON.stringify(wide35)),
+    projectFromJson(JSON.stringify(zoom2470)),
   ];
 }
 export async function compute<T>(
@@ -95,6 +98,7 @@ export async function compute<T>(
     constraints?: Constraints;
     optimization?: OptimizationOptions;
     aperture_options?: ApertureOptions;
+    motion_options?: import("./types").MotionOptions;
     group_move?: { start: number; end: number; delta_mm: number };
   } = {},
   onProgress?: (p: OptimizationProgress) => void,

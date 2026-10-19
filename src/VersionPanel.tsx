@@ -166,6 +166,7 @@ export default function VersionPanel({
     p: Project,
     preset?: AnalysisPreset,
     groups?: OpticalGroup[],
+    motion?: import("./types").MotionWorkspace,
   ) => void;
 }) {
   const versions = project.workspace?.versions ?? [];
@@ -387,6 +388,7 @@ export default function VersionPanel({
                           v.prescription,
                           v.analysis_preset ?? "balanced",
                           v.groups,
+                          v.motion,
                         )
                       }
                     >

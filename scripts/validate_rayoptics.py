@@ -68,9 +68,10 @@ def validate(project):
     assert worst_direction < 1e-9, worst_direction
     return dict(name=project['name'],rays=count,max_intersection_error_mm=worst_point,max_optical_path_error_mm=worst_opl,max_direction_error=worst_direction)
 
-projects=json.loads(subprocess.check_output([str(CLI),'examples'],encoding='utf-8'))
-extra=json.loads(json.dumps(projects[0]));extra['name']='Aspheric + finite object';extra['object_distance']=1000.;extra['surfaces'][1]['conic']=-0.5;extra['surfaces'][1]['asphere'][0]=1e-6
-projects.append(extra)
-report=dict(reference='RayOptics '+version('rayoptics'),scope='Sequential geometric intersections, directions and optical path; not diffraction or pupil aiming',results=[validate(p) for p in projects])
-output=ROOT/'docs'/'validation-rayoptics.json';output.parent.mkdir(exist_ok=True);output.write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
-print(json.dumps(report,ensure_ascii=True,indent=2))
+if __name__ == "__main__":
+    projects=json.loads(subprocess.check_output([str(CLI),'examples'],encoding='utf-8'))
+    extra=json.loads(json.dumps(projects[0]));extra['name']='Aspheric + finite object';extra['object_distance']=1000.;extra['surfaces'][1]['conic']=-0.5;extra['surfaces'][1]['asphere'][0]=1e-6
+    projects.append(extra)
+    report=dict(reference='RayOptics '+version('rayoptics'),scope='Sequential geometric intersections, directions and optical path; not diffraction or pupil aiming',results=[validate(p) for p in projects])
+    output=ROOT/'docs'/'validation-rayoptics.json';output.parent.mkdir(exist_ok=True);output.write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
+    print(json.dumps(report,ensure_ascii=True,indent=2))

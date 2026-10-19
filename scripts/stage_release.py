@@ -1,4 +1,4 @@
-"""Verify local resources and stage 1.0 assets. Never commits, tags or uploads."""
+"""Verify local resources and stage versioned assets. Never commits, tags or uploads."""
 import hashlib
 import json
 from pathlib import Path
@@ -25,8 +25,8 @@ def main():
     config = read(ROOT / 'src-tauri/tauri.conf.json')
     version = package['version']
     cargo = tomllib.loads((ROOT / 'Cargo.toml').read_text(encoding='utf-8'))
-    if version != '1.0.0' or config['version'] != version or cargo['workspace']['package']['version'] != version:
-        raise SystemExit('This staging recipe is for matching 1.0.0 source and desktop versions only.')
+    if version not in ('1.0.0', '1.1.0') or config['version'] != version or cargo['workspace']['package']['version'] != version:
+        raise SystemExit('This staging recipe is for matching supported source and desktop versions only.')
     installer = ROOT / f'target/release/bundle/nsis/OpenOpticSim_{version}_x64-setup.exe'
     executable = ROOT / 'target/release/openopticsim-desktop.exe'
     if not installer.is_file() or not executable.is_file():
@@ -85,11 +85,12 @@ def main():
     revision = subprocess.run(['git', 'rev-parse', '--verify', 'HEAD'], cwd=ROOT, capture_output=True, text=True)
     source_commit = revision.stdout.strip() if revision.returncode == 0 else None
     status = subprocess.check_output(['git', 'status', '--porcelain'], cwd=ROOT)
-    release_path = ROOT / 'docs/release-1.0.json'
+    series = '.'.join(version.split('.')[:2])
+    release_path = ROOT / f'docs/release-{series}.json'
     release = read(release_path) if release_path.exists() else {}
-    startup_path = ROOT / 'artifacts/startup-release-1.0.json'
+    startup_path = ROOT / f'artifacts/startup-release-{series}.json'
     if not startup_path.exists():
-        startup_path = ROOT / 'docs/startup-1.0.json'
+        startup_path = ROOT / f'docs/startup-{series}.json'
     startup = read(startup_path) if startup_path.exists() else None
     executable_hash = digest(executable)
     if not startup or startup.get('executable_sha256', '').lower() != executable_hash or startup.get('exited') is not False or startup.get('responding') is not True:
@@ -140,8 +141,8 @@ def main():
         raise SystemExit('Refusing installer checksum symlink.')
     sidecar.write_text(checksum, encoding='ascii')
     names.append(checksum_name)
-    copy(ROOT / 'docs/OOS-1.0-使用手册.html', f'OpenOpticSim-{version}-manual.html')
-    copy(ROOT / 'docs/releases/1.0.0.md', f'OpenOpticSim-{version}-release-notes.md')
+    copy(ROOT / f'docs/OOS-{series}-使用手册.html', f'OpenOpticSim-{version}-manual.html')
+    copy(ROOT / f'docs/releases/{version}.md', f'OpenOpticSim-{version}-release-notes.md')
     for name in ['LICENSE', 'NOTICE', 'THIRD_PARTY_NOTICES.txt']:
         copy(ROOT / name, name)
 

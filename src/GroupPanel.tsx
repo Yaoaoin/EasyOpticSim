@@ -38,8 +38,8 @@ export default function GroupPanel({
   function create() {
     const a = items[first],
       b = items[last];
-    if (!a || !b || last <= first) {
-      setError("请选择至少两枚相邻镜片，结束镜片须在开始镜片之后");
+    if (!a || !b || last < first) {
+      setError("请选择一枚或多枚相邻完整镜片");
       return;
     }
     const next = {
@@ -113,7 +113,7 @@ export default function GroupPanel({
           </label>
         ))}
         <button
-          disabled={groups.length >= 20 || items.length < 2}
+          disabled={groups.length >= 20 || items.length < 1}
           onClick={create}
         >
           创建镜组

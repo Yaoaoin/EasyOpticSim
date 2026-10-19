@@ -358,6 +358,7 @@ export interface ConstraintCheck {
 }
 export type Prescription = Omit<Project, "workspace">;
 export interface DesignVersion {
+  motion?: MotionWorkspace;
   id: string;
   name: string;
   created_at: string;
@@ -367,6 +368,7 @@ export interface DesignVersion {
   groups?: OpticalGroup[];
 }
 export interface Workspace {
+  motion?: MotionWorkspace;
   schema_version: 1;
   versions: DesignVersion[];
   focus?: FocusOptions;
@@ -375,4 +377,57 @@ export interface Workspace {
   aperture?: ApertureOptions;
   aperture_scan?: ApertureScan;
   groups?: OpticalGroup[];
+}
+
+export interface MotionGroup extends OpticalGroup {
+  min_mm: number;
+  max_mm: number;
+  locked: boolean;
+}
+export interface MotionConfiguration {
+  id: string;
+  name: string;
+  positions_mm: number[];
+  object_distance: number | null;
+  target_efl_mm: number | null;
+  target_f_number: number | null;
+}
+export interface MotionWorkspace {
+  application_revision?: number;
+  schema_version: 1;
+  reference: Prescription;
+  groups: MotionGroup[];
+  configurations: MotionConfiguration[];
+  active_id: string | null;
+  min_air_mm: number;
+  sampling: number;
+  criterion: "center" | "balanced";
+  max_rms_um: number;
+}
+export interface MotionOptions {
+  groups: MotionGroup[];
+  positions_mm: number[];
+  object_distance: number | null;
+  min_air_mm: number;
+  target_f_number: number | null;
+  solve_group: number | null;
+  sampling: number;
+  criterion: "center" | "balanced";
+  max_rms_um: number;
+}
+export interface MotionResult {
+  project: Prescription;
+  positions_mm: number[];
+  origin_shift_mm: number;
+  sensor_reference_mm: number;
+  analysis: Analysis;
+  score_um: number | null;
+  accepted: boolean;
+  boundary_best: boolean;
+  diagnostic: string;
+  points: {
+    positions_mm: number[];
+    score_um: number | null;
+    diagnostic: string | null;
+  }[];
 }

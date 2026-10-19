@@ -1,0 +1,421 @@
+{
+  "version": "1.1.0",
+  "scope": "Geometric motion, fixed sensor, finite-object coordinates, paraxial EFL and independent RayOptics intersections; does not certify zoom PSF/MTF or full-frame coverage",
+  "zoom": [
+    {
+      "configuration": "24 mm",
+      "efl_mm": 24.000000000000007,
+      "f_number": 10.000000000000004,
+      "rms_um": 7.201051809066637,
+      "rms_33_um": 7.232702568837791,
+      "sampling_change_um": 0.0316507597711535,
+      "rayoptics": {
+        "name": "24–70 mm · 双镜组教学变焦",
+        "rays": 84,
+        "max_intersection_error_mm": 9.15752682018045e-11,
+        "max_optical_path_error_mm": 7.740652563370531e-11,
+        "max_direction_error": 2.2524430237647053e-13
+      }
+    },
+    {
+      "configuration": "35 mm",
+      "efl_mm": 35.0,
+      "f_number": 14.583333333333334,
+      "rms_um": 4.176335618450291,
+      "rms_33_um": 4.180189565088764,
+      "sampling_change_um": 0.003853946638472827,
+      "rayoptics": {
+        "name": "24–70 mm · 双镜组教学变焦",
+        "rays": 84,
+        "max_intersection_error_mm": 8.645439919519049e-11,
+        "max_optical_path_error_mm": 5.445599526865408e-11,
+        "max_direction_error": 6.808442698513772e-14
+      }
+    },
+    {
+      "configuration": "50 mm",
+      "efl_mm": 49.99999999999998,
+      "f_number": 20.833333333333325,
+      "rms_um": 3.3615951847980696,
+      "rms_33_um": 3.364902163931756,
+      "sampling_change_um": 0.003306979133686383,
+      "rayoptics": {
+        "name": "24–70 mm · 双镜组教学变焦",
+        "rays": 84,
+        "max_intersection_error_mm": 9.14486264491643e-11,
+        "max_optical_path_error_mm": 3.147704319417244e-11,
+        "max_direction_error": 2.643718577388654e-14
+      }
+    },
+    {
+      "configuration": "70 mm",
+      "efl_mm": 69.99999999999991,
+      "f_number": 29.166666666666632,
+      "rms_um": 2.317832554626211,
+      "rms_33_um": 2.320742508587604,
+      "sampling_change_um": 0.0029099539613932635,
+      "rayoptics": {
+        "name": "24–70 mm · 双镜组教学变焦",
+        "rays": 84,
+        "max_intersection_error_mm": 9.958078805993864e-11,
+        "max_optical_path_error_mm": 2.69579913947382e-11,
+        "max_direction_error": 3.2633618030075695e-14
+      }
+    }
+  ],
+  "intermediates": [
+    {
+      "segment": [
+        "24 mm",
+        "35 mm"
+      ],
+      "fraction": 0.0,
+      "efl_mm": 24.000000000000007,
+      "rms_um": 7.395181052048646,
+      "accepted": true
+    },
+    {
+      "segment": [
+        "24 mm",
+        "35 mm"
+      ],
+      "fraction": 0.1,
+      "efl_mm": 24.77876106194691,
+      "rms_um": 5.679402285136686,
+      "accepted": true
+    },
+    {
+      "segment": [
+        "24 mm",
+        "35 mm"
+      ],
+      "fraction": 0.2,
+      "efl_mm": 25.609756097560982,
+      "rms_um": 4.9397990374227465,
+      "accepted": true
+    },
+    {
+      "segment": [
+        "24 mm",
+        "35 mm"
+      ],
+      "fraction": 0.3,
+      "efl_mm": 26.498422712933763,
+      "rms_um": 4.945775892296878,
+      "accepted": true
+    },
+    {
+      "segment": [
+        "24 mm",
+        "35 mm"
+      ],
+      "fraction": 0.4,
+      "efl_mm": 27.45098039215687,
+      "rms_um": 5.2408311875238205,
+      "accepted": true
+    },
+    {
+      "segment": [
+        "24 mm",
+        "35 mm"
+      ],
+      "fraction": 0.5,
+      "efl_mm": 28.474576271186447,
+      "rms_um": 5.473527273265063,
+      "accepted": true
+    },
+    {
+      "segment": [
+        "24 mm",
+        "35 mm"
+      ],
+      "fraction": 0.6,
+      "efl_mm": 29.5774647887324,
+      "rms_um": 5.4697582386382395,
+      "accepted": true
+    },
+    {
+      "segment": [
+        "24 mm",
+        "35 mm"
+      ],
+      "fraction": 0.7,
+      "efl_mm": 30.769230769230774,
+      "rms_um": 5.175766547504702,
+      "accepted": true
+    },
+    {
+      "segment": [
+        "24 mm",
+        "35 mm"
+      ],
+      "fraction": 0.8,
+      "efl_mm": 32.06106870229008,
+      "rms_um": 4.64599692276124,
+      "accepted": true
+    },
+    {
+      "segment": [
+        "24 mm",
+        "35 mm"
+      ],
+      "fraction": 0.9,
+      "efl_mm": 33.46613545816734,
+      "rms_um": 4.126060450314814,
+      "accepted": true
+    },
+    {
+      "segment": [
+        "24 mm",
+        "35 mm"
+      ],
+      "fraction": 1.0,
+      "efl_mm": 35.0,
+      "rms_um": 4.20112087912181,
+      "accepted": true
+    },
+    {
+      "segment": [
+        "35 mm",
+        "50 mm"
+      ],
+      "fraction": 0.0,
+      "efl_mm": 35.0,
+      "rms_um": 4.20112087912181,
+      "accepted": true
+    },
+    {
+      "segment": [
+        "35 mm",
+        "50 mm"
+      ],
+      "fraction": 0.1,
+      "efl_mm": 36.08247422680412,
+      "rms_um": 4.1311564211936025,
+      "accepted": true
+    },
+    {
+      "segment": [
+        "35 mm",
+        "50 mm"
+      ],
+      "fraction": 0.2,
+      "efl_mm": 37.234042553191486,
+      "rms_um": 4.939903626306523,
+      "accepted": true
+    },
+    {
+      "segment": [
+        "35 mm",
+        "50 mm"
+      ],
+      "fraction": 0.3,
+      "efl_mm": 38.46153846153846,
+      "rms_um": 5.837904434648866,
+      "accepted": true
+    },
+    {
+      "segment": [
+        "35 mm",
+        "50 mm"
+      ],
+      "fraction": 0.4,
+      "efl_mm": 39.77272727272727,
+      "rms_um": 6.483109917476773,
+      "accepted": true
+    },
+    {
+      "segment": [
+        "35 mm",
+        "50 mm"
+      ],
+      "fraction": 0.5,
+      "efl_mm": 41.17647058823529,
+      "rms_um": 6.758516005860968,
+      "accepted": true
+    },
+    {
+      "segment": [
+        "35 mm",
+        "50 mm"
+      ],
+      "fraction": 0.6,
+      "efl_mm": 42.68292682926829,
+      "rms_um": 6.627695594502972,
+      "accepted": true
+    },
+    {
+      "segment": [
+        "35 mm",
+        "50 mm"
+      ],
+      "fraction": 0.7,
+      "efl_mm": 44.303797468354425,
+      "rms_um": 6.093990571440917,
+      "accepted": true
+    },
+    {
+      "segment": [
+        "35 mm",
+        "50 mm"
+      ],
+      "fraction": 0.8,
+      "efl_mm": 46.05263157894736,
+      "rms_um": 5.205571609148309,
+      "accepted": true
+    },
+    {
+      "segment": [
+        "35 mm",
+        "50 mm"
+      ],
+      "fraction": 0.9,
+      "efl_mm": 47.94520547945204,
+      "rms_um": 4.123745035701778,
+      "accepted": true
+    },
+    {
+      "segment": [
+        "35 mm",
+        "50 mm"
+      ],
+      "fraction": 1.0,
+      "efl_mm": 49.99999999999998,
+      "rms_um": 3.3820399480376224,
+      "accepted": true
+    },
+    {
+      "segment": [
+        "50 mm",
+        "70 mm"
+      ],
+      "fraction": 0.0,
+      "efl_mm": 49.99999999999998,
+      "rms_um": 3.3820399480376224,
+      "accepted": true
+    },
+    {
+      "segment": [
+        "50 mm",
+        "70 mm"
+      ],
+      "fraction": 0.1,
+      "efl_mm": 51.470588235294095,
+      "rms_um": 3.860746816208239,
+      "accepted": true
+    },
+    {
+      "segment": [
+        "50 mm",
+        "70 mm"
+      ],
+      "fraction": 0.2,
+      "efl_mm": 53.030303030303,
+      "rms_um": 4.718355527959643,
+      "accepted": true
+    },
+    {
+      "segment": [
+        "50 mm",
+        "70 mm"
+      ],
+      "fraction": 0.3,
+      "efl_mm": 54.68749999999998,
+      "rms_um": 5.464038938406446,
+      "accepted": true
+    },
+    {
+      "segment": [
+        "50 mm",
+        "70 mm"
+      ],
+      "fraction": 0.4,
+      "efl_mm": 56.45161290322577,
+      "rms_um": 5.924268452037234,
+      "accepted": true
+    },
+    {
+      "segment": [
+        "50 mm",
+        "70 mm"
+      ],
+      "fraction": 0.5,
+      "efl_mm": 58.33333333333329,
+      "rms_um": 6.038339347573492,
+      "accepted": true
+    },
+    {
+      "segment": [
+        "50 mm",
+        "70 mm"
+      ],
+      "fraction": 0.6,
+      "efl_mm": 60.34482758620686,
+      "rms_um": 5.786268349846323,
+      "accepted": true
+    },
+    {
+      "segment": [
+        "50 mm",
+        "70 mm"
+      ],
+      "fraction": 0.7,
+      "efl_mm": 62.49999999999994,
+      "rms_um": 5.170890211495342,
+      "accepted": true
+    },
+    {
+      "segment": [
+        "50 mm",
+        "70 mm"
+      ],
+      "fraction": 0.8,
+      "efl_mm": 64.81481481481475,
+      "rms_um": 4.226531621123359,
+      "accepted": true
+    },
+    {
+      "segment": [
+        "50 mm",
+        "70 mm"
+      ],
+      "fraction": 0.9,
+      "efl_mm": 67.30769230769224,
+      "rms_um": 3.087259952078303,
+      "accepted": true
+    },
+    {
+      "segment": [
+        "50 mm",
+        "70 mm"
+      ],
+      "fraction": 1.0,
+      "efl_mm": 69.99999999999991,
+      "rms_um": 2.335546646331473,
+      "accepted": true
+    }
+  ],
+  "compensation": {
+    "before_rms_um": 21.826642149728137,
+    "after_rms_um": 4.015007504176369,
+    "actual_efl_mm": 35.01861884031221,
+    "positions_mm": [
+      35.56547619047575,
+      -7.24609375
+    ]
+  },
+  "focus400": {
+    "object_distance_reference_mm": 10000.0,
+    "positions_mm": [
+      -16.40625
+    ],
+    "rms_um": 11.32061104392386,
+    "rayoptics": {
+      "name": "400 mm 实像修正版 · f/16",
+      "rays": 63,
+      "max_intersection_error_mm": 9.839595804805867e-11,
+      "max_optical_path_error_mm": 1.6052581486292183e-10,
+      "max_direction_error": 3.0676849949173857e-14
+    }
+  }
+}

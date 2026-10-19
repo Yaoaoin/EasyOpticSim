@@ -18,6 +18,7 @@ const order = [
   "aperture",
   "optimization",
   "groups",
+  "motion",
   "versions",
   "diffraction",
   "imaging",

@@ -6,6 +6,7 @@ pub mod fields;
 pub mod focus;
 pub mod geometry;
 pub mod model;
+pub mod motion;
 pub mod optimize;
 pub mod preview;
 pub mod quality;
@@ -38,6 +39,7 @@ pub struct Request {
     pub optimization: Option<OptimizationOptions>,
     pub aperture_options: Option<aperture::ApertureOptions>,
     pub group_move: Option<aperture::GroupMove>,
+    pub motion_options: Option<motion::MotionOptions>,
 }
 fn default_sampling() -> usize {
     17
@@ -75,6 +77,14 @@ pub fn execute_with_progress(
         return Err("Add a lens before optical analysis".into());
     }
     match request.operation.as_str() {
+        "motion" => Ok(serde_json::json!(motion::run(
+            p,
+            request
+                .motion_options
+                .as_ref()
+                .ok_or("Motion options required")?,
+            cancel
+        )?)),
         "field_plan" => Ok(serde_json::json!(fields::plan(p, cancel)?)),
         "aperture_scan" => Ok(serde_json::json!(aperture::aperture_scan(
             p,

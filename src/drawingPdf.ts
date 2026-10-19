@@ -31,9 +31,9 @@ export async function createDrawingPdf(
       .join("");
   const p = s.project;
   doc.setTitle(`${p.name} - OOS 技术图纸`);
-  doc.setAuthor("OpenOpticSim 1.0");
+  doc.setAuthor("OpenOpticSim 1.1");
   doc.setSubject("旋转对称顺序透射光学设计记录");
-  doc.setCreator("OOS 1.0 / pdf-lib");
+  doc.setCreator("OOS 1.1 / pdf-lib");
   doc.setCreationDate(new Date(s.createdAt));
   let page!: PDFPage;
   let y = 0,
@@ -68,7 +68,7 @@ export async function createDrawingPdf(
     section = title.replace(/（续）$/, "");
     page = doc.addPage([W, H]);
     text("OpenOpticSim", M, 23, 11, accent);
-    text("1.0  /  OPTICAL DESIGN RECORD", W - 265, 24, 8, muted);
+    text("1.1  /  OPTICAL DESIGN RECORD", W - 265, 24, 8, muted);
     line(M, 45, W - M, 45);
     text(title, M, 59, 18);
     y = 94;
@@ -334,6 +334,36 @@ export async function createDrawingPdf(
     9,
     muted,
   );
+  if (p.workspace?.motion) {
+    const m = p.workspace.motion;
+    newPage("镜组运动 / 多配置记录");
+    paragraph(
+      `当前处方配置：${m.configurations.find((c) => c.id === m.active_id)?.name ?? "未标记 / 已编辑"}。固定传感器参考坐标：${fixed(m.reference.surfaces.reduce((a, s) => a + s.thickness, 0))} mm。`,
+    );
+    paragraph(
+      `最小空气间隙 ${fixed(m.min_air_mm)} mm；RMS 验收上限 ${fixed(m.max_rms_um)} μm；采样 ${m.sampling}×${m.sampling}；目标 ${m.criterion}。图纸分析只属于当前处方，其他配置需单独验证。`,
+    );
+    table(
+      ["镜组", "范围", "行程 mm", "锁定"],
+      m.groups.map((g) => [
+        g.name,
+        `S${g.start + 1}–S${g.end + 1}`,
+        `${fixed(g.min_mm)} ~ ${fixed(g.max_mm)}`,
+        g.locked ? "是" : "否",
+      ]),
+      [220, 110, 300, 127.89],
+    );
+    table(
+      ["配置", "参考物距 mm", "镜组位移 mm", "目标 EFL / F 数"],
+      m.configurations.map((c) => [
+        c.name,
+        c.object_distance === null ? "无限远" : fixed(c.object_distance),
+        c.positions_mm.map((v) => fixed(v)).join(" / "),
+        `${fixed(c.target_efl_mm)} / ${c.target_f_number === null ? "实体光阑" : fixed(c.target_f_number)}`,
+      ]),
+      [150, 140, 300, 167.89],
+    );
+  }
   newPage("总装名义剖面 / 轴向尺寸");
   if (p.surfaces.length)
     figure(M, 100, CW, 310, 0, p.surfaces.length - 1, true);
@@ -749,7 +779,7 @@ export async function createDrawingPdf(
     10,
   );
   paragraph(
-    "生成工具：OpenOpticSim 1.0（Apache-2.0）；PDF-LIB / fontkit（MIT）；中文字体 Noto Sans SC（SIL OFL 1.1）。字体来源与许可随安装包分发。",
+    "生成工具：OpenOpticSim 1.1（Apache-2.0）；PDF-LIB / fontkit（MIT）；中文字体 Noto Sans SC（SIL OFL 1.1）。字体来源与许可随安装包分发。",
     9,
     muted,
   );
@@ -800,7 +830,7 @@ export async function createDrawingPdf(
     line(M, H - 35, W - M, H - 35, muted, 0.4, a);
     let name = clean(p.name);
     while (font.widthOfTextAtSize(name, 7) > 450) name = name.slice(0, -1);
-    text(`${name}  |  OOS 1.0  |  名义设计 / mm`, M, H - 26, 7, muted, a);
+    text(`${name}  |  OOS 1.1  |  名义设计 / mm`, M, H - 26, 7, muted, a);
     text(`${i + 1} / ${pages.length}`, W - M - 40, H - 26, 8, muted, a);
   });
   return doc.save();

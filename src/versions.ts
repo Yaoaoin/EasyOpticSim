@@ -8,6 +8,7 @@ import type {
   Project,
   Wave,
   OpticalGroup,
+  MotionWorkspace,
 } from "./types";
 import { defaultOptimization } from "./optimization";
 import { validGroups } from "./design";
@@ -35,6 +36,9 @@ export function addVersion(
     created_at: new Date().toISOString(),
     note: note.slice(0, 1000),
     prescription: prescription(source),
+    ...(source.workspace?.motion
+      ? { motion: copy(source.workspace.motion) }
+      : {}),
     analysis_preset:
       source.workspace?.optimization?.preset ??
       p.workspace?.optimization?.preset ??
@@ -56,11 +60,14 @@ export function restoreVersion(
   version: Prescription,
   preset?: AnalysisPreset,
   groups?: OpticalGroup[],
+  motion?: MotionWorkspace,
 ): Project {
   const restored: Project = {
     ...copy(version),
     ...(current.workspace ? { workspace: copy(current.workspace) } : {}),
   };
+  if (motion) ensureWorkspace(restored).motion = copy(motion);
+  else if (restored.workspace) delete restored.workspace.motion;
   if (
     restored.surfaces.length !== current.surfaces.length &&
     restored.workspace?.optimization

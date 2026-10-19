@@ -1,0 +1,49 @@
+{
+  "version": "1.1.0",
+  "frontend_tests": 59,
+  "rust_tests": 81,
+  "clippy": "passed",
+  "production_frontend": "passed",
+  "motion_validation": "docs/validation-motion-1.1.json",
+  "zoom_keyframes_mm": [
+    24,
+    35,
+    50,
+    70
+  ],
+  "zoom_sensor_mm": [
+    4,
+    3
+  ],
+  "zoom_intermediate_samples": 33,
+  "zoom_intermediate_passed": 33,
+  "max_zoom_sampling_rms_change_um": 0.0316507597711535,
+  "legacy_400mm_saved_design": {
+    "passed": true,
+    "coverage_samples_exact": 38508,
+    "analysis_wave_preview_metadata_invariance": true,
+    "legacy_aperture_scan_exact": true
+  },
+  "ui": {
+    "example_load": true,
+    "configuration_check_and_adopt": true,
+    "automatic_restore": true,
+    "project_download_initiated": true,
+    "native_file_reopen_in_browser": true,
+    "four_configuration_comparison": true,
+    "screenshot": "docs/screenshots/motion-1.1.png"
+  },
+  "pdf": {
+    "pages": 14,
+    "motion_table_render_checked": true,
+    "embedded_project_exact": true
+  },
+  "limitations": [
+    "Unsigned Windows x64 installer",
+    "Clean Windows offline installation and upgrade not tested",
+    "Native PDF save dialog end-to-end not tested",
+    "Zoom example is small-sensor teaching design, not commercial full-frame f/2.8",
+    "Discrete trajectory validation does not certify continuous parfocality",
+    "No new certification of zoom diffraction performance"
+  ]
+}

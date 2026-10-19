@@ -1,3 +1,4 @@
+import { validMotion } from "./motion";
 import type { Project } from "./types";
 import { optimizationError } from "./optimization";
 import { validAperture, validGroups, validScan } from "./design";
@@ -113,6 +114,10 @@ export function projectFromJson(text: string, nested = false): Project {
       w.versions.length > 20
     )
       throw Error("版本工作区无效或含嵌套历史");
+    if (w.motion !== undefined) {
+      if (!validMotion(w.motion)) throw Error("多配置镜组数据无效");
+      projectFromJson(JSON.stringify(w.motion.reference), true);
+    }
     const ids = new Set<string>();
     if (w.groups !== undefined && !validGroups(p, w.groups))
       throw Error("保存的镜组范围无效或重叠");
@@ -140,6 +145,10 @@ export function projectFromJson(text: string, nested = false): Project {
         throw Error("版本记录无效");
       ids.add(v.id);
       projectFromJson(JSON.stringify(v.prescription), true);
+      if (v.motion !== undefined) {
+        if (!validMotion(v.motion)) throw Error("版本的多配置镜组数据无效");
+        projectFromJson(JSON.stringify(v.motion.reference), true);
+      }
       if (v.groups !== undefined && !validGroups(v.prescription, v.groups))
         throw Error("版本的镜组范围无效");
       if (

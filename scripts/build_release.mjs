@@ -6,7 +6,7 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 if (process.platform !== "win32" || process.arch !== "x64") {
-  throw new Error("The 1.0 installer build is validated on Windows x64 only.");
+  throw new Error("The installer build is validated on Windows x64 only.");
 }
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 if (process.env.RUSTFLAGS && !process.env.CARGO_ENCODED_RUSTFLAGS) {

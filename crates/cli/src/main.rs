@@ -56,6 +56,7 @@ fn run() -> Result<serde_json::Value, String> {
             optimization: None,
             aperture_options: None,
             group_move: None,
+            motion_options: None,
         },
         &AtomicBool::new(false),
     )
