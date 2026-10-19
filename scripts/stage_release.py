@@ -34,6 +34,8 @@ def main():
     with installer.open('rb') as stream:
         if stream.read(2) != b'MZ':
             raise SystemExit('Installer is not a Windows executable.')
+    files = subprocess.check_output(['git', 'ls-files', '--cached', '--others', '--exclude-standard', '-z'], cwd=ROOT)
+    candidates = {p.decode() for p in files.split(b'\0') if p}
     binary_checks = []
     for binary in [executable, ROOT / 'target/release/oos-cli.exe']:
         data = binary.read_bytes()
@@ -48,6 +50,15 @@ def main():
     # staging of a previous installer after changing notices / documentation.
     resources = []
     bundle_inputs = [ROOT / 'src-tauri/tauri.conf.json', executable]
+    source_roots = ('src/', 'crates/', 'src-tauri/')
+    source_files = {'Cargo.toml', 'Cargo.lock', 'package.json', 'pnpm-lock.yaml',
+                    'pnpm-workspace.yaml', 'vite.config.ts', 'tsconfig.json',
+                    'index.html', 'scripts/build_manual.mjs'}
+    for name in sorted(candidates):
+        if name.startswith(source_roots) or name in source_files:
+            if not (ROOT / name).is_file():
+                raise SystemExit(f'Build input was removed; rebuild before staging: {name}')
+            bundle_inputs.append(ROOT / name)
     for source, destination in config['bundle']['resources'].items():
         path = ROOT / 'src-tauri' / source
         files = sorted(path.rglob('*')) if path.is_dir() else [path]
@@ -68,8 +79,6 @@ def main():
     dependencies = read(ROOT / 'docs/dependencies.json')
     if any(not row.get('license') or not row.get('texts') or not row.get('source') for row in dependencies):
         raise SystemExit('Review missing dependency attribution before staging.')
-    files = subprocess.check_output(['git', 'ls-files', '--cached', '--others', '--exclude-standard', '-z'], cwd=ROOT)
-    candidates = {p.decode() for p in files.split(b'\0') if p}
     forbidden = [p for p in candidates if p.startswith(('target/', 'node_modules/', 'output/', 'artifacts/', '.tools/', 'tmp/'))]
     if forbidden:
         raise SystemExit('Generated/private directories are publication candidates; inspect Git ignore rules.')
@@ -78,20 +87,28 @@ def main():
     status = subprocess.check_output(['git', 'status', '--porcelain'], cwd=ROOT)
     release_path = ROOT / 'docs/release-1.0.json'
     release = read(release_path) if release_path.exists() else {}
-    startup_path = ROOT / 'docs/startup-1.0.json'
+    startup_path = ROOT / 'artifacts/startup-release-1.0.json'
+    if not startup_path.exists():
+        startup_path = ROOT / 'docs/startup-1.0.json'
     startup = read(startup_path) if startup_path.exists() else None
     executable_hash = digest(executable)
-    if not startup or startup.get('executable_sha256', '').lower() != executable_hash:
+    if not startup or startup.get('executable_sha256', '').lower() != executable_hash or startup.get('exited') is not False or startup.get('responding') is not True:
         startup = None  # Never attach an older binary's smoke check to a new one.
-    release.update({'version': version, 'status': 'local_candidate_not_published',
+    if startup and 'installer_wizard_startup' in startup:
+        wizard = startup['installer_wizard_startup']
+        if wizard.get('installer_sha256', '').lower() != digest(installer):
+            startup.pop('installer_wizard_startup')
+    release.update({'version': version, 'status': 'prepared_for_owner_publication',
                     'installer': installer.relative_to(ROOT).as_posix(),
                     'bytes': installer.stat().st_size, 'sha256': digest(installer),
                     'executable_sha256': executable_hash, 'resources': resources,
                     'dependency_records': len(dependencies), 'startup': startup,
                     'binary_privacy_checks': binary_checks,
                     'source_commit': source_commit, 'source_worktree_dirty': bool(status.strip()),
-                    'remote_ci_run': False})
-    release_path.write_text(json.dumps(release, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+                    'license_sha256': digest(ROOT / 'LICENSE'),
+                    'remote_ci_run': None, 'remote_ci_status': 'not_checked_by_local_staging'})
+    release['installer_wizard_startup_tested'] = bool(startup and startup.get('installer_wizard_startup', {}).get('expected_window_found'))
+    release.pop('superseded_by', None)
 
     out = ROOT / 'artifacts' / f'release-{version}'
     out.mkdir(parents=True, exist_ok=True)
@@ -110,6 +127,10 @@ def main():
         shutil.copy2(source, dest)
         names.append(name)
 
+    # Generated reports are Release assets, not tracked source files. Keeping
+    # them outside docs avoids a commit -> report -> new commit provenance loop.
+    output_path('build-report.json').write_text(json.dumps(release, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    names.append('build-report.json')
     copy(installer, installer.name)
     checksum_name = installer.name + '.sha256'
     checksum = f'{digest(installer)}  {installer.name}\n'
@@ -120,6 +141,7 @@ def main():
     sidecar.write_text(checksum, encoding='ascii')
     names.append(checksum_name)
     copy(ROOT / 'docs/OOS-1.0-使用手册.html', f'OpenOpticSim-{version}-manual.html')
+    copy(ROOT / 'docs/releases/1.0.0.md', f'OpenOpticSim-{version}-release-notes.md')
     for name in ['LICENSE', 'NOTICE', 'THIRD_PARTY_NOTICES.txt']:
         copy(ROOT / name, name)
 
@@ -135,20 +157,25 @@ def main():
             archive.writestr(entry, (ROOT / name).read_bytes())
     names.append(archive_name)
 
-    manifest = {'version': version, 'status': 'local_candidate_not_published', 'source_commit': source_commit,
-                'source_commit_required_before_publication': source_commit is None,
+    manifest = {'version': version, 'status': 'prepared_for_owner_publication', 'source_commit': source_commit,
+                'source_commit_required_before_publication': source_commit is None or bool(status.strip()),
+                'tag_source_commit': source_commit if not status.strip() else None,
                 'source_worktree_dirty': bool(status.strip()),
                 'source_snapshot_finalized': source_commit is not None and not status.strip(),
                 'signed': False, 'clean_windows_offline_install_tested': False,
-                'native_pdf_dialog_end_to_end_tested': False, 'remote_ci_run': False,
+                'native_pdf_dialog_end_to_end_tested': False, 'remote_ci_run': None,
+                'remote_ci_status': 'not_checked_by_local_staging',
+                'license_sha256': digest(ROOT / 'LICENSE'),
                 'resources': resources, 'dependency_records': len(dependencies),
                 'binary_privacy_checks': binary_checks,
                 'font_asset_sha256': font_meta['sha256'],
                 'installer_startup': startup,
                 'assets': [{'name': name, 'bytes': (out / name).stat().st_size,
                             'sha256': digest(out / name)} for name in sorted(names)],
-                'notes': ['Checks are local; no commit, tag, remote or GitHub release was created.',
-                          'Rebuild and retest from the final source commit before public release.']}
+                'notes': ['This tool does not commit, push, create tags or publish a GitHub Release.',
+                          'When the worktree is dirty, source_commit is the base commit, not the complete prepared source.',
+                          'Commit prepared source changes in GitHub Desktop, then rerun staging to bind the final commit.',
+                          'Rebuild if optical source, configuration, dependencies or bundled resources changed.']}
     output_path('manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     names.append('manifest.json')
     sums = ''.join(f'{digest(out / name)}  {name}\n' for name in sorted(names))

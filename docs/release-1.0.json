@@ -189,7 +189,8 @@
   "original_user_sha256": "84627E7A4C374417169E2C1FCAF6FD88A951C7AB4ED5EF034A32E01B5E67B561",
   "production_pdf_validation": "docs/validation-pdf-production-1.0.json",
   "font_asset_sha256": "f47c332ffd5b1ff5273d7eff433b9020438f48a453704b8e5b882f49f2738563",
-  "status": "local_candidate_not_published",
+  "status": "archived_prepublication_candidate",
+  "superseded_by": "GitHub v1.0.0 Release attachments: manifest.json and build-report.json",
   "dependency_records": 380,
   "binary_privacy_checks": [
     {

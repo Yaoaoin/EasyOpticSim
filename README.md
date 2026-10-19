@@ -6,7 +6,15 @@ OpenOpticSim is a local-first optical design workbench for photography enthusias
 
 ![OpenOpticSim 1.0 工作区](docs/screenshots/studio-1.0.png)
 
-**发布状态：1.0.0 开源前本地准备，尚未上传 GitHub 或发布 Release。** 当前没有公共下载地址；正式公开后，Windows 用户在本仓库 Releases 下载 `OpenOpticSim_1.0.0_x64-setup.exe` 及 `.sha256`，无需自行安装开发工具。[发布说明草稿](docs/releases/1.0.0.md)记录安装条件与已知限制，公开时再更新此状态。
+**版本：1.0.0。** 源码仓库：[ayr1k/OpenOpticSim](https://github.com/ayr1k/OpenOpticSim)。Windows 安装包通过 [GitHub Releases](https://github.com/ayr1k/OpenOpticSim/releases) 分发，用户无需安装开发工具。
+
+1.0 发布内容已准备，标签与 Release 由维护者发布；下列版本下载链接在 `v1.0.0` 发布并上传附件后生效：
+
+- [Windows x64 安装包](https://github.com/ayr1k/OpenOpticSim/releases/download/v1.0.0/OpenOpticSim_1.0.0_x64-setup.exe)
+- [安装包 SHA-256](https://github.com/ayr1k/OpenOpticSim/releases/download/v1.0.0/OpenOpticSim_1.0.0_x64-setup.exe.sha256) · [全部附件校验清单](https://github.com/ayr1k/OpenOpticSim/releases/download/v1.0.0/SHA256SUMS.txt)
+- [1.0 发布说明](docs/releases/1.0.0.md) · [版本发布页](https://github.com/ayr1k/OpenOpticSim/releases/tag/v1.0.0)
+
+安装包未签名；干净 Windows 无 WebView2 的断网安装验收尚未完成。具体已验证内容与限制见发布说明。
 
 | 我想做什么 | 入口 |
 | --- | --- |
@@ -24,6 +32,8 @@ OpenOpticSim is a local-first optical design workbench for photography enthusias
 ## Windows 运行
 
 构建后的安装包位于 `target/release/bundle/nsis/OpenOpticSim_1.0.0_x64-setup.exe`，配置包含 WebView2 离线安装组件、完整手册和许可。也可运行 `target/release/openopticsim-desktop.exe`（需要系统已有 WebView2）。发布版嵌入界面、引擎、PDF 工具与中文字体，不需要 Node、Python、Rust 或本地 HTTP 服务。
+
+下载后可在 PowerShell 中运行 `Get-FileHash .\OpenOpticSim_1.0.0_x64-setup.exe -Algorithm SHA256`，与同版本 `.sha256` 比较。正式附件以对应 Release 的文件为准；源码内的历史本地验收记录不替代下载附件的最新校验清单。
 
 首次使用：
 
@@ -94,6 +104,8 @@ cargo build -p oos-cli --release
 可直接打开 [双胶合版本对比项目](examples/version-workflow.oos.json)，比较最佳多色对焦与像面后移 0.05 mm。
 
 ## 验证证据
+
+- [1.0 发布重建验收](docs/validation-release-1.0.json)：按最新 LICENSE 重建，记录前端 / Rust 回归、400 mm 保存回归、桌面 / 安装向导启动、资源一致性和未完成的安装验收。下载附件的实际校验值见对应 Release。
 
 - [衍射独立验证](docs/validation-diffraction.json)：RayOptics 重追 69,979 条瞳光线、NumPy PSF/复 OTF、直接球面传播与测试图逐像素对照；仅覆盖说明中的标量模型。
 

@@ -1,0 +1,84 @@
+{
+  "version": "1.0.0",
+  "date": "2026-10-19",
+  "status": "prepared_for_owner_publication",
+  "base_commit": "9f4e1646c24d9bc514482a62b0f161e55735d10a",
+  "source_worktree_dirty": true,
+  "tags_and_release_managed_by_owner": true,
+  "frontend_tests_passed": 54,
+  "rust_core_tests_passed": 72,
+  "rust_desktop_tests_passed": 4,
+  "typescript_vite_build": "passed",
+  "path_remapped_release_build": "passed",
+  "optical_and_frontend_sources_unchanged_from_base_commit": true,
+  "saved_400mm_regression": {
+    "version": "1.0.0",
+    "fixture": "docs/fixtures/design-ui-saved-0.8.oos.json",
+    "sha256": "398fdcb19ed209246d5a8b0a89615099932b37941d0ceda1dabe716ee902b62c",
+    "surfaces": 34,
+    "groups": 2,
+    "versions": 3,
+    "optimization_variables": 2,
+    "saved_scan_all_legacy_fields_reproduced_exactly": true,
+    "new_coverage_metadata_excluded_from_legacy_shape_comparison": true,
+    "optical_metadata_invariance": {
+      "analyze": true,
+      "wave": true,
+      "preview": true
+    },
+    "coverage_400mm_exactly_matches_0_9": true,
+    "coverage_sampled": 38508
+  },
+  "startup": {
+    "exited": false,
+    "responding": true,
+    "title": "OpenOpticSim · 光学工作室",
+    "version": "1.0.0",
+    "executable_sha256": "64fc062ec6a2131717a2b613b01cf622ed6c5407febff435ef2cc2e89acf8cb0",
+    "signature_status": "NotSigned",
+    "installer_wizard_startup": {
+      "exited": false,
+      "responding": true,
+      "titles": [
+        "OpenOpticSim Setup",
+        "MSCTFIME UI",
+        "Default IME"
+      ],
+      "expected_window_found": true,
+      "hidden_window_probe": true,
+      "installation_performed": false,
+      "installer_sha256": "2f4b7c97d00cb961d5f88fe98918574aa800eef1c21efd6ed93be339d231602b",
+      "signature_status": "NotSigned"
+    },
+    "installer_signature_status": "NotSigned"
+  },
+  "license": {
+    "sha256": "b7a9f42cae51afd4174f500df137a3132c5b928fd5266b054c2cc09acf1e7fb9",
+    "bundled_matches_current_source": true
+  },
+  "installer": {
+    "name": "OpenOpticSim_1.0.0_x64-setup.exe",
+    "bytes": 225297684,
+    "sha256": "2f4b7c97d00cb961d5f88fe98918574aa800eef1c21efd6ed93be339d231602b",
+    "stub_pe_machine": "0x14c",
+    "payload_pe_machine": "0x8664",
+    "signed": false
+  },
+  "clean_windows_offline_install_tested": false,
+  "installation_performed": false,
+  "native_pdf_dialog_end_to_end_tested": false,
+  "remote_ci_status": "not_checked",
+  "validation_scope": [
+    "Current local Windows desktop and installer wizard startup; no install button or silent install used.",
+    "Archive/resource/checksum verification is recorded in the local release manifest and build report.",
+    "Existing optical reference evidence remains applicable; the full independent suite was not rerun for this LICENSE/documentation update."
+  ],
+  "release_attachment_verification": {
+    "files": 11,
+    "checksums": 10,
+    "zip_entries_crc_checked": 146,
+    "bundled_resources_matched": 32,
+    "latest_license_identical_in_source_bundle_standalone_asset_and_zip": true,
+    "release_notes_portable_and_exact_copy": true
+  }
+}
