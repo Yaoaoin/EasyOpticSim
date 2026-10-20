@@ -78,6 +78,11 @@ import OptimizationReportView, { ProgressView } from "./OptimizationReport";
 import MaterialLibrary from "./MaterialLibrary";
 import { defaultOptimization, optimizationError } from "./optimization";
 import {
+  readExperienceMode,
+  saveExperienceMode,
+  type ExperienceMode,
+} from "./experience";
+import {
   addVersion,
   defaultConstraints,
   ensureWorkspace,
@@ -97,6 +102,7 @@ const HelpCenter = lazy(() => import("./HelpCenter"));
 const CommandSearch = lazy(() => import("./CommandSearch"));
 const DrawingPanel = lazy(() => import("./DrawingPanel"));
 export default function App() {
+  const [experience, setExperience] = useState<ExperienceMode>(readExperienceMode);
   const [helpTopic, setHelpTopic] = useState<string | null>(null),
     [showSearch, setShowSearch] = useState(false),
     [inspectorTab, setInspectorTab] = useState("element");
@@ -157,6 +163,7 @@ export default function App() {
     scrubbing = useRef(false);
   const rightScroll = useRef<HTMLDivElement>(null);
   useEffect(() => saveLayout(workspaceLayout), [workspaceLayout]);
+  useEffect(() => saveExperienceMode(experience), [experience]);
   const inspectorKey =
     mode === "basic" && project
       ? (lensAt(project, selected)?.start ?? selected)
@@ -699,16 +706,35 @@ export default function App() {
   const selectedLens = lensAt(project, selected);
   const issues = result?.diagnostics ?? [];
   return (
-    <div className="app">
+    <div className="app" data-experience={experience}>
       <header>
         <div className="brand">
           <Aperture size={27} />
           <div>
             OpenOpticSim <small>光学工作室</small>
           </div>
-          <span className="alpha">1.1</span>
+          <span className="alpha">Y1.0</span>
         </div>
         <div className="toolbar">
+          <div className="experience-switch" role="group" aria-label="界面复杂度">
+            <button
+              className={experience === "simple" ? "active" : ""}
+              aria-pressed={experience === "simple"}
+              onClick={() => {
+                setExperience("simple");
+                setMode("basic");
+              }}
+            >
+              简单
+            </button>
+            <button
+              className={experience === "pro" ? "active" : ""}
+              aria-pressed={experience === "pro"}
+              onClick={() => setExperience("pro")}
+            >
+              专业
+            </button>
+          </div>
           <button
             disabled={saving}
             onClick={() => requestAction(() => setShowNew(true))}
@@ -915,9 +941,14 @@ export default function App() {
             tab={tab}
             onTab={navigate}
             onHelp={() => setHelpTopic(helpFor(tab))}
+            experience={experience}
           />
           <div className="workspace-guide">
-            <span>先定义目标，再检查通光与画质；调校结果以候选方式采纳。</span>
+            <span>
+              {experience === "simple"
+                ? "跟着四步完成设计；复杂参数已经收好，随时可以切到专业模式。"
+                : "先定义目标，再检查通光与画质；调校结果以候选方式采纳。"}
+            </span>
             <button onClick={() => setHelpTopic("start")}>
               新手教程 <ChevronRight size={13} />
             </button>

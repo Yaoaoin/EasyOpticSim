@@ -1,18 +1,28 @@
-# OpenOpticSim (OOS)
+# OpenOpticSim Y1.0 (OOS)
 
 面向摄影与镜头爱好者的本地光学工作室。React + Tauri 2 桌面界面，自研 Rust 双精度顺序追迹核心；界面、命令行使用同一实现。Apache-2.0。
 
-OpenOpticSim is a local-first optical design workbench for photography enthusiasts. It combines a React/Tauri desktop UI with an independent double-precision Rust sequential ray tracer. Windows x64 is the primary platform. The source is Apache-2.0; third-party components retain their own licenses. English issues and contributions are welcome.
+OpenOpticSim is a local-first optical design workbench for photography enthusiasts. Y1.0 adds a beginner-first workflow and glacier-blue glass interface on top of Ayr1k's original React/Tauri application and double-precision Rust sequential ray tracer. Windows x64 is the primary platform. The source remains Apache-2.0; upstream and third-party components retain their notices and licenses.
 
 ![OpenOpticSim 1.0 工作区](docs/screenshots/studio-1.0.png)
 
-**版本：1.1.0。** 源码仓库：[ayr1k/OpenOpticSim](https://github.com/ayr1k/OpenOpticSim)。Windows 安装包通过 [GitHub Releases](https://github.com/ayr1k/OpenOpticSim/releases) 分发，用户无需安装开发工具。
+**当前版本：Y1.0（内部语义版本 `1.1.0-y1.0`）。** 当前 fork：[Yaoaoin/OpenOpticSim](https://github.com/Yaoaoin/OpenOpticSim)；原始项目与上游更新：[ayr1k/OpenOpticSim](https://github.com/ayr1k/OpenOpticSim)。本 fork 保留原项目 Apache-2.0 [LICENSE](LICENSE)、[NOTICE](NOTICE) 和全部[第三方声明](THIRD_PARTY_NOTICES.txt)。
 
-1.1 发布内容已准备，标签与 Release 由维护者发布；下列版本下载链接在 `v1.1.0` 发布并上传附件后生效：
+Y1.0 的目标是让第一次接触光学设计的人也能开始：默认只需选择拍摄用途，跟随四个步骤完成目标、搭建、改进和检查；熟悉原版工作流的用户可以随时切换回专业模式。
 
-- [Windows x64 安装包](https://github.com/ayr1k/OpenOpticSim/releases/download/v1.1.0/OpenOpticSim_1.1.0_x64-setup.exe)
-- [安装包 SHA-256](https://github.com/ayr1k/OpenOpticSim/releases/download/v1.1.0/OpenOpticSim_1.1.0_x64-setup.exe.sha256) · [全部附件校验清单](https://github.com/ayr1k/OpenOpticSim/releases/download/v1.1.0/SHA256SUMS.txt)
-- [1.1 发布说明](docs/releases/1.1.0.md) · [版本发布页](https://github.com/ayr1k/OpenOpticSim/releases/tag/v1.1.0)
+## Y1.0 亮点
+
+- 三步图形化新建向导：人像、风景、远摄、近物，无需先理解视场角、物距或入瞳。
+- 简单 / 专业双模式：简单模式提供四步任务导航，专业模式完整保留原有十五个工具。
+- 冰川蓝玻璃视觉：统一设计令牌、透明度降级、明确状态色、键盘焦点和减少动态效果支持。
+- 兼容已有 `.oos.json` / CSV 文件与 Rust 光学核心；界面偏好不会写入项目文件。
+- 完整内容见 [Y1.0 版本说明](docs/releases/Y1.0.md)、[更新日志](CHANGELOG.md)和[GitHub Release 发布文案](docs/github-release-Y1.0.md)。
+
+Y1.0 发布内容已准备，标签与 Release 由维护者发布；下列链接在 `Y1.0` Release 上传附件后生效：
+
+- [Windows x64 安装包](https://github.com/Yaoaoin/OpenOpticSim/releases/download/Y1.0/OpenOpticSim_1.1.0-y1.0_x64-setup.exe)
+- [安装包 SHA-256](https://github.com/Yaoaoin/OpenOpticSim/releases/download/Y1.0/OpenOpticSim_1.1.0-y1.0_x64-setup.exe.sha256) · `SHA256SUMS.txt`
+- [Y1.0 发布说明](docs/releases/Y1.0.md) · [版本发布页](https://github.com/Yaoaoin/OpenOpticSim/releases/tag/Y1.0)
 
 安装包未签名；干净 Windows 无 WebView2 的断网安装验收尚未完成。具体已验证内容与限制见发布说明。
 
@@ -25,19 +35,19 @@ OpenOpticSim is a local-first optical design workbench for photography enthusias
 | 报告问题、改进代码或文档 | [贡献指南](CONTRIBUTING.md) · [安全报告](SECURITY.md) |
 | 查阅更新、许可和发布流程 | [更新日志](CHANGELOG.md) · [许可审查](docs/THIRD_PARTY_AUDIT.md) · [发布流程](docs/RELEASING.md) |
 
-**当前版本：1.1.0。** 新增固定传感器的镜组对焦、手动变焦与单补偿组求解、多配置保存与同尺度比较，以及独立验证的 24–70 mm 教学示例。详见 [镜组运动教程](docs/manual/motion.md) 与 [数值验证](docs/validation-motion-1.1.json)。 将既有功能整理为「设计、画质、调校、交付」四组；右侧镜片与摄影设置分别切换，保留独立滚动与布局记忆。增加功能搜索、21 章离线可检索帮助、新手教程和技术文档，以及含矢量剖面、全部处方/材料/非球面参数、分析条件和精确源项目附件的 PDF 技术图纸。
+**Y1.0 基于上游 1.1 功能集。** 固定传感器镜组对焦、变焦、单补偿组求解、多配置、PSF / MTF、优化、版本比较和 PDF 技术图纸全部保留。简单模式只是重新组织入口，不使用另一套计算模型；专业模式继续提供原有设计、画质、调校、交付工作区。
 
 软件内「帮助」、F1 或 Ctrl+K 可查阅与定位功能；也可直接打开 [离线 HTML 完整手册](docs/OOS-1.1-使用手册.html)、[Markdown 手册](docs/OOS-1.1-使用手册.md) 或 [新手教程](docs/manual/start.md)。[功能范围](docs/STATUS.md)和[测试报告](docs/TEST_REPORT.md)说明适用范围与实测证据。既有传感器联动、离轴衍射、扫描、优化、镜组与版本对比全部保留。[0.9 计算范围](docs/COVERAGE.md)继续适用。
 
 ## Windows 运行
 
-构建后的安装包位于 `target/release/bundle/nsis/OpenOpticSim_1.1.0_x64-setup.exe`，配置包含 WebView2 离线安装组件、完整手册和许可。也可运行 `target/release/openopticsim-desktop.exe`（需要系统已有 WebView2）。发布版嵌入界面、引擎、PDF 工具与中文字体，不需要 Node、Python、Rust 或本地 HTTP 服务。
+构建后的 Y1.0 安装包位于 `target/release/bundle/nsis/OpenOpticSim_1.1.0-y1.0_x64-setup.exe`，配置包含 WebView2 离线安装组件、完整手册和许可。也可运行 `target/release/openopticsim-desktop.exe`（需要系统已有 WebView2）。发布版嵌入界面、引擎、PDF 工具与中文字体，不需要 Node、Python、Rust 或本地 HTTP 服务。
 
-下载后可在 PowerShell 中运行 `Get-FileHash .\OpenOpticSim_1.1.0_x64-setup.exe -Algorithm SHA256`，与同版本 `.sha256` 比较。正式附件以对应 Release 的文件为准；源码内的历史本地验收记录不替代下载附件的最新校验清单。
+下载后可在 PowerShell 中运行 `Get-FileHash .\OpenOpticSim_1.1.0-y1.0_x64-setup.exe -Algorithm SHA256`，与同版本 `.sha256` 比较。正式附件以对应 Release 的文件为准；源码内的历史本地验收记录不替代下载附件的最新校验清单。
 
 首次使用：
 
-从零搭建可点击“新建项目 → 空白项目 → 添加镜片”。图示折角外形可直接打开“机械环带探索”，调整机械外径和各面有效直径；几何诊断可点击定位。原生项目兼容读取 v1 / v2 / v3；目标像高等新设置使用 v3，另支持扩展 CSV。
+首次使用点击“新建项目”，依次选择拍摄用途、效果和起点；创建后跟随顶部四个步骤继续。需要从零搭建或输入精确传感器、视场、物距时，在向导中展开“精确设置”或选择“完全空白”。原生项目兼容读取 v1 / v2 / v3，另支持扩展 CSV。
 
 1. 打开“单透镜”，观察中心与边缘点列图。
 2. 修改右侧“光阑半径”，按 Enter 提交。观察近轴 F 数和光斑；出现通光警告时检查失败明细。

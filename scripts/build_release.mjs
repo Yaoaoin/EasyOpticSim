@@ -9,6 +9,9 @@ if (process.platform !== "win32" || process.arch !== "x64") {
   throw new Error("The installer build is validated on Windows x64 only.");
 }
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const target = process.env.CARGO_TARGET_DIR
+  ? resolve(process.env.CARGO_TARGET_DIR)
+  : resolve(root, "target");
 if (process.env.RUSTFLAGS && !process.env.CARGO_ENCODED_RUSTFLAGS) {
   throw new Error("Custom RUSTFLAGS detected. Express them as CARGO_ENCODED_RUSTFLAGS before this release recipe, so argument quoting is preserved.");
 }
@@ -42,7 +45,7 @@ run("cargo", ["build", "-p", "oos-cli", "--locked", "--release"]);
 // Static command only: no paths or user input are interpolated into the shell.
 run(process.env.ComSpec || "cmd.exe", ["/d", "/s", "/c", "pnpm tauri build --bundles nsis"]);
 for (const name of ["openopticsim-desktop.exe", "oos-cli.exe"]) {
-  const data = readFileSync(resolve(root, "target/release", name));
+  const data = readFileSync(resolve(target, "release", name));
   const ascii = data.toString("latin1").match(/[A-Z]:[\\/]+Users[\\/]+[^\\/\0\r\n]+/gi) || [];
   const utf16 = data.toString("utf16le").match(/[A-Z]:[\\/]+Users[\\/]+[^\\/\0\r\n]+/gi) || [];
   console.log(`${name}: ${ascii.length + utf16.length} personal-home path matches`);

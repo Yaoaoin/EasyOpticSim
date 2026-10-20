@@ -1,6 +1,7 @@
 """Verify local resources and stage versioned assets. Never commits, tags or uploads."""
 import hashlib
 import json
+import os
 from pathlib import Path
 import re
 import shutil
@@ -9,6 +10,7 @@ import tomllib
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
+TARGET = Path(os.environ.get('CARGO_TARGET_DIR', ROOT / 'target')).resolve()
 
 
 def digest(path):
@@ -25,10 +27,12 @@ def main():
     config = read(ROOT / 'src-tauri/tauri.conf.json')
     version = package['version']
     cargo = tomllib.loads((ROOT / 'Cargo.toml').read_text(encoding='utf-8'))
-    if version not in ('1.0.0', '1.1.0') or config['version'] != version or cargo['workspace']['package']['version'] != version:
+    supported = {'1.0.0': '1.0.0', '1.1.0': '1.1.0', '1.1.0-y1.0': 'Y1.0'}
+    if version not in supported or config['version'] != version or cargo['workspace']['package']['version'] != version:
         raise SystemExit('This staging recipe is for matching supported source and desktop versions only.')
-    installer = ROOT / f'target/release/bundle/nsis/OpenOpticSim_{version}_x64-setup.exe'
-    executable = ROOT / 'target/release/openopticsim-desktop.exe'
+    release_label = supported[version]
+    installer = TARGET / f'release/bundle/nsis/OpenOpticSim_{version}_x64-setup.exe'
+    executable = TARGET / 'release/openopticsim-desktop.exe'
     if not installer.is_file() or not executable.is_file():
         raise SystemExit('Build the NSIS installer first: pnpm release:build')
     with installer.open('rb') as stream:
@@ -37,7 +41,7 @@ def main():
     files = subprocess.check_output(['git', 'ls-files', '--cached', '--others', '--exclude-standard', '-z'], cwd=ROOT)
     candidates = {p.decode() for p in files.split(b'\0') if p}
     binary_checks = []
-    for binary in [executable, ROOT / 'target/release/oos-cli.exe']:
+    for binary in [executable, TARGET / 'release/oos-cli.exe']:
         data = binary.read_bytes()
         ascii_count = len(re.findall(rb'(?i)[A-Z]:[\\/]+Users[\\/]+[^\\/\x00\r\n]+', data))
         utf16_count = len(re.findall(r'(?i)[A-Z]:[\\/]+Users[\\/]+[^\\/\x00\r\n]+', data.decode('utf-16-le', errors='ignore')))
@@ -66,7 +70,7 @@ def main():
             if not item.is_file():
                 continue
             relative = Path(destination) / item.relative_to(path) if path.is_dir() else Path(destination)
-            bundled = ROOT / 'target/release' / relative
+            bundled = TARGET / 'release' / relative
             if not bundled.is_file() or digest(item) != digest(bundled):
                 raise SystemExit(f'Resource missing or stale; rebuild installer: {relative.as_posix()}')
             resources.append({'name': relative.as_posix(), 'sha256': digest(item), 'bundled_matches': True})
@@ -111,7 +115,7 @@ def main():
     release['installer_wizard_startup_tested'] = bool(startup and startup.get('installer_wizard_startup', {}).get('expected_window_found'))
     release.pop('superseded_by', None)
 
-    out = ROOT / 'artifacts' / f'release-{version}'
+    out = ROOT / 'artifacts' / f'release-{release_label}'
     out.mkdir(parents=True, exist_ok=True)
     if out.is_symlink() or not out.resolve().is_relative_to(ROOT.resolve()):
         raise SystemExit('Release staging must stay inside the workspace.')
@@ -141,12 +145,15 @@ def main():
         raise SystemExit('Refusing installer checksum symlink.')
     sidecar.write_text(checksum, encoding='ascii')
     names.append(checksum_name)
-    copy(ROOT / f'docs/OOS-{series}-使用手册.html', f'OpenOpticSim-{version}-manual.html')
-    copy(ROOT / f'docs/releases/{version}.md', f'OpenOpticSim-{version}-release-notes.md')
+    copy(ROOT / f'docs/OOS-{series}-使用手册.html', f'OpenOpticSim-{release_label}-manual.html')
+    release_notes = ROOT / f'docs/releases/{release_label}.md'
+    if not release_notes.is_file():
+        release_notes = ROOT / f'docs/releases/{version}.md'
+    copy(release_notes, f'OpenOpticSim-{release_label}-release-notes.md')
     for name in ['LICENSE', 'NOTICE', 'THIRD_PARTY_NOTICES.txt']:
         copy(ROOT / name, name)
 
-    archive_name = f'OpenOpticSim-{version}-docs-and-examples.zip'
+    archive_name = f'OpenOpticSim-{release_label}-docs-and-examples.zip'
     archive_files = sorted(p for p in candidates if p.startswith(('docs/', 'examples/')))
     archive_files += ['README.md', 'CONTRIBUTING.md', 'CHANGELOG.md', 'SECURITY.md',
                       'LICENSE', 'NOTICE', 'THIRD_PARTY_NOTICES.txt',
@@ -181,7 +188,7 @@ def main():
     names.append('manifest.json')
     sums = ''.join(f'{digest(out / name)}  {name}\n' for name in sorted(names))
     output_path('SHA256SUMS.txt').write_text(sums, encoding='utf-8')
-    print(json.dumps({'version': version, 'directory': out.relative_to(ROOT).as_posix(),
+    print(json.dumps({'version': version, 'release_label': release_label, 'directory': out.relative_to(ROOT).as_posix(),
                       'assets': len(names) + 1, 'resources_verified': len(resources),
                       'source_commit': source_commit, 'published': False}))
 

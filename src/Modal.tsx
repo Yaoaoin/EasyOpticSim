@@ -4,11 +4,13 @@ export default function Modal({
   children,
   onCancel,
   wide = false,
+  className,
 }: {
   title: string;
   children: ReactNode;
   onCancel: () => void;
   wide?: boolean;
+  className?: string;
 }) {
   const ref = useRef<HTMLDialogElement>(null),
     id = useId();
@@ -20,7 +22,7 @@ export default function Modal({
   return (
     <dialog
       ref={ref}
-      className={wide ? "wide-dialog" : undefined}
+      className={[wide ? "wide-dialog" : "", className ?? ""].filter(Boolean).join(" ") || undefined}
       aria-labelledby={id}
       onCancel={(e) => {
         e.preventDefault();
