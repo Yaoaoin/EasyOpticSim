@@ -1,220 +1,399 @@
-import { useMemo, useState } from "react";
-import { ArrowLeft, ArrowRight, Check, Mountain, ScanFace, Search, Telescope } from "lucide-react";
-import type { Project } from "./types";
+import { useEffect, useRef, useState } from "react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  Check,
+  LoaderCircle,
+  Camera,
+  ScanEye,
+} from "lucide-react";
+import type { Analysis, ConstraintCheck, Geometry, Project } from "./types";
 import Modal from "./Modal";
 import { Num } from "./Num";
-import { blankProject } from "./lenses";
-import { copy } from "./project";
-import { setFieldSpec } from "./fields";
-import { defaultConstraints, ensureWorkspace } from "./versions";
+import { compute } from "./engine";
+import { analysisProblems } from "./assistant";
+import {
+  createDesign,
+  sensorPresets,
+  starters,
+  type NewDesign,
+  type StarterId,
+} from "./starters";
+import { addVersion } from "./versions";
+import { PictureSummary } from "./DesignAssistant";
+import { checkLabel } from "./ConstraintEditor";
 
-type Purpose = "portrait" | "landscape" | "telephoto" | "macro";
-const purposes = {
-  portrait: {
-    name: "拍人像",
-    summary: "自然视角，背景更柔和",
-    Icon: ScanFace,
-    efl: 85,
-    fNumber: 2.8,
-    distance: 2000,
-  },
-  landscape: {
-    name: "拍风景",
-    summary: "装下更多景物，边角也清楚",
-    Icon: Mountain,
-    efl: 28,
-    fNumber: 8,
-    distance: null,
-  },
-  telephoto: {
-    name: "拍远处",
-    summary: "把远处主体拉近",
-    Icon: Telescope,
-    efl: 200,
-    fNumber: 5.6,
-    distance: null,
-  },
-  macro: {
-    name: "拍近物",
-    summary: "观察小物体和细节",
-    Icon: Search,
-    efl: 60,
-    fNumber: 4,
-    distance: 300,
-  },
-} satisfies Record<Purpose, object>;
+const steps = [
+  "选择用途",
+  "拍摄条件",
+  "设计目标",
+  "确认起点",
+  "实际检查",
+  "开始设计",
+];
+interface Preview {
+  project: Project;
+  analysis: Analysis;
+  problems: string[];
+}
 
 export default function NewProject({
-  library,
   onCreate,
   onCancel,
 }: {
-  library: Project[];
   onCreate: (p: Project) => void;
   onCancel: () => void;
 }) {
-  const [step, setStep] = useState(1),
-    [purpose, setPurpose] = useState<Purpose>("portrait"),
-    [name, setName] = useState("我的第一个镜头"),
-    [template, setTemplate] = useState(library.length ? 0 : -1),
-    [width, setWidth] = useState(36),
-    [height, setHeight] = useState(24),
-    [field, setField] = useState(5.73),
-    [sensorFields, setSensorFields] = useState(true),
-    [infinity, setInfinity] = useState(false),
-    [distance, setDistance] = useState(2000),
-    [advanced, setAdvanced] = useState(false);
-  const choice = purposes[purpose];
-  const progress = useMemo(() => `${step} / 3`, [step]);
-  const guidedStarters = useMemo(() => {
-    const find = (pattern: RegExp, fallback: number) => {
-      const index = library.findIndex((project) => pattern.test(`${project.name} ${project.description}`));
-      return index >= 0 ? index : Math.min(fallback, Math.max(0, library.length - 1));
-    };
-    return [
-      { purpose: "portrait" as const, label: "人像练习模板", index: find(/doublet|双胶合|portrait|人像/i, 0) },
-      { purpose: "landscape" as const, label: "广角练习模板", index: find(/35|wide|广角|风景/i, 1) },
-      { purpose: "telephoto" as const, label: "长焦练习模板", index: find(/400|tele|长焦|远摄/i, 2) },
-      { purpose: "macro" as const, label: "近物练习模板", index: find(/macro|近物|singlet|单透镜/i, 0) },
-    ];
-  }, [library]);
-
-  const choosePurpose = (value: Purpose) => {
-    const preset = purposes[value];
-    setPurpose(value);
-    setInfinity(preset.distance === null);
-    if (preset.distance !== null) setDistance(preset.distance);
+  const [step, setStep] = useState(0);
+  const [value, setValue] = useState<NewDesign>({
+    starter: "portrait",
+    name: "我的镜头设计",
+    sensor: 0,
+    distance: 2000,
+    focal: 66,
+    aperture: 6.6,
+  });
+  const [preview, setPreview] = useState<Preview | null>(null);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+  const controller = useRef<AbortController | null>(null);
+  useEffect(() => () => controller.current?.abort(), []);
+  const patch = (p: Partial<NewDesign>) => {
+    controller.current?.abort();
+    setBusy(false);
+    setPreview(null);
+    setError("");
+    setValue((v) => ({ ...v, ...p }));
   };
-
+  const selected = starters[value.starter];
+  let valid = true;
+  try {
+    createDesign(value);
+  } catch {
+    valid = false;
+  }
+  async function inspect() {
+    controller.current?.abort();
+    const c = new AbortController();
+    controller.current = c;
+    setBusy(true);
+    setError("");
+    setPreview(null);
+    try {
+      const project = createDesign(value);
+      const geometry = await compute<Geometry>(
+        crypto.randomUUID(),
+        "geometry",
+        project,
+        c.signal,
+      );
+      const analysis = await compute<Analysis>(
+        crypto.randomUUID(),
+        "analyze",
+        project,
+        c.signal,
+        { sampling: 33 },
+      );
+      const checks = await compute<ConstraintCheck[]>(
+        crypto.randomUUID(),
+        "checks",
+        project,
+        c.signal,
+        { constraints: project.workspace!.constraints },
+      );
+      const problems = analysisProblems(project, analysis);
+      if (
+        geometry.diagnostics.length ||
+        geometry.spans.some((s) => !s.certified)
+      )
+        problems.push("存在结构问题，需要先检查镜片");
+      if (!checks.length) problems.push("没有取得设计目标的检查结果");
+      for (const check of checks.filter((c) => !c.passed))
+        problems.push(
+          `${checkLabel(check)}：当前 ${check.actual?.toFixed(3) ?? "未确定"}，要求 ${check.relation === "min" ? "至少" : "不超过"} ${check.limit.toFixed(3)}`,
+        );
+      if (!c.signal.aborted) setPreview({ project, analysis, problems });
+    } catch (e) {
+      if (!c.signal.aborted)
+        setError(e instanceof Error ? e.message : String(e));
+    } finally {
+      if (!c.signal.aborted) setBusy(false);
+    }
+  }
   const create = () => {
-    const p = template < 0 ? blankProject(library[0], name) : copy(library[template]);
-    p.schema_version = Math.max(3, p.schema_version);
-    p.name = name.trim();
-    p.description = `${choice.name} · EasyOpticSim Y1.1 简单向导创建`;
-    p.sensor = [width, height];
-    p.fields = [0, ((field * Math.PI) / 180) * 0.7, (field * Math.PI) / 180];
-    delete p.field_spec;
-    if (sensorFields) setFieldSpec(p, { mode: "sensor" });
-    p.object_distance = infinity ? null : distance;
-    const constraints = defaultConstraints(p, choice.efl);
-    constraints.design = {
-      f_number: choice.fNumber,
-      f_tolerance: Math.max(0.1, choice.fNumber * 0.08),
-      min_bfl_mm: Math.max(1, height * 0.15),
-      max_front_diameter_mm: Math.max(35, choice.efl / choice.fNumber * 1.6),
-    };
-    ensureWorkspace(p).constraints = constraints;
-    onCreate(p);
+    try {
+      const p = preview
+        ? structuredClone(preview.project)
+        : createDesign(value);
+      addVersion(
+        p,
+        p,
+        "创建起点",
+        preview
+          ? "完成基础检查；精细衍射与自动修正由设计助手继续。"
+          : "未经检查的实验草稿。",
+      );
+      onCreate(p);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : String(e));
+    }
   };
-
   return (
-    <Modal title="创建一个镜头" onCancel={onCancel} className="onboarding-dialog">
-      <div className="wizard-progress" aria-label={`创建进度 ${progress}`}>
-        {["想拍什么", "想要什么效果", "选择起点"].map((label, i) => (
-          <div className={step >= i + 1 ? "active" : ""} key={label}>
-            <span>{step > i + 1 ? <Check size={14} /> : i + 1}</span>
-            {label}
+    <Modal
+      title="一起设计你的镜头"
+      onCancel={onCancel}
+      className="onboarding-dialog guided-create"
+    >
+      <div
+        className="wizard-progress"
+        aria-label={`第 ${step + 1} 步，共 6 步`}
+      >
+        {steps.map((s, i) => (
+          <div
+            key={s}
+            className={i <= step ? "active" : ""}
+            aria-current={i === step ? "step" : undefined}
+          >
+            <span>{i < step ? <Check size={14} /> : i + 1}</span>
+            {s}
           </div>
         ))}
       </div>
-
-      {step === 1 && (
-        <section className="wizard-page">
-          <p className="wizard-eyebrow">不用懂光学，先选一个最接近的用途</p>
-          <h2>你最想拍什么？</h2>
-          <div className="purpose-grid">
-            {(Object.keys(purposes) as Purpose[]).map((id) => {
-              const item = purposes[id];
-              return (
+      <section className="wizard-page">
+        {step === 0 && (
+          <>
+            <p className="wizard-eyebrow">从你想探索的画面开始</p>
+            <h2>你想设计什么样的镜头？</h2>
+            <div className="purpose-grid">
+              {(Object.keys(starters) as StarterId[]).map((id) => (
                 <button
-                  className={purpose === id ? "selected" : ""}
-                  aria-pressed={purpose === id}
                   key={id}
-                  onClick={() => choosePurpose(id)}
+                  className={id === value.starter ? "selected" : ""}
+                  aria-pressed={id === value.starter}
+                  onClick={() =>
+                    patch({
+                      starter: id,
+                      focal: starters[id].focal,
+                      aperture: starters[id].aperture,
+                      distance: starters[id].distance,
+                    })
+                  }
                 >
-                  <item.Icon size={28} />
-                  <strong>{item.name}</strong>
-                  <small>{item.summary}</small>
+                  <Camera size={24} />
+                  <strong>{starters[id].title}</strong>
+                  <small>{starters[id].subtitle}</small>
                 </button>
-              );
-            })}
-          </div>
-        </section>
-      )}
-
-      {step === 2 && (
-        <section className="wizard-page">
-          <p className="wizard-eyebrow">这些选择会变成正式的光学目标，之后仍可修改</p>
-          <h2>{choice.name}，我们先这样开始</h2>
-          <div className="plain-goals">
-            <div><span>画面感觉</span><strong>{choice.efl <= 35 ? "宽广" : choice.efl >= 135 ? "拉近远处" : "自然聚焦主体"}</strong></div>
-            <div><span>背景与进光</span><strong>{choice.fNumber <= 3 ? "柔和背景、更多进光" : "清楚稳定、容易成功"}</strong></div>
-            <div><span>拍摄距离</span><strong>{choice.distance === null ? "远处景物" : `${choice.distance / 1000} 米左右`}</strong></div>
-          </div>
-          <label className="text-label wizard-name">
-            给这个设计起个名字
-            <input autoFocus value={name} onChange={(e) => setName(e.target.value)} />
-          </label>
-          <details className="advanced-disclosure" open={advanced} onToggle={(e) => setAdvanced(e.currentTarget.open)}>
-            <summary>精确设置（可跳过）</summary>
-            <div className="dialog-grid">
-              <Num label="传感器宽度" value={width} onChange={setWidth} min={0.1} unit="mm" />
-              <Num label="传感器高度" value={height} onChange={setHeight} min={0.1} unit="mm" />
+              ))}
             </div>
-            <label className="check"><input type="checkbox" checked={sensorFields} onChange={(e) => setSensorFields(e.target.checked)} />自动检查传感器中心、边缘与角落（推荐）</label>
-            {!sensorFields && <Num label="最大半视场" value={field} onChange={setField} min={0} max={40.1} unit="°" />}
-            <label className="check"><input type="checkbox" checked={infinity} onChange={(e) => setInfinity(e.target.checked)} />拍摄远处景物</label>
-            {!infinity && <Num label="拍摄距离" value={distance} onChange={setDistance} min={1.01} max={1e12} unit="mm" />}
-          </details>
-        </section>
-      )}
-
-      {step === 3 && (
-        <section className="wizard-page">
-          <p className="wizard-eyebrow">推荐从已能成像的示例继续，更容易看到每次修改的效果</p>
-          <h2>选择一个起点</h2>
-          <div className="starter-list">
-            {guidedStarters.map((starter) => {
-              const source = library[starter.index];
-              if (!source) return null;
-              const active = purpose === starter.purpose && template === starter.index;
-              return <button key={starter.purpose} className={active ? "selected" : ""} onClick={() => { choosePurpose(starter.purpose); setTemplate(starter.index); }}>
-                <span className="starter-art" aria-hidden="true">)(</span>
-                <span><strong>{starter.label}{starter.purpose === purpose ? " · 推荐" : ""}</strong><small>基于 {source.name} · 教学起点，不冒充已达标成品</small></span>
-                {active && <Check size={18} />}
-              </button>;
-            })}
-          </div>
-          <details className="advanced-disclosure">
-            <summary>查看全部示例和空白项目</summary>
-            <div className="starter-list">
-            {library.slice(0, 5).map((p, i) => (
-              <button key={i} className={template === i ? "selected" : ""} onClick={() => setTemplate(i)}>
-                <span className="starter-art" aria-hidden="true">)(</span>
-                <span><strong>{p.name}</strong><small>{p.surfaces.length} 个光学表面 · 可立即分析</small></span>
-                {template === i && <Check size={18} />}
-              </button>
-            ))}
-            <button className={template === -1 ? "selected" : ""} onClick={() => setTemplate(-1)}>
-              <span className="starter-art" aria-hidden="true">＋</span>
-              <span><strong>完全空白</strong><small>适合熟悉镜头结构后从零搭建</small></span>
-              {template === -1 && <Check size={18} />}
+            <p>
+              每个起点都是可计算的教学模型。助手会说明实际表现与目标之间的差距。
+            </p>
+          </>
+        )}
+        {step === 1 && (
+          <>
+            <h2>镜头将怎样使用？</h2>
+            <label className="text-label">
+              画幅大小
+              <select
+                value={value.sensor}
+                onChange={(e) => patch({ sensor: Number(e.target.value) })}
+              >
+                {sensorPresets.map((p, i) => (
+                  <option key={p.name} value={i}>
+                    {p.name}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <p>
+              画幅越大，越需要检查镜头能否覆盖边缘和角落。不确定时可保留全画幅，检查结果会说明限制。
+            </p>
+            <label className="check">
+              <input
+                type="checkbox"
+                checked={value.distance === null}
+                onChange={(e) =>
+                  patch({ distance: e.target.checked ? null : 2000 })
+                }
+              />
+              拍摄远处景物
+            </label>
+            {value.distance !== null && (
+              <Num
+                label="到拍摄对象的距离"
+                value={value.distance / 1000}
+                min={0.01}
+                unit="m"
+                onChange={(n) => patch({ distance: n * 1000 })}
+              />
+            )}
+          </>
+        )}
+        {step === 2 && (
+          <>
+            <h2>希望得到什么效果？</h2>
+            <p>
+              这些是目标，不会立即改变镜片。默认值接近模板的焦距与光圈，较大的改变可能超出当前结构能力。
+            </p>
+            <Num
+              label="目标焦距 · 同画幅下，越长拍摄范围越窄"
+              value={value.focal}
+              min={1}
+              max={2000}
+              unit="mm"
+              onChange={(focal) => patch({ focal })}
+            />
+            <Num
+              label="目标光圈 · F 数越小，进光需求越大"
+              value={value.aperture}
+              min={0.5}
+              max={128}
+              unit="F"
+              onChange={(aperture) => patch({ aperture })}
+            />
+            <p>
+              背景虚化还取决于拍摄距离等条件。助手不会为了达到目标而悄悄更换材料或扩大口径。
+            </p>
+            <label className="text-label">
+              给设计起个名字
+              <input
+                maxLength={120}
+                value={value.name}
+                onChange={(e) => patch({ name: e.target.value })}
+              />
+            </label>
+          </>
+        )}
+        {step === 3 && (
+          <>
+            <span className="tag">{selected.difficulty}</span>
+            <h2>{selected.title}的设计起点</h2>
+            <div className="starter-detail">
+              <ScanEye size={32} />
+              <strong>
+                参考焦距约 {selected.focal} mm · F/{selected.aperture}
+              </strong>
+              <p>{selected.limitation}</p>
+            </div>
+            <p>
+              来源：{selected.file}
+              。保留模板的真实材料与光谱条件；下一步按你选择的画幅和距离重新计算。
+            </p>
+            <p>
+              目标：{value.focal} mm · F/{value.aperture}
+              。如果检查不通过，可以返回修改目标或作为实验草稿继续。
+            </p>
+          </>
+        )}
+        {step === 4 && (
+          <>
+            <h2>先看看这个起点能做到什么</h2>
+            <p>
+              检查镜片结构、画幅覆盖和目标差距。这里是 33×33
+              基础检查；精细衍射和自动修正会在创建后由助手继续。
+            </p>
+            <button
+              className="primary"
+              disabled={busy || !valid}
+              onClick={() => void inspect()}
+            >
+              {busy ? (
+                <LoaderCircle className="spin" size={16} />
+              ) : (
+                <ScanEye size={16} />
+              )}
+              {busy
+                ? "正在计算实际表现"
+                : preview
+                  ? "重新检查"
+                  : "检查这个起点"}
             </button>
+            {busy && (
+              <button
+                onClick={() => {
+                  controller.current?.abort();
+                  setBusy(false);
+                }}
+              >
+                取消检查
+              </button>
+            )}
+            {preview && (
+              <>
+                <PictureSummary
+                  project={preview.project}
+                  analysis={preview.analysis}
+                />
+                {preview.problems.length ? (
+                  <ul>
+                    {preview.problems.map((p) => (
+                      <li key={p}>{p}</li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p>基础检查通过。精细画质尚未验证。</p>
+                )}
+              </>
+            )}
+          </>
+        )}
+        {step === 5 && (
+          <>
+            <h2>
+              {preview?.problems.length || !preview
+                ? "带着明确的问题继续探索"
+                : "起点准备好了"}
+            </h2>
+            <div className="starter-detail">
+              <strong>{value.name}</strong>
+              <p>
+                {selected.title} · {sensorPresets[value.sensor].name} · 目标{" "}
+                {value.focal} mm F/{value.aperture}
+              </p>
             </div>
-          </details>
-          <div className="wizard-summary">
-            <strong>准备好了</strong>
-            <span>{name || "未命名项目"} · {choice.name} · 目标约 {choice.efl} mm F/{choice.fNumber}</span>
-          </div>
-        </section>
-      )}
-
+            <p>
+              {!preview
+                ? "你选择跳过基础检查。项目会作为未检查草稿创建。"
+                : preview.problems.length
+                  ? preview.problems.join("；")
+                  : "基础检查已完成，下一步让助手尝试改进并进行精细复核。"}
+            </p>
+            <p>
+              创建后进入设计助手。原始起点会保存在版本记录中，所有候选都需要你确认才能替换当前镜头。
+            </p>
+          </>
+        )}
+        {error && (
+          <p className="error" role="alert">
+            {error}
+          </p>
+        )}
+      </section>
       <div className="dialog-actions wizard-actions">
-        <button onClick={step === 1 ? onCancel : () => setStep(step - 1)}>{step === 1 ? "取消" : <><ArrowLeft size={15} />上一步</>}</button>
-        {step < 3 ? (
-          <button className="primary" disabled={step === 2 && !name.trim()} onClick={() => setStep(step + 1)}>继续 <ArrowRight size={15} /></button>
+        <button
+          disabled={busy}
+          onClick={step === 0 ? onCancel : () => setStep(step - 1)}
+        >
+          <ArrowLeft size={15} />
+          {step === 0 ? "取消" : "上一步"}
+        </button>
+        {step < 5 ? (
+          <button
+            className="primary"
+            disabled={!valid || busy}
+            onClick={() => setStep(step + 1)}
+          >
+            {step === 4 && !preview ? "跳过检查，作为草稿继续" : "继续"}
+            <ArrowRight size={15} />
+          </button>
         ) : (
-          <button className="primary" disabled={!name.trim() || (template < 0 && !library[0])} onClick={create}>创建并开始设计 <ArrowRight size={15} /></button>
+          <button className="primary" disabled={!valid} onClick={create}>
+            {!preview || preview.problems.length
+              ? "创建实验草稿"
+              : "创建并进入设计助手"}
+            <ArrowRight size={15} />
+          </button>
         )}
       </div>
     </Modal>

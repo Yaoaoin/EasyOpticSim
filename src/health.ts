@@ -1,4 +1,11 @@
-import type { Analysis, Geometry, Project, Wave } from "./types";
+import type {
+  Analysis,
+  ConstraintCheck,
+  Geometry,
+  Project,
+  Wave,
+} from "./types";
+import { fieldTargets } from "./fields";
 
 export type HealthStatus = "pass" | "improve" | "fail" | "unchecked";
 export type HealthAction =
@@ -36,18 +43,24 @@ const worstBlocked = (analysis: Analysis) =>
 const validRms = (analysis: Analysis) =>
   analysis.fields
     .map((field) => field.polychromatic_rms_um)
-    .filter((value): value is number => value !== null && Number.isFinite(value));
+    .filter(
+      (value): value is number => value !== null && Number.isFinite(value),
+    );
 
 export function evaluateHealth(
   project: Project,
   geometry: Geometry,
   analysis: Analysis,
   waves: (Wave | null)[],
+  checks: ConstraintCheck[] = [],
 ): HealthReport {
   const rms = validRms(analysis);
   const hasImage =
     analysis.paraxial.efl !== null &&
     (project.object_distance !== null || (analysis.paraxial.bfl ?? 0) > 0) &&
+    analysis.fields.length > 0 &&
+    analysis.fields.length ===
+      (fieldTargets(project)?.length ?? project.fields.length) &&
     rms.length === analysis.fields.length;
   const image: HealthCard = hasImage
     ? {
@@ -127,9 +140,11 @@ export function evaluateHealth(
   const target = project.workspace?.optimization?.quality?.max_worst_rms_um;
   const worstRms = rms.length ? Math.max(...rms) : null;
   const waveFailed = waves.some((wave) => wave && !wave.quality.converged);
-  const waveMissing = waves.some((wave) => wave === null);
+  const waveMissing =
+    waves.length !== analysis.fields.length ||
+    waves.some((wave) => wave === null);
   const quality: HealthCard =
-    worstRms === null
+    worstRms === null || rms.length !== analysis.fields.length
       ? {
           id: "quality",
           title: "画质是否达到目标",
@@ -138,52 +153,91 @@ export function evaluateHealth(
           details: ["先解决成像与通光问题，再进行画质判断。"],
           action: "autofocus",
         }
-      : (target !== undefined && target !== null && worstRms > target) || waveFailed
+      : (target !== undefined && target !== null && worstRms > target) ||
+          waveFailed
         ? {
             id: "quality",
             title: "画质是否达到目标",
             status: "fail",
             summary: `最差几何 RMS ${worstRms.toFixed(2)} µm${target ? `，目标 ≤ ${target.toFixed(2)} µm` : ""}`,
-            details: [waveFailed ? "快速 PSF / MTF 收敛检查未通过。" : "设计目标尚未满足。"],
+            details: [
+              waveFailed
+                ? "快速 PSF / MTF 收敛检查未通过。"
+                : "设计目标尚未满足。",
+            ],
             action: "optimization",
           }
-        : waveMissing || worstRms > 50
+        : waveMissing
           ? {
               id: "quality",
               title: "画质是否达到目标",
-              status: "improve",
-              summary: `最差几何 RMS ${worstRms.toFixed(2)} µm`,
-              details: [waveMissing ? "部分 PSF / MTF 项目未能完成。" : "未设置明确画质上限，建议继续改进。"],
-              action: waveMissing ? "wave" : "optimization",
+              status: "unchecked",
+              summary: "精细画质检查尚未完整完成",
+              details: [
+                `已算出的最差几何 RMS ${worstRms.toFixed(2)} µm；不能据此认定完整画质通过。`,
+              ],
+              action: "wave",
             }
-          : {
-              id: "quality",
-              title: "画质是否达到目标",
-              status: "pass",
-              summary: `最差几何 RMS ${worstRms.toFixed(2)} µm，快速衍射检查已完成`,
-              details: ["结果仅适用于当前视场、波长、采样和模型范围。"],
-            };
+          : target == null
+            ? {
+                id: "quality",
+                title: "画质是否达到目标",
+                status: "improve",
+                summary: `最差几何 RMS ${worstRms.toFixed(2)} µm`,
+                details: ["未设置明确画质上限；已完成计算不等于达到画质目标。"],
+                action: "optimization",
+              }
+            : {
+                id: "quality",
+                title: "画质是否达到目标",
+                status: "pass",
+                summary: `最差几何 RMS ${worstRms.toFixed(2)} µm，快速衍射检查已完成`,
+                details: ["结果仅适用于当前视场、波长、采样和模型范围。"],
+              };
 
-  const blocking = [image, throughput, mechanics, quality].some(
-    (card) => card.status === "fail",
-  );
+  if (
+    project.field_spec?.mode === "sensor" &&
+    (!analysis.coverage ||
+      analysis.coverage.checkpoints.some((c) => c.status !== "sampled_clear"))
+  ) {
+    throughput.status = "fail";
+    throughput.summary = "画幅覆盖未完全通过，请检查边缘与角落";
+    throughput.action = "aperture";
+  }
+  const failedChecks = checks.filter((c) => !c.passed);
+  const blocking =
+    failedChecks.length > 0 ||
+    [image, throughput, mechanics, quality].some(
+      (card) => card.status === "fail",
+    );
   const exportCard: HealthCard = blocking
     ? {
         id: "export",
         title: "是否适合导出",
         status: "fail",
         summary: "存在阻断性问题，建议修复后再作为正式结果导出",
-        details: ["仍可导出草稿，但必须保留失败说明。"],
+        details: [
+          `${failedChecks.length} 项设计约束未通过。仍可导出草稿，但必须保留失败说明。`,
+        ],
         action: "save",
       }
-    : {
-        id: "export",
-        title: "是否适合导出",
-        status: "pass",
-        summary: "可以保存项目并导出带检查边界的报告",
-        details: ["通过不等于制造、公差或真实相机系统认证。"],
-        action: "save",
-      };
+    : waveMissing || !checks.length
+      ? {
+          id: "export",
+          title: "是否适合导出",
+          status: "unchecked",
+          summary: "部分检查未完成，只能作为待验证结果保存",
+          details: ["保留未完成说明，不将其标为正式通过。"],
+          action: "save",
+        }
+      : {
+          id: "export",
+          title: "是否适合导出",
+          status: "pass",
+          summary: "可以保存项目并导出带检查边界的报告",
+          details: ["通过不等于制造、公差或真实相机系统认证。"],
+          action: "save",
+        };
   const cards = [image, throughput, quality, mechanics, exportCard];
   const overall = cards.some((card) => card.status === "fail")
     ? "fail"

@@ -27,6 +27,7 @@ export const sections = [
     label: "调校",
     hint: "保存基准后进行扫描或受约束的局部优化",
     tabs: [
+      ["assistant", "设计助手", "optimization"],
       ["focus", "像面对焦扫描", "focus"],
       ["motion", "配置与镜组运动", "motion"],
       ["aperture", "光圈扫描", "aperture"],

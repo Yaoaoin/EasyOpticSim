@@ -4,6 +4,8 @@
 
 当前用户版本为 **Y1.1**，内部语义版本为 `1.1.0-y1.1`。当前仓库：[Yaoaoin/EasyOpticSim](https://github.com/Yaoaoin/EasyOpticSim)。本项目由 [Ayr1k/OpenOpticSim](https://github.com/ayr1k/OpenOpticSim) fork 并继续开发，保留原项目 Apache License 2.0、版权声明、[NOTICE](NOTICE) 和全部[第三方许可](THIRD_PARTY_NOTICES.txt)。项目改名不改变上游代码的许可证或归属。
 
+开发分支已加入三入口引导工作区、六步新建向导和独立复核的设计助手。使用方法、自动化边界及提交 EOS PR 的步骤见 [引导设计与开发分支说明](docs/EOS-GUIDED-DEVELOPMENT.md)。这些改进尚未作为新版本发布，以下下载说明对应原 Y1.1 发行版。
+
 ## Y1.1 新功能
 
 - 一键镜头体检：按固定顺序检查数据、机械、通光、几何画质、焦点、设计目标和快速 PSF/MTF。
