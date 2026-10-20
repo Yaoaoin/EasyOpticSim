@@ -6,7 +6,7 @@ fn run() -> Result<serde_json::Value, String> {
     let args: Vec<_> = std::env::args().collect();
     let cmd = args.get(1).map(String::as_str).unwrap_or("help");
     if cmd == "examples" {
-        return Ok(serde_json::json!(openoptics::examples()));
+        return Ok(serde_json::json!(easyoptics::examples()));
     }
     if cmd == "--request" || cmd == "--request-progress" {
         let mut input = String::new();
@@ -14,7 +14,7 @@ fn run() -> Result<serde_json::Value, String> {
             .take(4 * 1024 * 1024)
             .read_to_string(&mut input)
             .map_err(|e| e.to_string())?;
-        return openoptics::execute_with_progress(
+        return easyoptics::execute_with_progress(
             serde_json::from_str(&input).map_err(|e| e.to_string())?,
             &AtomicBool::new(false),
             &mut |progress| {
@@ -27,18 +27,18 @@ fn run() -> Result<serde_json::Value, String> {
     }
     if cmd == "help" {
         return Ok(
-            serde_json::json!({"usage":["oos-cli examples","oos-cli demo","oos-cli analyze|validate|autofocus project.oos.json","oos-cli --request < request.json"],"units":"mm, rad, nm"}),
+            serde_json::json!({"usage":["easyopticsim-cli examples","easyopticsim-cli demo","easyopticsim-cli analyze|validate|autofocus project.eos.json","easyopticsim-cli --request < request.json"],"units":"mm, rad, nm"}),
         );
     }
     let p = if cmd == "demo" {
-        openoptics::examples().remove(0)
+        easyoptics::examples().remove(0)
     } else {
         let path = args.get(2).ok_or("Project path required")?;
         serde_json::from_str(&std::fs::read_to_string(path).map_err(|e| e.to_string())?)
             .map_err(|e| e.to_string())?
     };
-    openoptics::execute(
-        openoptics::Request {
+    easyoptics::execute(
+        easyoptics::Request {
             wave_options: Default::default(),
             operation: if cmd == "demo" {
                 "analyze".into()

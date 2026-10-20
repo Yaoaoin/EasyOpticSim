@@ -38,6 +38,7 @@ export const sections = [
     label: "交付",
     hint: "比较设计、导出图纸并保存完整项目",
     tabs: [
+      ["health", "一键镜头体检", "health"],
       ["versions", "版本对比", "versions"],
       ["drawing", "技术图纸 PDF", "drawing"],
     ],

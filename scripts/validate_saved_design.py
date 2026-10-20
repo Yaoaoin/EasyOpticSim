@@ -6,7 +6,7 @@ import subprocess
 ROOT=Path(__file__).resolve().parents[1]
 def read(path):return json.loads((ROOT/path).read_text(encoding='utf-8-sig'))
 def invoke(operation,project,**extra):
-    r=subprocess.run([str(ROOT/'target/release/oos-cli.exe'),'--request'],input=json.dumps(dict(operation=operation,project=project,**extra)),text=True,encoding='utf-8',capture_output=True,check=True)
+    r=subprocess.run([str(ROOT/'target/release/easyopticsim-cli.exe'),'--request'],input=json.dumps(dict(operation=operation,project=project,**extra)),text=True,encoding='utf-8',capture_output=True,check=True)
     return json.loads(r.stdout)
 file='docs/fixtures/design-ui-saved-0.8.oos.json'
 p=read(file);baseline=read('examples/400mm-repaired.oos.json')

@@ -21,7 +21,7 @@ from rayoptics.elem.profiles import Spherical, EvenPolynomial
 from rayoptics.raytr.raytrace import bend
 
 ROOT=Path(__file__).resolve().parents[1]
-CLI=ROOT/'target/release/oos-cli.exe'
+CLI=ROOT/'target/release/easyopticsim-cli.exe'
 def read(p): return json.loads((ROOT/p).read_text(encoding='utf-8-sig'))
 def call(op,p,**kw):
     r=subprocess.run([str(CLI),'--request'],input=json.dumps(dict(operation=op,project=p,**kw)),capture_output=True,text=True,encoding='utf8')

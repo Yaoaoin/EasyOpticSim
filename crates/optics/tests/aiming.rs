@@ -1,4 +1,4 @@
-use openoptics::*;
+use easyoptics::*;
 use std::sync::atomic::AtomicBool;
 fn original() -> Project {
     serde_json::from_str(include_str!("fixtures/telephoto-original.oos.json")).unwrap()

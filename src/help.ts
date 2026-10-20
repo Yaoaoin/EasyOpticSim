@@ -6,6 +6,7 @@ const sources = import.meta.glob("../docs/manual/*.md", {
 }) as Record<string, string>;
 const order = [
   "start",
+  "health",
   "workspace",
   "files",
   "editing",

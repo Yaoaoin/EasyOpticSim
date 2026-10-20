@@ -14,7 +14,7 @@ from rayoptics.raytr.raytrace import bend
 from importlib.metadata import version
 
 ROOT = Path(__file__).resolve().parents[1]
-CLI = ROOT / 'target' / 'debug' / 'oos-cli.exe'
+CLI = ROOT / 'target' / 'debug' / 'easyopticsim-cli.exe'
 
 def invoke(request):
     result = subprocess.run([str(CLI), '--request'], input=json.dumps(request), text=True, encoding='utf-8', capture_output=True, check=True)

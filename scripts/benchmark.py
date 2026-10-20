@@ -2,7 +2,7 @@
 import json,os,platform,subprocess,time,statistics
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-CLI=ROOT/'target'/'release'/('oos-cli.exe' if os.name=='nt' else 'oos-cli')
+CLI=ROOT/'target'/'release'/('easyopticsim-cli.exe' if os.name=='nt' else 'easyopticsim-cli')
 projects=json.loads(subprocess.check_output([str(CLI),'examples'],encoding='utf-8'))
 p=projects[0]
 # 20 physical sequential surfaces: teaching singlet + 17 air planes.

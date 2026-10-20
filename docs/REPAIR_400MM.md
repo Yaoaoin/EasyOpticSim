@@ -42,7 +42,7 @@
 
 ```powershell
 cargo test --workspace --locked
-cargo build -p oos-cli --release --locked
+cargo build -p easyopticsim-cli --release --locked
 pnpm test
 python scripts/validate_aiming.py
 python scripts/validate_diffraction.py --extra-project examples/400mm-repaired.oos.json --output docs/validation-diffraction-0.7.json

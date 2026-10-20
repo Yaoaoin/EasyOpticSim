@@ -1,4 +1,4 @@
-name: Validate OpenOpticSim
+name: Validate EasyOpticSim
 on: [push, pull_request]
 permissions:
   contents: read
@@ -28,12 +28,12 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm test
       - run: pnpm build
-      - run: cargo test -p openoptics --locked --release
-      - run: cargo check -p openopticsim-desktop --locked
-      - run: cargo test -p openopticsim-desktop --locked --release
+      - run: cargo test -p easyoptics --locked --release
+      - run: cargo check -p easyopticsim-desktop --locked
+      - run: cargo test -p easyopticsim-desktop --locked --release
       - run: cargo clippy --workspace --all-targets --locked -- -D warnings
-      - run: cargo build -p oos-cli --locked
-      - run: cargo build -p oos-cli --locked --release
+      - run: cargo build -p easyopticsim-cli --locked
+      - run: cargo build -p easyopticsim-cli --locked --release
       - run: python -m pip install -r scripts/requirements-validation.txt
       - run: python scripts/validate_rayoptics.py
       - run: python scripts/validate_diffraction.py --extra-project examples/400mm-repaired.oos.json --output docs/validation-diffraction-open-source-1.0.json

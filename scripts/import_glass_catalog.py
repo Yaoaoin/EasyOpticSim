@@ -8,7 +8,7 @@ import urllib.request
 ROOT = Path(__file__).resolve().parents[1]
 DEST = ROOT / "src/data/glass-catalog.json"
 REPO = "polyanskiy/refractiveindex.info-database"
-headers = {"User-Agent": "OpenOpticSim-catalog-import"}
+headers = {"User-Agent": "EasyOpticSim-catalog-import"}
 
 def fetch(url):
     return urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=45).read()

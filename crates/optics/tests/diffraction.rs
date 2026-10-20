@@ -1,5 +1,5 @@
-use openoptics::wave::{diffraction, WaveOptions};
-use openoptics::*;
+use easyoptics::wave::{diffraction, WaveOptions};
+use easyoptics::*;
 use rustfft::num_complex::Complex;
 use std::sync::atomic::AtomicBool;
 fn flag() -> AtomicBool {

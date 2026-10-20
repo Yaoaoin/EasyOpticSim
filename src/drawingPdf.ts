@@ -30,10 +30,10 @@ export async function createDrawingPdf(
       .map((c) => (glyphs.has(c.codePointAt(0)!) ? c : "?"))
       .join("");
   const p = s.project;
-  doc.setTitle(`${p.name} - OOS 技术图纸`);
-  doc.setAuthor("OpenOpticSim 1.1");
+  doc.setTitle(`${p.name} - EasyOpticSim 技术图纸`);
+  doc.setAuthor("EasyOpticSim Y1.1");
   doc.setSubject("旋转对称顺序透射光学设计记录");
-  doc.setCreator("OOS 1.1 / pdf-lib");
+  doc.setCreator("EasyOpticSim Y1.1 / pdf-lib");
   doc.setCreationDate(new Date(s.createdAt));
   let page!: PDFPage;
   let y = 0,
@@ -67,7 +67,7 @@ export async function createDrawingPdf(
   function newPage(title: string) {
     section = title.replace(/（续）$/, "");
     page = doc.addPage([W, H]);
-    text("OpenOpticSim", M, 23, 11, accent);
+    text("EasyOpticSim", M, 23, 11, accent);
     text("1.1  /  OPTICAL DESIGN RECORD", W - 265, 24, 8, muted);
     line(M, 45, W - M, 45);
     text(title, M, 59, 18);
@@ -330,7 +330,7 @@ export async function createDrawingPdf(
   );
   paragraph(`源项目 SHA-256：${s.sourceHash}`, 8, muted);
   paragraph(
-    "完整原生项目作为 PDF 附件嵌入，包含未经表格舍入的数值、版本与扫描源记录。提取 project.oos.json 后可在 OOS 中重新打开；普通 PDF 阅读器可能不显示附件入口。",
+    "完整原生项目作为 PDF 附件嵌入，包含未经表格舍入的数值、版本与扫描源记录。提取 project.eos.json 后可在 EasyOpticSim 中重新打开；普通 PDF 阅读器可能不显示附件入口。",
     9,
     muted,
   );
@@ -775,20 +775,20 @@ export async function createDrawingPdf(
     10,
   );
   paragraph(
-    "数据来源：本次导出冻结的用户项目及 OOS 本地计算。没有从图像猜测材料或补全未指定公差。来源哈希由 UTF-8 原生项目 JSON 字节计算；所有显示舍入值的精确原值都在附件中。",
+    "数据来源：本次导出冻结的用户项目及 EasyOpticSim 本地计算。没有从图像猜测材料或补全未指定公差。来源哈希由 UTF-8 原生项目 JSON 字节计算；所有显示舍入值的精确原值都在附件中。",
     10,
   );
   paragraph(
-    "生成工具：OpenOpticSim 1.1（Apache-2.0）；PDF-LIB / fontkit（MIT）；中文字体 Noto Sans SC（SIL OFL 1.1）。字体来源与许可随安装包分发。",
+    "生成工具：EasyOpticSim Y1.1（基于 OpenOpticSim，Apache-2.0）；PDF-LIB / fontkit（MIT）；中文字体 Noto Sans SC（SIL OFL 1.1）。字体来源与许可随安装包分发。",
     9,
     muted,
   );
   await doc.attach(
     new TextEncoder().encode(JSON.stringify(p, null, 2)),
-    "project.oos.json",
+    "project.eos.json",
     {
       mimeType: "application/json",
-      description: "完整 OOS 源项目，含精确处方与工作区",
+      description: "完整 EasyOpticSim 源项目，含精确处方与工作区",
       creationDate: new Date(s.createdAt),
     },
   );
@@ -830,7 +830,7 @@ export async function createDrawingPdf(
     line(M, H - 35, W - M, H - 35, muted, 0.4, a);
     let name = clean(p.name);
     while (font.widthOfTextAtSize(name, 7) > 450) name = name.slice(0, -1);
-    text(`${name}  |  OOS 1.1  |  名义设计 / mm`, M, H - 26, 7, muted, a);
+    text(`${name}  |  EasyOpticSim Y1.1  |  名义设计 / mm`, M, H - 26, 7, muted, a);
     text(`${i + 1} / ${pages.length}`, W - M - 40, H - 26, 8, muted, a);
   });
   return doc.save();

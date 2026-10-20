@@ -719,6 +719,37 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d0881ea181b1df73ff77ffaaf9c7544ecc11e82fba9b5f27b262a3c73a332555"
 
 [[package]]
+name = "easyoptics"
+version = "1.1.0-y1.1"
+dependencies = [
+ "nalgebra",
+ "rustfft",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
+name = "easyopticsim-cli"
+version = "1.1.0-y1.1"
+dependencies = [
+ "easyoptics",
+ "serde_json",
+]
+
+[[package]]
+name = "easyopticsim-desktop"
+version = "1.1.0-y1.1"
+dependencies = [
+ "easyoptics",
+ "rfd",
+ "serde",
+ "serde_json",
+ "tauri",
+ "tauri-build",
+ "tempfile",
+]
+
+[[package]]
 name = "embed-resource"
 version = "3.0.12"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2209,37 +2240,6 @@ name = "once_cell"
 version = "1.21.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9f7c3e4beb33f85d45ae3e3a1792185706c8e16d043238c593331cc7cd313b50"
-
-[[package]]
-name = "oos-cli"
-version = "1.1.0-y1.0"
-dependencies = [
- "openoptics",
- "serde_json",
-]
-
-[[package]]
-name = "openoptics"
-version = "1.1.0-y1.0"
-dependencies = [
- "nalgebra",
- "rustfft",
- "serde",
- "serde_json",
-]
-
-[[package]]
-name = "openopticsim-desktop"
-version = "1.1.0-y1.0"
-dependencies = [
- "openoptics",
- "rfd",
- "serde",
- "serde_json",
- "tauri",
- "tauri-build",
- "tempfile",
-]
 
 [[package]]
 name = "option-ext"

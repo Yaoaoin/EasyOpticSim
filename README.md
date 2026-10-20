@@ -1,147 +1,81 @@
-# OpenOpticSim Y1.0 (OOS)
+# EasyOpticSim Y1.1
 
-面向摄影与镜头爱好者的本地光学工作室。React + Tauri 2 桌面界面，自研 Rust 双精度顺序追迹核心；界面、命令行使用同一实现。Apache-2.0。
+面向摄影与镜头爱好者的本地光学设计工作室。EasyOpticSim 使用 React、Tauri 2 和 Rust，将复杂的镜头设计、调校和检验整理成新手也能跟随的流程；Windows x64 是主要发布平台。
 
-OpenOpticSim is a local-first optical design workbench for photography enthusiasts. Y1.0 adds a beginner-first workflow and glacier-blue glass interface on top of Ayr1k's original React/Tauri application and double-precision Rust sequential ray tracer. Windows x64 is the primary platform. The source remains Apache-2.0; upstream and third-party components retain their notices and licenses.
+当前用户版本为 **Y1.1**，内部语义版本为 `1.1.0-y1.1`。当前仓库：[Yaoaoin/EasyOpticSim](https://github.com/Yaoaoin/EasyOpticSim)。本项目由 [Ayr1k/OpenOpticSim](https://github.com/ayr1k/OpenOpticSim) fork 并继续开发，保留原项目 Apache License 2.0、版权声明、[NOTICE](NOTICE) 和全部[第三方许可](THIRD_PARTY_NOTICES.txt)。项目改名不改变上游代码的许可证或归属。
 
-![OpenOpticSim 1.0 工作区](docs/screenshots/studio-1.0.png)
+## Y1.1 新功能
 
-**当前版本：Y1.0（内部语义版本 `1.1.0-y1.0`）。** 当前 fork：[Yaoaoin/OpenOpticSim](https://github.com/Yaoaoin/OpenOpticSim)；原始项目与上游更新：[ayr1k/OpenOpticSim](https://github.com/ayr1k/OpenOpticSim)。本 fork 保留原项目 Apache-2.0 [LICENSE](LICENSE)、[NOTICE](NOTICE) 和全部[第三方声明](THIRD_PARTY_NOTICES.txt)。
+- 一键镜头体检：按固定顺序检查数据、机械、通光、几何画质、焦点、设计目标和快速 PSF/MTF。
+- 五类可行动结果：能否成像、是否通光、画质、机械结构、是否适合导出；明确区分“可以继续、建议改进、必须修复、尚未检查”。
+- 安全智能建议：自动对焦和优化只生成候选，显示前后差异与完整约束，通过后仍需用户确认采纳。
+- 问题定位：几何或追迹失败可直接前往首个问题面；口径、光圈和画质问题进入对应工具。
+- 首次启动五步引导、工作区“跟我做”进度和可随时重开的教程。
+- 人像、广角、长焦、近物四类教学模板；每个模板明确是设计起点，不冒充已达标成品。
+- 项目与程序统一改名为 EasyOpticSim；新项目默认保存为 `.eos.json`，继续兼容旧 `.oos.json` 和 CSV。
 
-Y1.0 的目标是让第一次接触光学设计的人也能开始：默认只需选择拍摄用途，跟随四个步骤完成目标、搭建、改进和检查；熟悉原版工作流的用户可以随时切换回专业模式。
+Y1.0 的三步新建向导、简单/专业双模式、四步任务导航和冰川蓝玻璃界面全部保留。完整内容见 [Y1.1 版本说明](docs/releases/Y1.1.md)、[更新日志](CHANGELOG.md)与 [GitHub Release 文案](docs/github-release-Y1.1.md)。
 
-## Y1.0 亮点
+## 下载
 
-- 三步图形化新建向导：人像、风景、远摄、近物，无需先理解视场角、物距或入瞳。
-- 简单 / 专业双模式：简单模式提供四步任务导航，专业模式完整保留原有十五个工具。
-- 冰川蓝玻璃视觉：统一设计令牌、透明度降级、明确状态色、键盘焦点和减少动态效果支持。
-- 兼容已有 `.oos.json` / CSV 文件与 Rust 光学核心；界面偏好不会写入项目文件。
-- 完整内容见 [Y1.0 版本说明](docs/releases/Y1.0.md)、[更新日志](CHANGELOG.md)和[GitHub Release 发布文案](docs/github-release-Y1.0.md)。
+发布后可从 Y1.1 Release 下载：
 
-Y1.0 发布内容已准备，标签与 Release 由维护者发布；下列链接在 `Y1.0` Release 上传附件后生效：
+- [Windows x64 安装包](https://github.com/Yaoaoin/EasyOpticSim/releases/download/Y1.1/EasyOpticSim_1.1.0-y1.1_x64-setup.exe)
+- [安装包 SHA-256](https://github.com/Yaoaoin/EasyOpticSim/releases/download/Y1.1/EasyOpticSim_1.1.0-y1.1_x64-setup.exe.sha256)
+- [Y1.1 发布页](https://github.com/Yaoaoin/EasyOpticSim/releases/tag/Y1.1)
 
-- [Windows x64 安装包](https://github.com/Yaoaoin/OpenOpticSim/releases/download/Y1.0/OpenOpticSim_1.1.0-y1.0_x64-setup.exe)
-- [安装包 SHA-256](https://github.com/Yaoaoin/OpenOpticSim/releases/download/Y1.0/OpenOpticSim_1.1.0-y1.0_x64-setup.exe.sha256) · `SHA256SUMS.txt`
-- [Y1.0 发布说明](docs/releases/Y1.0.md) · [版本发布页](https://github.com/Yaoaoin/OpenOpticSim/releases/tag/Y1.0)
+安装包包含离线 WebView2 组件、中文字体、完整手册、示例和许可文件。普通用户不需要安装 Node.js、Python 或 Rust。安装包目前未签名；请仅从本仓库下载并核对 SHA-256。
 
-安装包未签名；干净 Windows 无 WebView2 的断网安装验收尚未完成。具体已验证内容与限制见发布说明。
+## 三分钟开始
 
-| 我想做什么 | 入口 |
-| --- | --- |
-| 第一次使用、搭建并对焦镜头 | [十分钟新手教程](docs/manual/start.md) |
-| 查找功能、快捷键与技术解释 | [完整手册](docs/OOS-1.1-使用手册.md) · [离线 HTML](docs/OOS-1.1-使用手册.html) |
-| 确认能计算什么、结果如何验证 | [功能与限制](docs/STATUS.md) · [测试报告](docs/TEST_REPORT.md) |
-| 使用 400 mm 或其他示例 | [示例与来源](examples/README.md) |
-| 报告问题、改进代码或文档 | [贡献指南](CONTRIBUTING.md) · [安全报告](SECURITY.md) |
-| 查阅更新、许可和发布流程 | [更新日志](CHANGELOG.md) · [许可审查](docs/THIRD_PARTY_AUDIT.md) · [发布流程](docs/RELEASING.md) |
+1. 点击“新建项目”，选择人像、风景、远摄或近物。
+2. 选择推荐教学模板，创建后跟随顶部四个步骤。
+3. 用自动对焦或约束优化生成候选，检查结果后再采纳。
+4. 打开“检查与保存 → 一键镜头体检”。
+5. 按失败卡片的按钮定位问题、生成修复候选或进入专业诊断。
+6. 保存 `.eos.json`，或导出体检报告与技术图纸。
 
-**Y1.0 基于上游 1.1 功能集。** 固定传感器镜组对焦、变焦、单补偿组求解、多配置、PSF / MTF、优化、版本比较和 PDF 技术图纸全部保留。简单模式只是重新组织入口，不使用另一套计算模型；专业模式继续提供原有设计、画质、调校、交付工作区。
+第一次启动会显示五步界面引导；顶部“跟我做”可重新打开。软件内帮助、F1 或 Ctrl+K 可检索说明。也可直接阅读 [EasyOpticSim Y1.1 完整手册](docs/EasyOpticSim-Y1.1-使用手册.md)、[离线 HTML 手册](docs/EasyOpticSim-Y1.1-使用手册.html)和[一键体检说明](docs/manual/health.md)。
 
-软件内「帮助」、F1 或 Ctrl+K 可查阅与定位功能；也可直接打开 [离线 HTML 完整手册](docs/OOS-1.1-使用手册.html)、[Markdown 手册](docs/OOS-1.1-使用手册.md) 或 [新手教程](docs/manual/start.md)。[功能范围](docs/STATUS.md)和[测试报告](docs/TEST_REPORT.md)说明适用范围与实测证据。既有传感器联动、离轴衍射、扫描、优化、镜组与版本对比全部保留。[0.9 计算范围](docs/COVERAGE.md)继续适用。
+## 能力与边界
 
-## Windows 运行
+简单模式和专业模式使用同一 Rust 双精度顺序追迹核心。专业模式保留镜头处方、几何检查、材料、传感器视场、瞳面、自动对焦、光圈扫描、镜组运动、多配置、PSF/MTF、测试图成像、约束优化、版本比较和 PDF 技术图纸。
 
-构建后的 Y1.0 安装包位于 `target/release/bundle/nsis/OpenOpticSim_1.1.0-y1.0_x64-setup.exe`，配置包含 WebView2 离线安装组件、完整手册和许可。也可运行 `target/release/openopticsim-desktop.exe`（需要系统已有 WebView2）。发布版嵌入界面、引擎、PDF 工具与中文字体，不需要 Node、Python、Rust 或本地 HTTP 服务。
+体检“通过”只表示当前处方在记录的视场、波长、采样和模型范围内没有发现阻断项。它不代表加工公差、镀膜、杂散光、机械强度、装配或真实相机系统已经认证。详细范围见 [STATUS](docs/STATUS.md)、[COVERAGE](docs/COVERAGE.md)、[DIFFRACTION](docs/DIFFRACTION.md)和[测试报告](docs/TEST_REPORT.md)。
 
-下载后可在 PowerShell 中运行 `Get-FileHash .\OpenOpticSim_1.1.0-y1.0_x64-setup.exe -Algorithm SHA256`，与同版本 `.sha256` 比较。正式附件以对应 Release 的文件为准；源码内的历史本地验收记录不替代下载附件的最新校验清单。
+## 从源码运行
 
-首次使用：
-
-首次使用点击“新建项目”，依次选择拍摄用途、效果和起点；创建后跟随顶部四个步骤继续。需要从零搭建或输入精确传感器、视场、物距时，在向导中展开“精确设置”或选择“完全空白”。原生项目兼容读取 v1 / v2 / v3，另支持扩展 CSV。
-
-1. 打开“单透镜”，观察中心与边缘点列图。
-2. 修改右侧“光阑半径”，按 Enter 提交。观察近轴 F 数和光斑；出现通光警告时检查失败明细。
-3. 点击“自动对焦”，检查候选指标，再点击“采纳候选”。
-4. 切换“专业”编辑圆锥常数、A4–A10 或材料系数。
-5. 在“对焦扫描”查看各视场曲线；使用“记录版本 / 版本对比”保存基准，再以统一配置和尺度比较。
-6. 「调校 → 约束优化」可填写目标焦距容差、总长、中心厚度、最薄实体与空气间隔约束；候选逐项通过后才可采纳。
-7. 保存 `.oos.json` 或导出带材料元数据的 CSV；打开可恢复同一模型。
-
-推荐体验：打开“双胶合探索” → 右侧「摄影与分析」自动对焦 → 采纳候选 →「画质 → PSF / MTF」。从「调校」进入扫描与约束优化，「交付」比较版本和导出技术图纸。「文件与导出」保留另存为及 CSV。具体步骤见内置新手教程。
-
-图纸是名义设计记录，未指定的加工公差、镀膜、表面质量和装配要求不会自动补全，不能直接替代完整加工验收文件。导出固定当前像面，重新计算 33×33 几何；可选逐视场多色衍射。存在失败时明确标为草稿或记录原因，不复用旧结果冒充通过。
-
-算法范围见 [衍射与成像说明](docs/DIFFRACTION.md)。成像仍为局部平面目标，整幅空间变化卷积与畸变映射待实现。
-
-## 开发
-
-需要 Node.js 24、pnpm 11.25、Rust stable。Windows 还需要 Visual Studio C++ Build Tools、Windows SDK、WebView2。
-
-首次搭建环境、验证命令和 PR 要求见 [CONTRIBUTING.md](CONTRIBUTING.md)。本仓库 CI 配置面向 Windows；其他平台尚无安装和运行保证。Node 的 `private: true` 只避免误发布到 npm，不限制源码公开。
+需要 Node.js 24、pnpm 11.25 和 Rust stable。Windows 桌面构建还需要 Visual Studio C++ Build Tools、Windows SDK 与 WebView2。
 
 ```powershell
 pnpm install --frozen-lockfile
-cargo build -p oos-cli --locked
+cargo build -p easyopticsim-cli --locked
 pnpm dev
 ```
 
-开发界面为 `http://127.0.0.1:1420/`。Vite 仅在开发时启动 CLI 桥接，计算仍为 Rust；生产 Web 静态预览不具备引擎。
+开发界面位于 `http://127.0.0.1:1420/`。生产 Web 静态预览不包含本地 Rust 引擎。
+
+## 测试和发布构建
 
 ```powershell
-pnpm tauri dev       # 原生桌面调试
-pnpm release:build   # 测试、路径重映射与 Windows 离线安装包
-```
-
-## 命令行与测试
-
-```powershell
-cargo run -p oos-cli -- demo
-cargo run -p oos-cli -- examples
-cargo run -p oos-cli -- analyze examples/singlet.oos.json
-cargo run -p oos-cli -- validate examples/singlet.oos.json
-cargo test -p openoptics --locked
 pnpm test
 pnpm build
 cargo test --workspace --locked --release
 cargo clippy --workspace --all-targets --locked -- -D warnings
+pnpm release:build
+python scripts/stage_release.py
 ```
 
-更完整接口通过 `oos-cli --request` 从 stdin 接收 JSON。参见 [API 与模型约定](docs/ARCHITECTURE.md)。
-
-独立验证仅作为开发依赖，Python 不参与产品运行：
+CLI 示例：
 
 ```powershell
-python -m venv .tools/validation
-.tools/validation/Scripts/python -m pip install -r scripts/requirements-validation.txt
-.tools/validation/Scripts/python scripts/validate_rayoptics.py
-cargo build -p oos-cli --release
-.tools/validation/Scripts/python scripts/benchmark.py
-.tools/validation/Scripts/python scripts/validate_diffraction.py
-.tools/validation/Scripts/python scripts/validate_mechanics.py
-.tools/validation/Scripts/python scripts/validate_workflows.py
+cargo run -p easyopticsim-cli -- examples
+cargo run -p easyopticsim-cli -- analyze examples/singlet.oos.json
+cargo run -p easyopticsim-cli -- validate examples/singlet.oos.json
 ```
 
-可直接打开 [双胶合版本对比项目](examples/version-workflow.oos.json)，比较最佳多色对焦与像面后移 0.05 mm。
+完整接口通过 `easyopticsim-cli --request` 从 stdin 接收 JSON。发布流程见 [RELEASING](docs/RELEASING.md)，贡献要求见 [CONTRIBUTING](CONTRIBUTING.md)。
 
-## 验证证据
+## 许可证与致谢
 
-- [1.0 发布重建验收](docs/validation-release-1.0.json)：按最新 LICENSE 重建，记录前端 / Rust 回归、400 mm 保存回归、桌面 / 安装向导启动、资源一致性和未完成的安装验收。下载附件的实际校验值见对应 Release。
-
-- [衍射独立验证](docs/validation-diffraction.json)：RayOptics 重追 69,979 条瞳光线、NumPy PSF/复 OTF、直接球面传播与测试图逐像素对照；仅覆盖说明中的标量模型。
-
-- Rust 物理回归包括 Snell 定律、反向折射、全反射、球面解析交点、厚透镜焦距、平板光程、瞳面瞄准、遮光与失败处理、有限物距、非球面导数、多色 RMS、自动对焦、取消和理想圆孔 MTF。
-- [RayOptics 交叉验证报告](docs/validation-rayoptics.json)：比较五个教学镜头与有限物距非球面算例的交点、方向和光程。仅验证报告列出的范围。
-- [性能报告](docs/benchmark.json)：20 面模型，含进程启动、瞄准、分析和 JSON 输出；结果不代表任意硬件或镜头。
-- [衍射性能报告](docs/benchmark-wave.json)：记录逐级采样、三波长 PSF/MTF 与三视场成像的发布版耗时。
-- [几何采样收敛](docs/convergence.json)：固定单透镜算例在 9/17/33/65 网格的多色 RMS 变化；不代表衍射收敛。
-- 前端测试检查原生文件版本与含引号、换行的 CSV 往返。
-
-## 项目结构
-
-```text
-crates/optics/   模型、追迹、分析、优化、标量衍射与局部成像
-crates/cli/      JSON 命令行
-src/            React 编辑器与图表
-src-tauri/      桌面任务调度、取消、安装配置
-examples/       可编辑的原创教学处方
-scripts/        独立验证、性能测量、图标生成
-docs/           约定、限制与真实测量报告
-```
-
-基础示例使用合成教学玻璃，不冒充商品材料；400 mm 系列来自用户自行搭建处方及本项目修正，不是佳能官方处方，也不表示达到 400 mm f/2.8。来源与变体见 [examples/README.md](examples/README.md)。材料数据随项目保存并保留来源。
-
-## 许可证与贡献
-
-原创代码、文档和本项目原创资源采用 [Apache-2.0](LICENSE)，保留 [NOTICE](NOTICE)。字体、目录玻璃、依赖和 Microsoft WebView2 分别遵守各自条款，详见 [第三方审查](docs/THIRD_PARTY_AUDIT.md)和 [THIRD_PARTY_NOTICES.txt](THIRD_PARTY_NOTICES.txt)。不能用本项目许可证替代第三方内容的许可。
-
-贡献前请阅读 [CONTRIBUTING.md](CONTRIBUTING.md)。计算疑问请提供最小处方、软件版本、波长 / 视场 / 采样和像面条件；不要公开私人或无权再分发的设计文件。
+EasyOpticSim 继续依据 Apache License 2.0 分发。原始 OpenOpticSim 项目由 Ayr1k 与 OpenOpticSim contributors 开发；本 fork 的 EasyOpticSim 界面、引导和检验工作流由 Yaoaoin/EasyOpticSim 维护。所有上游版权、NOTICE、第三方许可证、Noto Sans SC 的 SIL OFL 以及玻璃目录的 CC0 声明继续有效。

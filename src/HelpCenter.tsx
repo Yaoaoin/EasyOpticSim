@@ -109,7 +109,7 @@ export default function HelpCenter({
     );
   };
   return (
-    <Modal title="OOS 帮助与教程" wide onCancel={close}>
+    <Modal title="EasyOpticSim 帮助与教程" wide onCancel={close}>
       <div className="help-toolbar">
         <label className="search-box">
           <Search size={17} />

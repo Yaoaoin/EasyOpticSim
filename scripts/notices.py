@@ -5,7 +5,7 @@ ROOT=Path(__file__).resolve().parents[1]
 cargo=shutil.which('cargo')
 if not cargo:raise SystemExit('cargo must be on PATH; install Rust and reopen the terminal.')
 meta=json.loads(subprocess.check_output([str(cargo),'metadata','--locked','--offline','--format-version','1','--filter-platform','x86_64-pc-windows-msvc'],cwd=ROOT,encoding='utf-8'))
-blocks=['OpenOpticSim third-party notices\nGenerated from locked Rust dependencies and installed Node packages.\nIncludes build/dev dependencies conservatively. Each component retains its own license.\n']
+blocks=['EasyOpticSim third-party notices\nBased on OpenOpticSim by Ayr1k and contributors.\nGenerated from locked Rust dependencies and installed Node packages.\nIncludes build/dev dependencies conservatively. Each component retains its own license.\n']
 inventory=[]
 seen=set()
 def add(name,version,license,folder,license_file=None,source=None,ecosystem=None):

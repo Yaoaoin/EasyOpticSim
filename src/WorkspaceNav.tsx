@@ -22,7 +22,7 @@ export default function WorkspaceNav({
       goal: "goals",
       build: "prescription",
       improve: "spots",
-      verify: "aberration",
+      verify: "health",
     };
     const tools: Record<string, [string, string][]> = {
       goal: [["goals", "设置拍摄目标"]],
@@ -36,6 +36,7 @@ export default function WorkspaceNav({
         ["optimization", "自动改进"],
       ],
       verify: [
+        ["health", "一键镜头体检"],
         ["aberration", "检查通光"],
         ["wave", "精细画质检查"],
         ["drawing", "导出图纸"],

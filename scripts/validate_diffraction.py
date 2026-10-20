@@ -20,7 +20,7 @@ from rayoptics.raytr.raytrace import bend
 
 ROOT = Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser()
-parser.add_argument("--cli", type=Path, default=ROOT / "target/release/oos-cli.exe")
+parser.add_argument("--cli", type=Path, default=ROOT / "target/release/easyopticsim-cli.exe")
 parser.add_argument("--extra-project",type=Path)
 parser.add_argument("--output",type=Path)
 args = parser.parse_args()

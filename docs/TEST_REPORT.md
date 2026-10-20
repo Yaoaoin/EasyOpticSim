@@ -54,7 +54,7 @@ pnpm test
 pnpm build
 cargo test --workspace --release --locked
 cargo clippy --workspace --all-targets --locked -- -D warnings
-cargo build -p oos-cli --release --locked
+cargo build -p easyopticsim-cli --release --locked
 python scripts/validate_saved_design.py
 node scripts/render_drawings.mjs
 python -m pip install -r scripts/requirements-pdf-validation.txt

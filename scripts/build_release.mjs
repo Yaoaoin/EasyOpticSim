@@ -24,7 +24,7 @@ for (const [from, to] of [
   [homedir(), "/build/home"],
   [process.env.RUSTUP_HOME || resolve(homedir(), ".rustup"), "/build/rustup"],
   [process.env.CARGO_HOME || resolve(homedir(), ".cargo"), "/build/cargo"],
-  [root, "/src/OpenOpticSim"],
+  [root, "/src/EasyOpticSim"],
 ]) {
   for (const prefix of new Set([resolve(from), resolve(from).replaceAll("\\", "/")])) {
     flags.push(`--remap-path-prefix=${prefix}=${to}`);
@@ -41,10 +41,10 @@ function run(command, args) {
 }
 
 run("cargo", ["test", "--workspace", "--locked", "--release"]);
-run("cargo", ["build", "-p", "oos-cli", "--locked", "--release"]);
+run("cargo", ["build", "-p", "easyopticsim-cli", "--locked", "--release"]);
 // Static command only: no paths or user input are interpolated into the shell.
 run(process.env.ComSpec || "cmd.exe", ["/d", "/s", "/c", "pnpm tauri build --bundles nsis"]);
-for (const name of ["openopticsim-desktop.exe", "oos-cli.exe"]) {
+for (const name of ["easyopticsim-desktop.exe", "easyopticsim-cli.exe"]) {
   const data = readFileSync(resolve(target, "release", name));
   const ascii = data.toString("latin1").match(/[A-Z]:[\\/]+Users[\\/]+[^\\/\0\r\n]+/gi) || [];
   const utf16 = data.toString("utf16le").match(/[A-Z]:[\\/]+Users[\\/]+[^\\/\0\r\n]+/gi) || [];

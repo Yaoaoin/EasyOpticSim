@@ -36,7 +36,7 @@ Sellmeier n²=1+Σ Bi λ²/(λ²-Ci)，λ 为 µm。材料有效波段在追迹�
 
 ## JSON 请求接口
 
-CLI：oos-cli --request，从 stdin 读一个 JSON，正常 stdout 输出 JSON，错误 stderr 返回非零。--request-progress 输出 NDJSON 进度，最后一行 result。请求中的 project 是完整光学处方对象，不是路径，工作区由 UI 在调用前分离。
+CLI：`easyopticsim-cli --request`，从 stdin 读一个 JSON，正常 stdout 输出 JSON，错误 stderr 返回非零。`--request-progress` 输出 NDJSON 进度，最后一行 result。请求中的 project 是完整光学处方对象，不是路径，工作区由 UI 在调用前分离。
 
 ```json
 {"operation":"analyze","project":{},"sampling":25}
@@ -62,7 +62,7 @@ wavelength_nm=null 表示多色；method=fast 或 sphere_kirchhoff。视场索�
 cargo test --workspace --release --locked
 pnpm test
 pnpm build
-cargo build -p oos-cli --release --locked
+cargo build -p easyopticsim-cli --release --locked
 python scripts/validate_coverage.py
 python scripts/validate_diffraction.py
 ```

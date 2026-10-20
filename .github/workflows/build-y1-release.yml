@@ -1,4 +1,4 @@
-name: Build Y1.0 Windows release
+name: Build EasyOpticSim Y1.1 Windows release
 
 on:
   workflow_dispatch:
@@ -41,12 +41,12 @@ jobs:
         run: cargo clippy --workspace --all-targets --locked -- -D warnings
       - name: Build private-path-clean NSIS installer
         run: pnpm release:build
-      - name: Stage and verify Y1.0 release assets
+      - name: Stage and verify Y1.1 release assets
         run: python scripts/stage_release.py
-      - name: Upload verified Y1.0 bundle
+      - name: Upload verified Y1.1 bundle
         uses: actions/upload-artifact@v4
         with:
-          name: OpenOpticSim-Y1.0-Windows-release
-          path: artifacts/release-Y1.0/
+          name: EasyOpticSim-Y1.1-Windows-release
+          path: artifacts/release-Y1.1/
           if-no-files-found: error
           retention-days: 14

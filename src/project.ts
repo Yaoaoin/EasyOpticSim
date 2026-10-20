@@ -17,7 +17,7 @@ export function projectFromJson(text: string, nested = false): Project {
     !Array.isArray(p.sensor) ||
     typeof p.name !== "string"
   )
-    throw Error("不是有效的 v1/v2/v3 OpenOpticSim 项目");
+    throw Error("不是有效的 v1/v2/v3 EasyOpticSim / OpenOpticSim 项目");
   if (
     p.surfaces.length > 100 ||
     !p.materials.length ||

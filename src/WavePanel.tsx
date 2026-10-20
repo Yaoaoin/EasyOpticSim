@@ -60,7 +60,7 @@ export default function WavePanel({
   async function exportMtf() {
     if (!wave) return;
     const metadata = [
-      ["format", "OpenOpticSim diffraction report v1"],
+      ["format", "EasyOpticSim diffraction report v1"],
       ["project_json", JSON.stringify(project)],
       ["field_rad", String(wave.field)],
       ["pixel_um", String(wave.pixel_um)],

@@ -59,8 +59,8 @@ FFT 零填充倍率为 4；有效瞳宽按 64 → 128 → 256 逐级加密，图
 
 运行：
 
-    cargo test -p openoptics --release --locked
-    cargo build -p oos-cli --release --locked
+    cargo test -p easyoptics --release --locked
+    cargo build -p easyopticsim-cli --release --locked
     .tools/validation/Scripts/python scripts/validate_diffraction.py
 
 [机器可读报告](validation-diffraction.json)包含五组算例：缩光阑单透镜、离轴多色双胶合、有限物距离轴非球面、1e12 mm 超远有限物距、裁剪瞳单透镜。

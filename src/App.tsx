@@ -78,10 +78,15 @@ import OptimizationReportView, { ProgressView } from "./OptimizationReport";
 import MaterialLibrary from "./MaterialLibrary";
 import { defaultOptimization, optimizationError } from "./optimization";
 import {
+  completeTour,
   readExperienceMode,
   saveExperienceMode,
+  shouldShowTour,
   type ExperienceMode,
 } from "./experience";
+import HealthCheckPanel from "./HealthCheckPanel";
+import OnboardingTour from "./OnboardingTour";
+import type { HealthReport } from "./health";
 import {
   addVersion,
   defaultConstraints,
@@ -101,8 +106,12 @@ const rms = (a: Analysis | null) =>
 const HelpCenter = lazy(() => import("./HelpCenter"));
 const CommandSearch = lazy(() => import("./CommandSearch"));
 const DrawingPanel = lazy(() => import("./DrawingPanel"));
+const autosaveKey = "easyopticsim-autosave";
+const legacyAutosaveKey = "oos-autosave";
 export default function App() {
   const [experience, setExperience] = useState<ExperienceMode>(readExperienceMode);
+  const [showTour, setShowTour] = useState(shouldShowTour);
+  const [healthReport, setHealthReport] = useState<HealthReport | null>(null);
   const [helpTopic, setHelpTopic] = useState<string | null>(null),
     [showSearch, setShowSearch] = useState(false),
     [inspectorTab, setInspectorTab] = useState("element");
@@ -350,14 +359,14 @@ export default function App() {
             setError(explainError(e));
             try {
               if (project)
-                localStorage.setItem("oos-autosave", JSON.stringify(project));
+                localStorage.setItem(autosaveKey, JSON.stringify(project));
             } catch {}
           });
       },
       () => {
         try {
-          if (savedKey) localStorage.setItem("oos-autosave", savedKey);
-          else localStorage.removeItem("oos-autosave");
+          if (savedKey) localStorage.setItem(autosaveKey, savedKey);
+          else localStorage.removeItem(autosaveKey);
         } catch {}
       },
     );
@@ -411,7 +420,7 @@ export default function App() {
         setLibrary(items);
         let p = items[0];
         try {
-          const saved = localStorage.getItem("oos-autosave");
+          const saved = localStorage.getItem(autosaveKey) ?? localStorage.getItem(legacyAutosaveKey);
           if (saved) p = projectFromJson(saved);
         } catch {}
         latestProject.current = p;
@@ -429,7 +438,7 @@ export default function App() {
     if (!project) return;
     if (ready.current) {
       try {
-        localStorage.setItem("oos-autosave", JSON.stringify(project));
+        localStorage.setItem(autosaveKey, JSON.stringify(project));
       } catch {
         setNotice("本地自动恢复不可用，请使用“保存项目”。");
       }
@@ -651,7 +660,7 @@ export default function App() {
     if (!project || saving) return false;
     setSaving(true);
     setSaveProblem("");
-    const name = project.name + (csv ? ".csv" : ".oos.json");
+    const name = project.name + (csv ? ".csv" : ".eos.json");
     const content = csv ? toCsv(project) : JSON.stringify(project, null, 2);
     try {
       if (new TextEncoder().encode(content).length > 4_000_000)
@@ -694,11 +703,11 @@ export default function App() {
     return (
       <div className="startup">
         <Aperture size={42} />
-        <h1>OpenOpticSim</h1>
+        <h1>EasyOpticSim</h1>
         <p>{error || "连接本地 Rust 光学引擎…"}</p>
         <button onClick={() => window.location.reload()}>重试连接</button>
         {import.meta.env.DEV && (
-          <code>cargo build -p oos-cli　→　pnpm dev</code>
+          <code>cargo build -p easyopticsim-cli　→　pnpm dev</code>
         )}
       </div>
     );
@@ -711,9 +720,9 @@ export default function App() {
         <div className="brand">
           <Aperture size={27} />
           <div>
-            OpenOpticSim <small>光学工作室</small>
+            EasyOpticSim <small>冰川光学工作室</small>
           </div>
-          <span className="alpha">Y1.0</span>
+          <span className="alpha">Y1.1</span>
         </div>
         <div className="toolbar">
           <div className="experience-switch" role="group" aria-label="界面复杂度">
@@ -800,7 +809,7 @@ export default function App() {
             hidden
             ref={file}
             type="file"
-            accept=".json,.csv"
+            accept=".eos.json,.oos.json,.json,.csv"
             onChange={(e) => {
               const f = e.target.files?.[0];
               if (f) void importFile(f);
@@ -946,13 +955,20 @@ export default function App() {
           <div className="workspace-guide">
             <span>
               {experience === "simple"
-                ? "跟着四步完成设计；复杂参数已经收好，随时可以切到专业模式。"
+                ? "跟着四步完成设计；一键体检会告诉你哪里有问题、下一步做什么。"
                 : "先定义目标，再检查通光与画质；调校结果以候选方式采纳。"}
             </span>
-            <button onClick={() => setHelpTopic("start")}>
-              新手教程 <ChevronRight size={13} />
-            </button>
+            <div><button onClick={() => setShowTour(true)}>跟我做 <ChevronRight size={13} /></button><button onClick={() => setHelpTopic("start")}>新手教程 <ChevronRight size={13} /></button></div>
           </div>
+          {experience === "simple" && <div className="guided-checklist" aria-label="跟我做进度">
+            {[
+              ["目标", !!project.workspace?.constraints, "goals"],
+              ["搭建", project.surfaces.length > 0, "prescription"],
+              ["成像", !!result && result.fields.every((field) => field.polychromatic_rms_um !== null), "focus"],
+              ["体检", !!healthReport, "health"],
+              ["保存", !dirty, "versions"],
+            ].map(([label, done, destination], index) => <button className={done ? "done" : ""} key={String(label)} onClick={() => navigate(String(destination))}><span>{done ? "✓" : index + 1}</span>{String(label)}</button>)}
+          </div>}
           <div className="viewport">
             <div className="viewbar">
               <div>
@@ -1153,6 +1169,18 @@ export default function App() {
             </div>
           )}
           <section className="analysis" id="analysis-workbench">
+            {tab === "health" && (
+              <HealthCheckPanel
+                project={project}
+                disabled={!!busy}
+                navigate={navigate}
+                onSurface={setSelected}
+                onAutofocus={() => void run("autofocus")}
+                onOptimize={() => void run("optimize")}
+                onSave={() => void saveFile()}
+                onReport={setHealthReport}
+              />
+            )}
             {tab === "optimization" && (
               <div className="workflow-panel optimization-workbench">
                 <h2>约束优化</h2>
@@ -1841,6 +1869,15 @@ export default function App() {
           onCreate={(p) => {
             loadDocument(p);
             setShowNew(false);
+          }}
+        />
+      )}
+      {showTour && (
+        <OnboardingTour
+          navigate={navigate}
+          close={(completed) => {
+            if (completed) completeTour();
+            setShowTour(false);
           }}
         />
       )}

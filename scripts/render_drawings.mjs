@@ -24,7 +24,7 @@ const { createDrawingPdf } = createRequire(import.meta.url)(
 const font = readFileSync("src/assets/fonts/NotoSansSC.ttf");
 function invoke(operation, project, extra = {}) {
   return JSON.parse(
-    execFileSync(resolve("target/release/oos-cli.exe"), ["--request"], {
+    execFileSync(resolve("target/release/easyopticsim-cli.exe"), ["--request"], {
       input: JSON.stringify({ operation, project, ...extra }),
       encoding: "utf8",
       maxBuffer: 32 * 1024 * 1024,

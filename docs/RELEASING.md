@@ -1,6 +1,6 @@
-# OOS 本地检查与发布流程
+# EasyOpticSim 本地检查与发布流程
 
-源码仓库为 https://github.com/ayr1k/OpenOpticSim 。以下流程只构建、验证和整理本地文件，Git 提交、标签、推送和 Release 均由维护者操作。
+当前仓库为 https://github.com/Yaoaoin/EasyOpticSim ，基于 https://github.com/ayr1k/OpenOpticSim 。以下流程只构建、验证和整理本地文件，Git 提交、标签、推送和 Release 均由维护者操作。
 
 ## 1. 检查公开内容
 
@@ -23,7 +23,7 @@ pnpm test
 pnpm build
 cargo test --workspace --locked --release
 cargo clippy --workspace --all-targets --locked -- -D warnings
-cargo build -p oos-cli --locked --release
+cargo build -p easyopticsim-cli --locked --release
 ```
 
 独立参考环境与命令见 [贡献指南](../CONTRIBUTING.md)。首次发布或改计算链时运行 `validate_rayoptics.py`、`validate_diffraction.py`、`validate_mechanics.py`、`validate_workflows.py`、`validate_optimization.py`、`validate_aiming.py`、`validate_design.py`、`validate_saved_design.py`、`validate_coverage.py`；脚本生成的报告应审阅差异，不能只覆盖旧结果。
@@ -42,7 +42,7 @@ python scripts/stage_release.py
 如果 Windows 应用控制策略禁止执行仓库 `target` 下的 Cargo 构建脚本，可把临时构建目录放到受信任位置；构建和整理必须使用同一个绝对路径：
 
 ```powershell
-$env:CARGO_TARGET_DIR = 'C:\BuildTools\OpenOpticSim-target'
+$env:CARGO_TARGET_DIR = 'C:\BuildTools\EasyOpticSim-target'
 pnpm release:build
 python scripts/stage_release.py
 ```

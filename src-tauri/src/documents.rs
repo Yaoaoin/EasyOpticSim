@@ -60,7 +60,7 @@ pub async fn save_pdf(name: String, bytes: Vec<u8>) -> Result<Option<String>, St
             })
             .collect();
         let Some(path) = rfd::FileDialog::new()
-            .set_title("导出 OOS 技术图纸 PDF")
+            .set_title("导出 EasyOpticSim 技术图纸 PDF")
             .set_file_name(safe_name)
             .add_filter("PDF technical drawing", &["pdf"])
             .save_file()
@@ -77,7 +77,7 @@ pub async fn save_pdf(name: String, bytes: Vec<u8>) -> Result<Option<String>, St
 pub async fn open_project(app: tauri::AppHandle) -> Result<Option<serde_json::Value>, String> {
     use tauri::Manager;
     tauri::async_runtime::spawn_blocking(move || {
-        let Some(path)=rfd::FileDialog::new().set_title("打开 OpenOpticSim 项目").add_filter("OSS project / prescription", &["json","csv"]).pick_file() else {return Ok(None);};
+        let Some(path)=rfd::FileDialog::new().set_title("打开 EasyOpticSim 项目").add_filter("EasyOpticSim project / prescription", &["json","csv"]).pick_file() else {return Ok(None);};
         let content=read(&path)?;
         app.state::<Documents>().0.lock().unwrap().insert(path.clone());
         Ok(Some(serde_json::json!({"name":path.file_name().unwrap_or_default().to_string_lossy(),"path":path.to_string_lossy(),"content":content})))
@@ -114,7 +114,7 @@ pub async fn save_project(
                 .set_title(if csv {
                     "导出处方 CSV"
                 } else {
-                    "保存 OpenOpticSim 项目"
+                    "保存 EasyOpticSim 项目"
                 })
                 .set_file_name(safe_name)
                 .add_filter(
@@ -158,16 +158,16 @@ mod tests {
     fn atomic_save_reopen_replace_and_failure_preserve_original() {
         let dir = tempfile::tempdir().unwrap();
         let path = dir.path().join("镜片.oos.json");
-        let mut p = openoptics::examples().remove(0);
+        let mut p = easyoptics::examples().remove(0);
         p.schema_version = 2;
-        p.surfaces[1].mechanical = Some(openoptics::MechanicalEdge {
+        p.surfaces[1].mechanical = Some(easyoptics::MechanicalEdge {
             semi_diameter: 15.,
-            shape: openoptics::EdgeShape::Flat,
+            shape: easyoptics::EdgeShape::Flat,
         });
         let text = serde_json::to_string_pretty(&p).unwrap();
         write(&path, &text).unwrap();
         assert_eq!(read(&path).unwrap(), text);
-        let q: openoptics::Project = serde_json::from_str(&read(&path).unwrap()).unwrap();
+        let q: easyoptics::Project = serde_json::from_str(&read(&path).unwrap()).unwrap();
         assert_eq!(
             q.surfaces[1].mechanical.as_ref().unwrap().semi_diameter,
             15.
@@ -181,21 +181,21 @@ mod tests {
     fn versioned_document_is_saved_verbatim_and_optical_prescription_unchanged() {
         let dir = tempfile::tempdir().unwrap();
         let path = dir.path().join("0.4 多版本.oos.json");
-        let p = openoptics::examples().remove(4);
+        let p = easyoptics::examples().remove(4);
         let mut doc = serde_json::to_value(&p).unwrap();
         doc["workspace"] = serde_json::json!({"schema_version":1,"versions":[{"id":"baseline","name":"机械基准","created_at":"2026-10-18T00:00:00Z","note":"","prescription":p}],"focus":{"min_mm":40,"max_mm":60,"steps":31,"sampling":17,"criterion":"balanced"}});
         let text = serde_json::to_string_pretty(&doc).unwrap();
         write(&path, &text).unwrap();
         let reopened: serde_json::Value = serde_json::from_str(&read(&path).unwrap()).unwrap();
         assert_eq!(reopened, doc);
-        let q: openoptics::Project = serde_json::from_value(reopened.clone()).unwrap();
-        let v: openoptics::Project =
+        let q: easyoptics::Project = serde_json::from_value(reopened.clone()).unwrap();
+        let v: easyoptics::Project =
             serde_json::from_value(reopened["workspace"]["versions"][0]["prescription"].clone())
                 .unwrap();
         let flag = std::sync::atomic::AtomicBool::new(false);
         assert_eq!(
-            serde_json::to_value(openoptics::analyze(&q, 17, &flag).unwrap()).unwrap(),
-            serde_json::to_value(openoptics::analyze(&v, 17, &flag).unwrap()).unwrap()
+            serde_json::to_value(easyoptics::analyze(&q, 17, &flag).unwrap()).unwrap(),
+            serde_json::to_value(easyoptics::analyze(&v, 17, &flag).unwrap()).unwrap()
         );
     }
 }

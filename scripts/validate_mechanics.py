@@ -7,7 +7,7 @@ import tempfile
 import tomllib
 
 ROOT = Path(__file__).resolve().parents[1]
-CLI = ROOT / "target/release/oos-cli.exe"
+CLI = ROOT / "target/release/easyopticsim-cli.exe"
 def invoke(operation, p, **extra):
     result = subprocess.run([str(CLI), "--request"], input=json.dumps(dict(operation=operation,project=p,**extra)), text=True,encoding="utf-8",capture_output=True,check=True)
     return json.loads(result.stdout)

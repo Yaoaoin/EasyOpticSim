@@ -1,4 +1,4 @@
-use openoptics::{aperture::*, *};
+use easyoptics::{aperture::*, *};
 use std::sync::atomic::AtomicBool;
 fn flag() -> AtomicBool {
     AtomicBool::new(false)

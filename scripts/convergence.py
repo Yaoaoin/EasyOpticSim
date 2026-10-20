@@ -2,7 +2,7 @@
 import json,subprocess,os
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-exe=ROOT/'target'/'release'/('oos-cli.exe' if os.name=='nt' else 'oos-cli')
+exe=ROOT/'target'/'release'/('easyopticsim-cli.exe' if os.name=='nt' else 'easyopticsim-cli')
 project=json.loads((ROOT/'examples'/'singlet.oos.json').read_text(encoding='utf-8'))
 def run(op,**kw):return json.loads(subprocess.check_output([str(exe),'--request'],input=json.dumps(dict(operation=op,project=project,**kw)),encoding='utf-8'))
 project=run('autofocus')['project']

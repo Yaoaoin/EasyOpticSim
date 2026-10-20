@@ -27,12 +27,12 @@ def main():
     config = read(ROOT / 'src-tauri/tauri.conf.json')
     version = package['version']
     cargo = tomllib.loads((ROOT / 'Cargo.toml').read_text(encoding='utf-8'))
-    supported = {'1.0.0': '1.0.0', '1.1.0': '1.1.0', '1.1.0-y1.0': 'Y1.0'}
+    supported = {'1.0.0': '1.0.0', '1.1.0': '1.1.0', '1.1.0-y1.0': 'Y1.0', '1.1.0-y1.1': 'Y1.1'}
     if version not in supported or config['version'] != version or cargo['workspace']['package']['version'] != version:
         raise SystemExit('This staging recipe is for matching supported source and desktop versions only.')
     release_label = supported[version]
-    installer = TARGET / f'release/bundle/nsis/OpenOpticSim_{version}_x64-setup.exe'
-    executable = TARGET / 'release/openopticsim-desktop.exe'
+    installer = TARGET / f'release/bundle/nsis/EasyOpticSim_{version}_x64-setup.exe'
+    executable = TARGET / 'release/easyopticsim-desktop.exe'
     if not installer.is_file() or not executable.is_file():
         raise SystemExit('Build the NSIS installer first: pnpm release:build')
     with installer.open('rb') as stream:
@@ -41,7 +41,7 @@ def main():
     files = subprocess.check_output(['git', 'ls-files', '--cached', '--others', '--exclude-standard', '-z'], cwd=ROOT)
     candidates = {p.decode() for p in files.split(b'\0') if p}
     binary_checks = []
-    for binary in [executable, TARGET / 'release/oos-cli.exe']:
+    for binary in [executable, TARGET / 'release/easyopticsim-cli.exe']:
         data = binary.read_bytes()
         ascii_count = len(re.findall(rb'(?i)[A-Z]:[\\/]+Users[\\/]+[^\\/\x00\r\n]+', data))
         utf16_count = len(re.findall(r'(?i)[A-Z]:[\\/]+Users[\\/]+[^\\/\x00\r\n]+', data.decode('utf-16-le', errors='ignore')))
@@ -145,15 +145,15 @@ def main():
         raise SystemExit('Refusing installer checksum symlink.')
     sidecar.write_text(checksum, encoding='ascii')
     names.append(checksum_name)
-    copy(ROOT / f'docs/OOS-{series}-使用手册.html', f'OpenOpticSim-{release_label}-manual.html')
+    copy(ROOT / 'docs/EasyOpticSim-Y1.1-使用手册.html', f'EasyOpticSim-{release_label}-manual.html')
     release_notes = ROOT / f'docs/releases/{release_label}.md'
     if not release_notes.is_file():
         release_notes = ROOT / f'docs/releases/{version}.md'
-    copy(release_notes, f'OpenOpticSim-{release_label}-release-notes.md')
+    copy(release_notes, f'EasyOpticSim-{release_label}-release-notes.md')
     for name in ['LICENSE', 'NOTICE', 'THIRD_PARTY_NOTICES.txt']:
         copy(ROOT / name, name)
 
-    archive_name = f'OpenOpticSim-{release_label}-docs-and-examples.zip'
+    archive_name = f'EasyOpticSim-{release_label}-docs-and-examples.zip'
     archive_files = sorted(p for p in candidates if p.startswith(('docs/', 'examples/')))
     archive_files += ['README.md', 'CONTRIBUTING.md', 'CHANGELOG.md', 'SECURITY.md',
                       'LICENSE', 'NOTICE', 'THIRD_PARTY_NOTICES.txt',

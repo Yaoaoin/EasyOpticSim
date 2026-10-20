@@ -10,7 +10,7 @@ object_distance=null 表示无限远，否则是从第一顶点到物面的正�
 
 Sellmeier 使用 `n²=1+Σ B_i*λ²/(λ²-C_i)`，λ 使用 µm。系数保存为 `[[B1,B2,B3],[C1,C2,C3]]`。材料可使用常数 n；所有材料带有效波段和来源。
 
-JSON 使用 round-trip 浮点解析；不支持的 schema 明确拒绝。CSV 第一行 `#oos=<项目元数据 JSON>` 保存材料和分析设置，后续是处方表。它是 OSS 自有交换格式，不是 Zemax/Code V 格式。
+JSON 使用 round-trip 浮点解析；不支持的 schema 明确拒绝。Y1.1 新文件名使用 `.eos.json`，并继续读取 `.oos.json`。CSV 第一行保留兼容字段 `#oos=<项目元数据 JSON>`，保存材料和分析设置，后续是处方表。它是 EasyOpticSim/OpenOpticSim 自有交换格式，不是 Zemax/Code V 格式。
 
 ## 计算接口
 
@@ -115,7 +115,7 @@ Rust `execute(Request, &AtomicBool)` 返回 JSON 或明确错误。CLI `--reques
 
 候选增加 `report`，包含实际权重、原始/候选逐视场和加权 RMS、变量设置、全部迭代轨迹和停止原因；`checks` 增加可选 `reason`，覆盖用户边界、连续几何和最终密集采样通光。最终密集采样存在部分失败但仍有可计算 RMS 时，返回带失败计数且 `accepted=false` 的候选；无法得到 RMS 时返回错误。引擎批准与所有检查通过共同决定前端采纳。
 
-Rust `execute_with_progress` 提供回调；普通 `execute` 保持原接口并丢弃进度。Tauri 按 job 发出 `optimization-progress` 事件，前端按 job/revision/取消信号过滤。开发桥接通过 `oos-cli --request-progress` 输出 NDJSON，每行 `{"progress":...}`，最后 `{"result":...}`；旧 `--request` 保持单个 JSON。浏览器读取流式响应；取消会关闭连接并结束对应 CLI。
+Rust `execute_with_progress` 提供回调；普通 `execute` 保持原接口并丢弃进度。Tauri 按 job 发出 `optimization-progress` 事件，前端按 job/revision/取消信号过滤。开发桥接通过 `easyopticsim-cli --request-progress` 输出 NDJSON，每行 `{"progress":...}`，最后 `{"result":...}`；旧 `--request` 保持单个 JSON。浏览器读取流式响应；取消会关闭连接并结束对应 CLI。
 
 文档 `workspace.optimization` 保存变量表和预设，版本行新增 `analysis_preset`。它们不会进入光学模型。真实玻璃快照仍使用原有 `Material` 结构，内置数据与再生成脚本见 `src/data/glass-catalog.json` 和 `scripts/import_glass_catalog.py`。
 
@@ -128,7 +128,7 @@ Rust `execute_with_progress` 提供回调；普通 `execute` 保持原接口并�
 
 `drawingWorker.ts` 在独立工作线程生成 A4 横向 PDF。矢高与方边环带调用同一前端轮廓函数，包含精确口径转折点；总图及逐片图为矢量，PSF 为灰度图。无定义域的表面省略曲线并标记，不画替代曲面。表格分页重复标题，长单元格继续分页，显示数值允许舍入；源文件附件保留原始精度。
 
-PDF 生成时注册 fontkit，使用静态 regular Noto Sans SC，仅嵌入实际字形。少数未收录字符以问号显示，附件原文保持不变。`project.oos.json` 附件完整携带工作区、版本和扫描源，首页哈希对应附件字节；`analysis.json` 带实际配置与摘要，省略大型 rays/spot points/PSF 数组。
+PDF 生成时注册 fontkit，使用静态 regular Noto Sans SC，仅嵌入实际字形。少数未收录字符以问号显示，附件原文保持不变。`project.eos.json` 附件完整携带工作区、版本和扫描源，首页哈希对应附件字节；`analysis.json` 带实际配置与摘要，省略大型 rays/spot points/PSF 数组。
 
 Tauri 新命令 `save_pdf(name,bytes)` 只接受 PDF 签名、最大 32 MB，通过原生保存对话框明确选址，并沿用同目录临时文件、sync、原子替换。浏览器开发桥接则下载 Blob，不需要虚拟打印机。打包资源包含全部手册、字体许可和来源；WebView CSP 允许本机 worker 和同源字体，不引入远程脚本。
 

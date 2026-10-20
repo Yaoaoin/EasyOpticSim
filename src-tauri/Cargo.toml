@@ -1,5 +1,5 @@
 [package]
-name = "openopticsim-desktop"
+name = "easyopticsim-desktop"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
@@ -9,7 +9,7 @@ tauri-build = { version = "2", features = [] }
 
 [dependencies]
 tauri = { version = "2", features = [] }
-openoptics = { path = "../crates/optics" }
+easyoptics = { path = "../crates/optics" }
 serde.workspace = true
 serde_json.workspace = true
 rfd = "0.17"

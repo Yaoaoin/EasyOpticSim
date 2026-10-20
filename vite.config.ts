@@ -32,7 +32,7 @@ function engineBridge(): Plugin {
         req.on("end", () => {
           const child = spawn(
             resolve(
-              "target/debug/oos-cli" +
+              "target/debug/easyopticsim-cli" +
                 (process.platform === "win32" ? ".exe" : ""),
             ),
             [
@@ -55,7 +55,7 @@ function engineBridge(): Plugin {
             res.statusCode = 503;
             res.end(
               JSON.stringify({
-                error: "Rust 引擎尚未构建。请运行 cargo build -p oos-cli。",
+                error: "Rust 引擎尚未构建。请运行 cargo build -p easyopticsim-cli。",
               }),
             );
           });

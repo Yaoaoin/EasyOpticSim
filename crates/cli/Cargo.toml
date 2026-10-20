@@ -1,10 +1,10 @@
 [package]
-name = "oos-cli"
+name = "easyopticsim-cli"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
 
 [dependencies]
-openoptics = { path = "../optics" }
+easyoptics = { path = "../optics" }
 serde_json.workspace = true
 

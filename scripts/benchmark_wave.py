@@ -2,7 +2,7 @@
 import copy,json,os,platform,statistics,subprocess,time
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-CLI=ROOT/'target/release/oos-cli.exe'
+CLI=ROOT/'target/release/easyopticsim-cli.exe'
 def request(operation,p,**extras):
     payload=json.dumps(dict(operation=operation,project=p,**extras))
     t=time.perf_counter()

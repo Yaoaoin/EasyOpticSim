@@ -66,6 +66,18 @@ export default function NewProject({
     [advanced, setAdvanced] = useState(false);
   const choice = purposes[purpose];
   const progress = useMemo(() => `${step} / 3`, [step]);
+  const guidedStarters = useMemo(() => {
+    const find = (pattern: RegExp, fallback: number) => {
+      const index = library.findIndex((project) => pattern.test(`${project.name} ${project.description}`));
+      return index >= 0 ? index : Math.min(fallback, Math.max(0, library.length - 1));
+    };
+    return [
+      { purpose: "portrait" as const, label: "人像练习模板", index: find(/doublet|双胶合|portrait|人像/i, 0) },
+      { purpose: "landscape" as const, label: "广角练习模板", index: find(/35|wide|广角|风景/i, 1) },
+      { purpose: "telephoto" as const, label: "长焦练习模板", index: find(/400|tele|长焦|远摄/i, 2) },
+      { purpose: "macro" as const, label: "近物练习模板", index: find(/macro|近物|singlet|单透镜/i, 0) },
+    ];
+  }, [library]);
 
   const choosePurpose = (value: Purpose) => {
     const preset = purposes[value];
@@ -78,7 +90,7 @@ export default function NewProject({
     const p = template < 0 ? blankProject(library[0], name) : copy(library[template]);
     p.schema_version = Math.max(3, p.schema_version);
     p.name = name.trim();
-    p.description = `${choice.name} · Y1.0 简单向导创建`;
+    p.description = `${choice.name} · EasyOpticSim Y1.1 简单向导创建`;
     p.sensor = [width, height];
     p.fields = [0, ((field * Math.PI) / 180) * 0.7, (field * Math.PI) / 180];
     delete p.field_spec;
@@ -162,6 +174,20 @@ export default function NewProject({
           <p className="wizard-eyebrow">推荐从已能成像的示例继续，更容易看到每次修改的效果</p>
           <h2>选择一个起点</h2>
           <div className="starter-list">
+            {guidedStarters.map((starter) => {
+              const source = library[starter.index];
+              if (!source) return null;
+              const active = purpose === starter.purpose && template === starter.index;
+              return <button key={starter.purpose} className={active ? "selected" : ""} onClick={() => { choosePurpose(starter.purpose); setTemplate(starter.index); }}>
+                <span className="starter-art" aria-hidden="true">)(</span>
+                <span><strong>{starter.label}{starter.purpose === purpose ? " · 推荐" : ""}</strong><small>基于 {source.name} · 教学起点，不冒充已达标成品</small></span>
+                {active && <Check size={18} />}
+              </button>;
+            })}
+          </div>
+          <details className="advanced-disclosure">
+            <summary>查看全部示例和空白项目</summary>
+            <div className="starter-list">
             {library.slice(0, 5).map((p, i) => (
               <button key={i} className={template === i ? "selected" : ""} onClick={() => setTemplate(i)}>
                 <span className="starter-art" aria-hidden="true">)(</span>
@@ -174,7 +200,8 @@ export default function NewProject({
               <span><strong>完全空白</strong><small>适合熟悉镜头结构后从零搭建</small></span>
               {template === -1 && <Check size={18} />}
             </button>
-          </div>
+            </div>
+          </details>
           <div className="wizard-summary">
             <strong>准备好了</strong>
             <span>{name || "未命名项目"} · {choice.name} · 目标约 {choice.efl} mm F/{choice.fNumber}</span>

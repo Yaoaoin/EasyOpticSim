@@ -1,6 +1,6 @@
 {
-  "name": "openopticsim",
-  "version": "1.1.0-y1.0",
+  "name": "easyopticsim",
+  "version": "1.1.0-y1.1",
   "private": true,
   "type": "module",
   "license": "Apache-2.0",
@@ -12,8 +12,8 @@
     "tauri": "tauri",
     "release:build": "node scripts/build_release.mjs",
     "test": "vitest run",
-    "engine:build": "cargo build -p oos-cli",
-    "engine:test": "cargo test -p openoptics",
+    "engine:build": "cargo build -p easyopticsim-cli",
+    "engine:test": "cargo test -p easyoptics",
     "manual:build": "node scripts/build_manual.mjs",
     "prebuild": "node scripts/build_manual.mjs"
   },

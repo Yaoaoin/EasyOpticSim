@@ -1,4 +1,4 @@
-use openoptics::{motion::*, *};
+use easyoptics::{motion::*, *};
 use std::sync::atomic::AtomicBool;
 fn example() -> (Project, MotionOptions) {
     let v: serde_json::Value =

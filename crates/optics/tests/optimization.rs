@@ -1,4 +1,4 @@
-use openoptics::*;
+use easyoptics::*;
 use std::sync::atomic::{AtomicBool, Ordering};
 fn limits(p: &Project) -> Constraints {
     Constraints {

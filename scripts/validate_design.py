@@ -6,7 +6,7 @@ import subprocess
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
-CLI=ROOT/'target/release/oos-cli.exe'
+CLI=ROOT/'target/release/easyopticsim-cli.exe'
 def invoke(operation,project,**extra):
     r=subprocess.run([str(CLI),'--request'],input=json.dumps(dict(operation=operation,project=project,**extra)),text=True,encoding='utf-8',capture_output=True,check=True)
     return json.loads(r.stdout)

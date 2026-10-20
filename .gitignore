@@ -1,6 +1,7 @@
 # Reproducible build outputs and local QA / release staging.
 /target/
 /node_modules/
+/.pnpm-store/
 /dist/
 /src-tauri/gen/
 /artifacts/

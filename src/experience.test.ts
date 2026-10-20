@@ -1,9 +1,12 @@
 import { describe, expect, it } from "vitest";
 import {
   experienceStorageKey,
+  completeTour,
   readExperienceMode,
   saveExperienceMode,
+  shouldShowTour,
   simpleStepFor,
+  tourStorageKey,
 } from "./experience";
 
 describe("Y1.0 experience mode", () => {
@@ -25,5 +28,17 @@ describe("Y1.0 experience mode", () => {
     expect(simpleStepFor("geometry").id).toBe("build");
     expect(simpleStepFor("wave").id).toBe("verify");
     expect(simpleStepFor("motion").id).toBe("goal");
+    expect(simpleStepFor("health").id).toBe("verify");
+  });
+  it("shows the first-run tour once and allows it to be reopened by the UI", () => {
+    const values = new Map<string, string>();
+    const storage = {
+      getItem: (key: string) => values.get(key) ?? null,
+      setItem: (key: string, value: string) => values.set(key, value),
+    };
+    expect(shouldShowTour(storage)).toBe(true);
+    completeTour(storage);
+    expect(values.get(tourStorageKey)).toBe("done");
+    expect(shouldShowTour(storage)).toBe(false);
   });
 });

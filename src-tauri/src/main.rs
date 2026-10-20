@@ -37,8 +37,8 @@ impl Jobs {
     }
 }
 #[tauri::command]
-fn examples() -> Vec<openoptics::Project> {
-    openoptics::examples()
+fn examples() -> Vec<easyoptics::Project> {
+    easyoptics::examples()
 }
 #[tauri::command]
 fn cancel(job: String, state: tauri::State<Jobs>) {
@@ -48,7 +48,7 @@ fn cancel(job: String, state: tauri::State<Jobs>) {
 async fn compute(
     app: tauri::AppHandle,
     job: String,
-    request: openoptics::Request,
+    request: easyoptics::Request,
 ) -> Result<serde_json::Value, String> {
     let flag = app.state::<Jobs>().start(job.clone());
     let _ = app.emit(
@@ -59,7 +59,7 @@ async fn compute(
     let progress_app = app.clone();
     let progress_job = job.clone();
     let result = tauri::async_runtime::spawn_blocking(move || {
-        openoptics::execute_with_progress(request, &worker_flag, &mut |progress| {
+        easyoptics::execute_with_progress(request, &worker_flag, &mut |progress| {
             let _ = progress_app.emit(
                 "optimization-progress",
                 serde_json::json!({"job":progress_job,"progress":progress}),
@@ -89,7 +89,7 @@ fn main() {
             save_pdf
         ])
         .run(tauri::generate_context!())
-        .expect("Failed to run OpenOpticSim");
+        .expect("Failed to run EasyOpticSim");
 }
 
 #[cfg(test)]

@@ -51,7 +51,7 @@ export function insertLens(p: Project, kind: LensKind): number {
       n: 1.52,
       sellmeier: null,
       range_nm: [380, 780],
-      source: "OSS synthetic constant-index teaching material",
+      source: "EasyOpticSim synthetic constant-index teaching material",
     });
   if (kind === "doublet" && p.materials.length < 3)
     p.materials.push({
@@ -59,7 +59,7 @@ export function insertLens(p: Project, kind: LensKind): number {
       n: 1.62,
       sellmeier: null,
       range_nm: [380, 780],
-      source: "OSS synthetic constant-index teaching material",
+      source: "EasyOpticSim synthetic constant-index teaching material",
     });
   const name = templates[kind];
   const radii: Record<LensKind, number[]> = {

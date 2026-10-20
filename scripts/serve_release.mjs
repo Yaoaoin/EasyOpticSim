@@ -9,7 +9,7 @@ http.createServer(async(req,res)=>{
   if(req.url?.startsWith("/api/")) {
     if(req.method!=="POST"||(req.headers.origin&&req.headers.origin!==`http://127.0.0.1:${port}`)){res.writeHead(403).end();return;}
     let body="";for await(const chunk of req){body+=chunk;if(body.length>4_000_000){res.writeHead(413).end();return;}}
-    const streaming=req.url==="/api/compute-progress",child=spawn(resolve("target/release/oos-cli.exe"),[req.url==="/api/examples"?"examples":streaming?"--request-progress":"--request"]);
+    const streaming=req.url==="/api/compute-progress",child=spawn(resolve("target/release/easyopticsim-cli.exe"),[req.url==="/api/examples"?"examples":streaming?"--request-progress":"--request"]);
     let out="",err="";res.setHeader("Content-Type",streaming?"application/x-ndjson":"application/json");
     child.stdout.on("data",d=>streaming?res.write(d):out+=d);child.stderr.on("data",d=>err+=d);
     child.on("error",e=>res.writeHead(503).end(JSON.stringify({error:e.message})));
@@ -20,4 +20,4 @@ http.createServer(async(req,res)=>{
   const path=resolve(root,"."+(name==="/"?"/index.html":decodeURIComponent(name)));
   if(!path.startsWith(root+sep)){res.writeHead(403).end();return;}
   try{const bytes=await readFile(path);res.setHeader("Content-Type",({".html":"text/html; charset=utf-8",".js":"text/javascript; charset=utf-8",".css":"text/css; charset=utf-8",".ttf":"font/ttf"})[extname(path)]??"application/octet-stream");res.end(bytes);}catch{res.writeHead(404).end();}
-}).listen(port,"127.0.0.1",()=>console.log(`Built OOS QA: http://127.0.0.1:${port}`));
+}).listen(port,"127.0.0.1",()=>console.log(`Built EasyOpticSim QA: http://127.0.0.1:${port}`));
