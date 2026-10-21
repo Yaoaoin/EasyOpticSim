@@ -4,7 +4,7 @@
 
 ## 先选择合适的入口
 
-- 使用问题先查看 [新手教程](docs/manual/start.md)、[完整手册](docs/EasyOpticSim-Y1.1-使用手册.md)和[已知范围](docs/STATUS.md)。
+- 使用问题先查看 [新手教程](docs/manual/start.md)、[完整手册](docs/EasyOpticSim-Y1.2-使用手册.md)和[已知范围](docs/STATUS.md)。
 - 界面、文件或安装错误使用 Bug 模板；计算结果疑问使用“光学计算问题”模板。
 - 新功能请说明实际使用场景和预期结果。较大的算法、格式或界面改动先通过 Issue 讨论范围。
 - 安全漏洞按 [SECURITY.md](SECURITY.md)报告，不在公开 Issue 中贴出利用细节。

@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { allTabs, helpFor, matchesQuery, sectionFor } from "./navigation";
 import { articles, findArticles } from "./help";
-describe("Y1.1 navigation and offline documentation", () => {
+describe("Y1.2 navigation and offline documentation", () => {
   it("keeps the professional tools and adds one-click lens health", () => {
     expect(allTabs.map((t) => t[0]).sort()).toEqual(
       [

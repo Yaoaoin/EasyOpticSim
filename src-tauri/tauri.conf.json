@@ -1,18 +1,18 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
   "productName": "EasyOpticSim",
-  "version": "1.1.0-y1.1",
+  "version": "1.1.0-y1.2",
   "identifier": "io.github.yaoaoin.easyopticsim",
   "build": {
     "beforeDevCommand": "pnpm dev",
     "devUrl": "http://localhost:1420",
-    "beforeBuildCommand": "pnpm build",
+    "beforeBuildCommand": "node scripts/build_manual.mjs && node node_modules/typescript/bin/tsc -b && node node_modules/vite/bin/vite.js build",
     "frontendDist": "../dist"
   },
   "app": {
     "windows": [
       {
-        "title": "EasyOpticSim Y1.1 · 冰川光学工作室",
+        "title": "EasyOpticSim Y1.2 · 引导光学工作室",
         "width": 1440,
         "height": 940,
         "minWidth": 1000,
@@ -44,8 +44,8 @@
       "../src/assets/fonts/OFL.txt": "fonts/OFL.txt",
       "../src/assets/fonts/source.json": "fonts/source.json",
       "../examples/24-70mm-zoom.oos.json": "examples/24-70mm-zoom.oos.json",
-      "../docs/EasyOpticSim-Y1.1-使用手册.md": "EasyOpticSim-Y1.1-使用手册.md",
-      "../docs/EasyOpticSim-Y1.1-使用手册.html": "EasyOpticSim-Y1.1-使用手册.html"
+      "../docs/EasyOpticSim-Y1.2-使用手册.md": "EasyOpticSim-Y1.2-使用手册.md",
+      "../docs/EasyOpticSim-Y1.2-使用手册.html": "EasyOpticSim-Y1.2-使用手册.html"
     },
     "targets": [
       "nsis"

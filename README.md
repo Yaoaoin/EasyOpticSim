@@ -1,43 +1,43 @@
-# EasyOpticSim Y1.1
+# EasyOpticSim Y1.2
 
 面向摄影与镜头爱好者的本地光学设计工作室。EasyOpticSim 使用 React、Tauri 2 和 Rust，将复杂的镜头设计、调校和检验整理成新手也能跟随的流程；Windows x64 是主要发布平台。
 
-当前用户版本为 **Y1.1**，内部语义版本为 `1.1.0-y1.1`。当前仓库：[Yaoaoin/EasyOpticSim](https://github.com/Yaoaoin/EasyOpticSim)。本项目由 [Ayr1k/OpenOpticSim](https://github.com/ayr1k/OpenOpticSim) fork 并继续开发，保留原项目 Apache License 2.0、版权声明、[NOTICE](NOTICE) 和全部[第三方许可](THIRD_PARTY_NOTICES.txt)。项目改名不改变上游代码的许可证或归属。
+当前用户版本为 **Y1.2**，内部语义版本为 `1.1.0-y1.2`。当前仓库：[Yaoaoin/EasyOpticSim](https://github.com/Yaoaoin/EasyOpticSim)。本项目由 [Ayr1k/OpenOpticSim](https://github.com/ayr1k/OpenOpticSim) fork 并继续开发，保留原项目 Apache License 2.0、版权声明、[NOTICE](NOTICE) 和全部[第三方许可](THIRD_PARTY_NOTICES.txt)。项目改名不改变上游代码的许可证或归属。
 
-开发分支已加入三入口引导工作区、六步新建向导和独立复核的设计助手。使用方法、自动化边界及提交 EOS PR 的步骤见 [引导设计与开发分支说明](docs/EOS-GUIDED-DEVELOPMENT.md)。这些改进尚未作为新版本发布，以下下载说明对应原 Y1.1 发行版。
+Y1.2 合并了 Ayr1k 贡献的引导式 EOS 设计工作流和独立复核助手，并在 EasyOpticSim 发布体系中完成版本、文档、测试和安装包集成。详细设计与自动化边界见 [Y1.2 引导设计与验证助手](docs/EOS-GUIDED-DEVELOPMENT.md)。
 
-## Y1.1 新功能
+## Y1.2 新功能
 
-- 一键镜头体检：按固定顺序检查数据、机械、通光、几何画质、焦点、设计目标和快速 PSF/MTF。
-- 五类可行动结果：能否成像、是否通光、画质、机械结构、是否适合导出；明确区分“可以继续、建议改进、必须修复、尚未检查”。
-- 安全智能建议：自动对焦和优化只生成候选，显示前后差异与完整约束，通过后仍需用户确认采纳。
-- 问题定位：几何或追迹失败可直接前往首个问题面；口径、光圈和画质问题进入对应工具。
-- 首次启动五步引导、工作区“跟我做”进度和可随时重开的教程。
-- 人像、广角、长焦、近物四类教学模板；每个模板明确是设计起点，不冒充已达标成品。
-- 项目与程序统一改名为 EasyOpticSim；新项目默认保存为 `.eos.json`，继续兼容旧 `.oos.json` 和 CSV。
+- 三入口引导工作区：用“我的目标 → 画面与改进 → 检查与保存”替代新手面对的完整专业工具树；高级工作区仍完整保留。
+- 六步新建向导：选择用途、画幅和距离，设置焦距/F 数目标，确认模板边界，运行 33×33 基础检查后再创建项目；跳过或未达标会明确标记为实验草稿。
+- 独立复核设计助手：先检查结构和通光，再按全画面、中心或边缘优先尝试对焦和受约束优化。
+- 严格候选门槛：使用 65×65 几何采样逐视场比较，不允许画质退步或以增加遮挡换取 RMS；复核锁定、变量边界、结构、覆盖和全部设计目标。
+- 精细衍射复核：候选的每个画面位置最多使用 128 瞳采样，要求衍射计算报告收敛；没有合格方案时保留原设计。
+- 统一模板来源：人像、风景、长焦、近物使用稳定 ID 与明确示例文件绑定，保留模板真实材料和波谱，并清除不适用的旧工作区状态。
+- 一键体检增强：覆盖所有已分析画面位置，加入目标约束结果，并在项目变化、取消或离开时阻止旧结果回填。
 
-Y1.0 的三步新建向导、简单/专业双模式、四步任务导航和冰川蓝玻璃界面全部保留。完整内容见 [Y1.1 版本说明](docs/releases/Y1.1.md)、[更新日志](CHANGELOG.md)与 [GitHub Release 文案](docs/github-release-Y1.1.md)。
+Y1.1 的一键体检、安全候选机制、首次教程、`.eos.json` 文件格式和冰川蓝玻璃界面全部保留。完整内容见 [Y1.2 版本说明](docs/releases/Y1.2.md)、[更新日志](CHANGELOG.md)与 [GitHub Release 文案](docs/github-release-Y1.2.md)。
 
 ## 下载
 
-发布后可从 Y1.1 Release 下载：
+发布后可从 Y1.2 Release 下载：
 
-- [Windows x64 安装包](https://github.com/Yaoaoin/EasyOpticSim/releases/download/Y1.1/EasyOpticSim_1.1.0-y1.1_x64-setup.exe)
-- [安装包 SHA-256](https://github.com/Yaoaoin/EasyOpticSim/releases/download/Y1.1/EasyOpticSim_1.1.0-y1.1_x64-setup.exe.sha256)
-- [Y1.1 发布页](https://github.com/Yaoaoin/EasyOpticSim/releases/tag/Y1.1)
+- [Windows x64 安装包](https://github.com/Yaoaoin/EasyOpticSim/releases/download/Y1.2/EasyOpticSim_1.1.0-y1.2_x64-setup.exe)
+- [安装包 SHA-256](https://github.com/Yaoaoin/EasyOpticSim/releases/download/Y1.2/EasyOpticSim_1.1.0-y1.2_x64-setup.exe.sha256)
+- [Y1.2 发布页](https://github.com/Yaoaoin/EasyOpticSim/releases/tag/Y1.2)
 
 安装包包含离线 WebView2 组件、中文字体、完整手册、示例和许可文件。普通用户不需要安装 Node.js、Python 或 Rust。安装包目前未签名；请仅从本仓库下载并核对 SHA-256。
 
 ## 三分钟开始
 
 1. 点击“新建项目”，选择人像、风景、远摄或近物。
-2. 选择推荐教学模板，创建后跟随顶部四个步骤。
-3. 用自动对焦或约束优化生成候选，检查结果后再采纳。
-4. 打开“检查与保存 → 一键镜头体检”。
-5. 按失败卡片的按钮定位问题、生成修复候选或进入专业诊断。
+2. 在六步向导中设置画幅、距离、目标焦距与 F 数，并运行基础检查。
+3. 进入“画面与改进”，选择全画面、中心或边缘优先。
+4. 让助手生成并独立复核候选，查看逐视场前后差异后再决定是否采纳。
+5. 打开“检查与保存 → 一键镜头体检”，处理未通过项目。
 6. 保存 `.eos.json`，或导出体检报告与技术图纸。
 
-第一次启动会显示五步界面引导；顶部“跟我做”可重新打开。软件内帮助、F1 或 Ctrl+K 可检索说明。也可直接阅读 [EasyOpticSim Y1.1 完整手册](docs/EasyOpticSim-Y1.1-使用手册.md)、[离线 HTML 手册](docs/EasyOpticSim-Y1.1-使用手册.html)和[一键体检说明](docs/manual/health.md)。
+第一次启动会显示五步界面引导；顶部“跟我做”可重新打开。软件内帮助、F1 或 Ctrl+K 可检索说明。也可直接阅读 [EasyOpticSim Y1.2 完整手册](docs/EasyOpticSim-Y1.2-使用手册.md)、[离线 HTML 手册](docs/EasyOpticSim-Y1.2-使用手册.html)、[引导助手说明](docs/EOS-GUIDED-DEVELOPMENT.md)和[一键体检说明](docs/manual/health.md)。
 
 ## 能力与边界
 

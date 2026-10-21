@@ -31,7 +31,7 @@ const checks = [
   },
 ];
 
-describe("Y1.1 one-click lens health", () => {
+describe("Y1.2 one-click lens health", () => {
   it("passes a complete trace without inventing manufacturing certification", () => {
     const report = evaluateHealth(project, geometry, analysis, [wave], checks);
     expect(report.overall).toBe("pass");

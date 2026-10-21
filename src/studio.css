@@ -806,7 +806,7 @@ main {
   }
 }
 
-/* Y1.1 guided verification */
+/* Y1.2 guided verification */
 .workspace-guide > div { display:flex; gap:8px; }
 .guided-checklist { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:8px; padding:10px 14px; border-bottom:1px solid var(--line); background:rgba(5,31,52,.66); }
 .guided-checklist { border-bottom-color:var(--glacier-line); }

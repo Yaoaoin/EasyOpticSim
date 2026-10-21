@@ -27,7 +27,7 @@ def main():
     config = read(ROOT / 'src-tauri/tauri.conf.json')
     version = package['version']
     cargo = tomllib.loads((ROOT / 'Cargo.toml').read_text(encoding='utf-8'))
-    supported = {'1.0.0': '1.0.0', '1.1.0': '1.1.0', '1.1.0-y1.0': 'Y1.0', '1.1.0-y1.1': 'Y1.1'}
+    supported = {'1.0.0': '1.0.0', '1.1.0': '1.1.0', '1.1.0-y1.0': 'Y1.0', '1.1.0-y1.1': 'Y1.1', '1.1.0-y1.2': 'Y1.2'}
     if version not in supported or config['version'] != version or cargo['workspace']['package']['version'] != version:
         raise SystemExit('This staging recipe is for matching supported source and desktop versions only.')
     release_label = supported[version]
@@ -145,7 +145,7 @@ def main():
         raise SystemExit('Refusing installer checksum symlink.')
     sidecar.write_text(checksum, encoding='ascii')
     names.append(checksum_name)
-    copy(ROOT / 'docs/EasyOpticSim-Y1.1-使用手册.html', f'EasyOpticSim-{release_label}-manual.html')
+    copy(ROOT / f'docs/EasyOpticSim-{release_label}-使用手册.html', f'EasyOpticSim-{release_label}-manual.html')
     release_notes = ROOT / f'docs/releases/{release_label}.md'
     if not release_notes.is_file():
         release_notes = ROOT / f'docs/releases/{version}.md'
@@ -160,7 +160,7 @@ def main():
                       'src/assets/fonts/OFL.txt', 'src/assets/fonts/source.json', 'src/data/glass-catalog.json']
     with zipfile.ZipFile(output_path(archive_name), 'w', zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
         for name in sorted(set(archive_files)):
-            entry = zipfile.ZipInfo(name, date_time=(2026, 10, 19, 0, 0, 0))
+            entry = zipfile.ZipInfo(name, date_time=(2026, 10, 20, 0, 0, 0))
             entry.compress_type = zipfile.ZIP_DEFLATED
             archive.writestr(entry, (ROOT / name).read_bytes())
     names.append(archive_name)

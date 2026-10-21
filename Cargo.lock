@@ -720,7 +720,7 @@ checksum = "d0881ea181b1df73ff77ffaaf9c7544ecc11e82fba9b5f27b262a3c73a332555"
 
 [[package]]
 name = "easyoptics"
-version = "1.1.0-y1.1"
+version = "1.1.0-y1.2"
 dependencies = [
  "nalgebra",
  "rustfft",
@@ -730,7 +730,7 @@ dependencies = [
 
 [[package]]
 name = "easyopticsim-cli"
-version = "1.1.0-y1.1"
+version = "1.1.0-y1.2"
 dependencies = [
  "easyoptics",
  "serde_json",
@@ -738,7 +738,7 @@ dependencies = [
 
 [[package]]
 name = "easyopticsim-desktop"
-version = "1.1.0-y1.1"
+version = "1.1.0-y1.2"
 dependencies = [
  "easyoptics",
  "rfd",

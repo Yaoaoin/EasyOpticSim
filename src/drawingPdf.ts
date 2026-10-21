@@ -31,9 +31,9 @@ export async function createDrawingPdf(
       .join("");
   const p = s.project;
   doc.setTitle(`${p.name} - EasyOpticSim 技术图纸`);
-  doc.setAuthor("EasyOpticSim Y1.1");
+  doc.setAuthor("EasyOpticSim Y1.2");
   doc.setSubject("旋转对称顺序透射光学设计记录");
-  doc.setCreator("EasyOpticSim Y1.1 / pdf-lib");
+  doc.setCreator("EasyOpticSim Y1.2 / pdf-lib");
   doc.setCreationDate(new Date(s.createdAt));
   let page!: PDFPage;
   let y = 0,
@@ -779,7 +779,7 @@ export async function createDrawingPdf(
     10,
   );
   paragraph(
-    "生成工具：EasyOpticSim Y1.1（基于 OpenOpticSim，Apache-2.0）；PDF-LIB / fontkit（MIT）；中文字体 Noto Sans SC（SIL OFL 1.1）。字体来源与许可随安装包分发。",
+    "生成工具：EasyOpticSim Y1.2（基于 OpenOpticSim，Apache-2.0）；PDF-LIB / fontkit（MIT）；中文字体 Noto Sans SC（SIL OFL 1.1）。字体来源与许可随安装包分发。",
     9,
     muted,
   );
@@ -830,7 +830,7 @@ export async function createDrawingPdf(
     line(M, H - 35, W - M, H - 35, muted, 0.4, a);
     let name = clean(p.name);
     while (font.widthOfTextAtSize(name, 7) > 450) name = name.slice(0, -1);
-    text(`${name}  |  EasyOpticSim Y1.1  |  名义设计 / mm`, M, H - 26, 7, muted, a);
+    text(`${name}  |  EasyOpticSim Y1.2  |  名义设计 / mm`, M, H - 26, 7, muted, a);
     text(`${i + 1} / ${pages.length}`, W - M - 40, H - 26, 8, muted, a);
   });
   return doc.save();

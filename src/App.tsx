@@ -733,7 +733,7 @@ export default function App() {
           <div>
             EasyOpticSim <small>让光学设计更容易</small>
           </div>
-          <span className="alpha">Y1.1</span>
+          <span className="alpha">Y1.2</span>
         </div>
         <div className="toolbar">
           <div
