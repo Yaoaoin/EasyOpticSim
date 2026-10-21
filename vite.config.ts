@@ -9,7 +9,10 @@ function engineBridge(): Plugin {
       server.middlewares.use("/api", (req, res) => {
         if (
           req.headers.origin &&
-          !/^http:\/\/(localhost|127\.0\.0\.1):1420$/.test(req.headers.origin)
+          ![
+            `http://localhost:${server.config.server.port}`,
+            `http://127.0.0.1:${server.config.server.port}`,
+          ].includes(req.headers.origin)
         ) {
           res.statusCode = 403;
           res.end();

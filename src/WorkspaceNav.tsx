@@ -1,7 +1,7 @@
 import { CircleHelp } from "lucide-react";
 import { useRef } from "react";
 import { sectionFor } from "./navigation";
-import { simpleStepFor, simpleSteps, type ExperienceMode } from "./experience";
+import type { ExperienceMode } from "./experience";
 export default function WorkspaceNav({
   tab,
   onTab,
@@ -17,65 +17,61 @@ export default function WorkspaceNav({
   const last = useRef<Record<string, string>>({});
   last.current[section.id] = tab;
   if (experience === "simple") {
-    const step = simpleStepFor(tab);
-    const destinations: Record<(typeof simpleSteps)[number]["id"], string> = {
-      goal: "goals",
-      build: "prescription",
-      improve: "spots",
-      verify: "health",
-    };
-    const tools: Record<string, [string, string][]> = {
-      goal: [["goals", "设置拍摄目标"]],
-      build: [
-        ["prescription", "添加与调整镜片"],
-        ["geometry", "看看镜片是否碰撞"],
-      ],
-      improve: [
-        ["spots", "查看清晰度"],
-        ["focus", "自动寻找焦点"],
-        ["optimization", "自动改进"],
-      ],
-      verify: [
-        ["health", "一键镜头体检"],
-        ["aberration", "检查通光"],
-        ["wave", "精细画质检查"],
-        ["drawing", "导出图纸"],
-        ["versions", "保存设计版本"],
-      ],
-    };
+    const active =
+      tab === "goals"
+        ? "goals"
+        : ["health", "versions", "drawing"].includes(tab)
+          ? "health"
+          : "assistant";
     return (
-      <div className="workspace-navigation simple-navigation">
-        <nav aria-label="简单设计流程" className="simple-steps">
-          {simpleSteps.map((item, index) => (
+      <div className="workspace-navigation guided-navigation">
+        <nav aria-label="设计流程">
+          {[
+            ["goals", "我的目标"],
+            ["assistant", "画面与改进"],
+            ["health", "检查与保存"],
+          ].map(([id, label], i) => (
             <button
-              key={item.id}
-              aria-current={step.id === item.id ? "step" : undefined}
-              className={step.id === item.id ? "active" : ""}
-              onClick={() => onTab(destinations[item.id])}
+              key={id}
+              className={active === id ? "selected" : ""}
+              aria-pressed={active === id}
+              onClick={() => onTab(id)}
             >
-              <span>{index + 1}</span>
-              <strong>{item.label}</strong>
+              <span>0{i + 1}</span>
+              {label}
             </button>
           ))}
-          <button className="context-help" onClick={onHelp} title="当前页面帮助">
+          <details className="guided-tools">
+            <summary>更多工具</summary>
+            <div>
+              {[
+                ["prescription", "编辑镜片"],
+                ["geometry", "结构检查"],
+                ["spots", "光点分布"],
+                ["wave", "精细画质"],
+                ["preview", "测试图成像"],
+                ["focus", "手动对焦扫描"],
+                ["aperture", "光圈与通光"],
+                ["optimization", "高级优化"],
+                ["versions", "设计版本"],
+                ["drawing", "导出图纸"],
+              ].map(([id, label]) => (
+                <button
+                  key={id}
+                  onClick={(e) => {
+                    onTab(id);
+                    e.currentTarget.closest("details")?.removeAttribute("open");
+                  }}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+          </details>
+          <button onClick={onHelp} aria-label="当前页面帮助">
             <CircleHelp size={16} />
           </button>
         </nav>
-        <div className="simple-subnav">
-          <span>现在做什么</span>
-          <nav aria-label="当前步骤工具">
-            {tools[step.id].map(([id, label]) => (
-              <button
-                key={id}
-                aria-pressed={tab === id}
-                className={tab === id ? "selected" : ""}
-                onClick={() => onTab(id)}
-              >
-                {label}
-              </button>
-            ))}
-          </nav>
-        </div>
       </div>
     );
   }

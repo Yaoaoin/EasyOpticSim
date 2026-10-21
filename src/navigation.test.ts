@@ -6,6 +6,7 @@ describe("Y1.1 navigation and offline documentation", () => {
     expect(allTabs.map((t) => t[0]).sort()).toEqual(
       [
         "spots",
+        "assistant",
         "focus",
         "aperture",
         "goals",

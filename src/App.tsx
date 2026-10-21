@@ -51,6 +51,8 @@ import { getCurrentWindow } from "@tauri-apps/api/window";
 import { insertLens, lensAt, templates, type LensKind } from "./lenses";
 import LensEditor from "./LensEditor";
 import NewProject from "./NewProject";
+import DesignAssistant from "./DesignAssistant";
+import SimpleGoals from "./SimpleGoals";
 import Modal from "./Modal";
 import GeometryPanel from "./GeometryPanel";
 import { Num } from "./Num";
@@ -65,6 +67,7 @@ import PupilPanel from "./PupilPanel";
 import WorkspaceNav from "./WorkspaceNav";
 import { helpFor } from "./navigation";
 import "./studio.css";
+import "./guided.css";
 import GroupPanel from "./GroupPanel";
 import { opticalKey, candidateKey } from "./design";
 import VersionPanel from "./VersionPanel";
@@ -109,9 +112,10 @@ const DrawingPanel = lazy(() => import("./DrawingPanel"));
 const autosaveKey = "easyopticsim-autosave";
 const legacyAutosaveKey = "oos-autosave";
 export default function App() {
-  const [experience, setExperience] = useState<ExperienceMode>(readExperienceMode);
+  const [experience, setExperience] =
+    useState<ExperienceMode>(readExperienceMode);
   const [showTour, setShowTour] = useState(shouldShowTour);
-  const [healthReport, setHealthReport] = useState<HealthReport | null>(null);
+  const [, setHealthReport] = useState<HealthReport | null>(null);
   const [helpTopic, setHelpTopic] = useState<string | null>(null),
     [showSearch, setShowSearch] = useState(false),
     [inspectorTab, setInspectorTab] = useState("element");
@@ -155,7 +159,7 @@ export default function App() {
     [busy, setBusy] = useState(""),
     [selected, setSelected] = useState(1),
     [mode, setMode] = useState("basic"),
-    [tab, setTab] = useState("spots"),
+    [tab, setTab] = useState("assistant"),
     [candidate, setCandidate] = useState<Candidate | null>(null),
     [history, setHistory] = useState<Project[]>([]),
     [future, setFuture] = useState<Project[]>([]),
@@ -420,7 +424,9 @@ export default function App() {
         setLibrary(items);
         let p = items[0];
         try {
-          const saved = localStorage.getItem(autosaveKey) ?? localStorage.getItem(legacyAutosaveKey);
+          const saved =
+            localStorage.getItem(autosaveKey) ??
+            localStorage.getItem(legacyAutosaveKey);
           if (saved) p = projectFromJson(saved);
         } catch {}
         latestProject.current = p;
@@ -714,18 +720,27 @@ export default function App() {
   const s = project.surfaces[selected] ?? project.surfaces[0];
   const selectedLens = lensAt(project, selected);
   const issues = result?.diagnostics ?? [];
+  const editingStructure = ["prescription", "geometry", "groups"].includes(tab);
+  const hideLeft =
+    experience === "simple" ? !editingStructure : workspaceLayout.leftHidden;
+  const hideRight =
+    experience === "simple" ? !editingStructure : workspaceLayout.rightHidden;
   return (
     <div className="app" data-experience={experience}>
       <header>
         <div className="brand">
           <Aperture size={27} />
           <div>
-            EasyOpticSim <small>冰川光学工作室</small>
+            EasyOpticSim <small>让光学设计更容易</small>
           </div>
           <span className="alpha">Y1.1</span>
         </div>
         <div className="toolbar">
-          <div className="experience-switch" role="group" aria-label="界面复杂度">
+          <div
+            className="experience-switch"
+            role="group"
+            aria-label="界面复杂度"
+          >
             <button
               className={experience === "simple" ? "active" : ""}
               aria-pressed={experience === "simple"}
@@ -734,14 +749,14 @@ export default function App() {
                 setMode("basic");
               }}
             >
-              简单
+              引导设计
             </button>
             <button
               className={experience === "pro" ? "active" : ""}
               aria-pressed={experience === "pro"}
               onClick={() => setExperience("pro")}
             >
-              专业
+              高级工作区
             </button>
           </div>
           <button
@@ -918,14 +933,10 @@ export default function App() {
       <div
         className="workspace"
         style={{
-          gridTemplateColumns: `${workspaceLayout.leftHidden ? "0px" : "var(--left-width)"} minmax(0,1fr) ${workspaceLayout.rightHidden ? "0px" : "var(--right-width)"}`,
+          gridTemplateColumns: `${hideLeft ? "0px" : "var(--left-width)"} minmax(0,1fr) ${hideRight ? "0px" : "var(--right-width)"}`,
         }}
       >
-        <aside
-          className="left"
-          aria-label="光学结构导航"
-          hidden={workspaceLayout.leftHidden}
-        >
+        <aside className="left" aria-label="光学结构导航" hidden={hideLeft}>
           <StructurePanel
             project={project}
             library={library}
@@ -941,7 +952,7 @@ export default function App() {
             setLensShare={(lensShare) =>
               setWorkspaceLayout((v) => ({ ...v, lensShare }))
             }
-            visible={!workspaceLayout.leftHidden}
+            visible={!hideLeft}
             resetEpoch={layoutResetEpoch + documentEpoch}
           />
         </aside>
@@ -955,20 +966,19 @@ export default function App() {
           <div className="workspace-guide">
             <span>
               {experience === "simple"
-                ? "跟着四步完成设计；一键体检会告诉你哪里有问题、下一步做什么。"
+                ? "设定目标，查看真实画面，让助手尝试改进。每个候选都由你决定是否采纳。"
                 : "先定义目标，再检查通光与画质；调校结果以候选方式采纳。"}
             </span>
-            <div><button onClick={() => setShowTour(true)}>跟我做 <ChevronRight size={13} /></button><button onClick={() => setHelpTopic("start")}>新手教程 <ChevronRight size={13} /></button></div>
+            <div>
+              <button onClick={() => setShowTour(true)}>
+                跟我做 <ChevronRight size={13} />
+              </button>
+              <button onClick={() => setHelpTopic("start")}>
+                新手教程 <ChevronRight size={13} />
+              </button>
+            </div>
           </div>
-          {experience === "simple" && <div className="guided-checklist" aria-label="跟我做进度">
-            {[
-              ["目标", !!project.workspace?.constraints, "goals"],
-              ["搭建", project.surfaces.length > 0, "prescription"],
-              ["成像", !!result && result.fields.every((field) => field.polychromatic_rms_um !== null), "focus"],
-              ["体检", !!healthReport, "health"],
-              ["保存", !dirty, "versions"],
-            ].map(([label, done, destination], index) => <button className={done ? "done" : ""} key={String(label)} onClick={() => navigate(String(destination))}><span>{done ? "✓" : index + 1}</span>{String(label)}</button>)}
-          </div>}
+
           <div className="viewport">
             <div className="viewbar">
               <div>
@@ -1021,6 +1031,7 @@ export default function App() {
               <button
                 onClick={() => {
                   setWorkspaceLayout((v) => ({ ...v, rightHidden: false }));
+                  if (experience === "simple") setTab("prescription");
                   setInspectorTab("photography");
                 }}
               >
@@ -1028,7 +1039,7 @@ export default function App() {
               </button>
             </div>
           </div>
-          <div className="metrics">
+          <div className="metrics" hidden={experience === "simple"}>
             {[
               ["有效焦距", fmt(result?.paraxial.efl), "mm"],
               ["近轴 F 数", fmt(result?.paraxial.f_number), "f /"],
@@ -1056,7 +1067,14 @@ export default function App() {
               </button>
             </div>
           )}
-          <Coverage value={result?.coverage} compact />
+          {experience === "simple" ? (
+            <details className="coverage-details">
+              <summary>查看画幅覆盖与计算边界</summary>
+              <Coverage value={result?.coverage} compact />
+            </details>
+          ) : (
+            <Coverage value={result?.coverage} compact />
+          )}
           {result &&
             project.object_distance === null &&
             (result.paraxial.bfl ?? 1) <= 0 && (
@@ -1169,6 +1187,22 @@ export default function App() {
             </div>
           )}
           <section className="analysis" id="analysis-workbench">
+            {tab === "assistant" && (
+              <DesignAssistant
+                key={documentEpoch}
+                project={project}
+                analysis={result}
+                navigate={navigate}
+                onCandidate={(c) => {
+                  receiveCandidate(c, project, sourceDocumentStamp);
+                  requestAnimationFrame(() =>
+                    document
+                      .querySelector(".candidate")
+                      ?.scrollIntoView({ block: "start" }),
+                  );
+                }}
+              />
+            )}
             {tab === "health" && (
               <HealthCheckPanel
                 project={project}
@@ -1176,7 +1210,7 @@ export default function App() {
                 navigate={navigate}
                 onSurface={setSelected}
                 onAutofocus={() => void run("autofocus")}
-                onOptimize={() => void run("optimize")}
+                onOptimize={() => navigate("assistant")}
                 onSave={() => void saveFile()}
                 onReport={setHealthReport}
               />
@@ -1271,7 +1305,16 @@ export default function App() {
                 }
               />
             )}
-            {tab === "goals" && (
+            {tab === "goals" && experience === "simple" && (
+              <SimpleGoals
+                project={project}
+                analysis={result}
+                edit={edit}
+                navigate={navigate}
+                disabled={!!busy}
+              />
+            )}
+            {tab === "goals" && experience === "pro" && (
               <GoalPanel
                 project={project}
                 result={result}
@@ -1465,11 +1508,7 @@ export default function App() {
             </div>
           )}
         </main>
-        <aside
-          className="right"
-          aria-label="参数检查器"
-          hidden={workspaceLayout.rightHidden}
-        >
+        <aside className="right" aria-label="参数检查器" hidden={hideRight}>
           <div className="inspector-head">
             <div className="inspector-heading">
               <Settings2 size={14} />
@@ -1864,11 +1903,12 @@ export default function App() {
       </Suspense>
       {showNew && (
         <NewProject
-          library={library}
           onCancel={() => setShowNew(false)}
           onCreate={(p) => {
             loadDocument(p);
             setShowNew(false);
+            setExperience("simple");
+            setTab("assistant");
           }}
         />
       )}
